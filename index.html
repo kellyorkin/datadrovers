@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Datadrovers</title>
+<meta name="description" content="Architecture, tinkering, and the occasional working tool." />
+
+<!-- Typography: Source Serif for the display voice (warm, considered, a touch of serifed authority);
+     Inter Tight for utility text (cleanly contemporary without being generic).
+     Both are humanist and avoid the AI-slop sans-serif default. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Palette — desert sage and campfire charcoal, with bone, clay, and smoke as supporting voices */
+    --bone:       #F4F0E8;
+    --bone-deep: #ECE6DA;
+    --charcoal:  #2A2D2E;
+    --sage:      #7C8B6D;
+    --sage-deep: #5E6B52;
+    --clay:      #A8543E;
+    --smoke:     #6A6D6E;
+
+    /* Type scale */
+    --font-display: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+    --font-body:    'Inter Tight', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--bone);
+    color: var(--charcoal);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ====== STRUCTURE ====== */
+
+  .frame {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
+  }
+
+  .top-rule {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(42, 45, 46, 0.15);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--smoke);
+    font-weight: 400;
+  }
+
+  .top-rule .right { color: var(--sage-deep); }
+
+  /* ====== HERO ====== */
+
+  .hero {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(3rem, 7vw, 5rem);
+    padding-top: clamp(3rem, 9vw, 6rem);
+    padding-bottom: clamp(3rem, 9vw, 6rem);
+  }
+
+  @media (min-width: 880px) {
+    .hero {
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  .hero-mark {
+    /* The logo sits in its own breathing space — full-bleed within its column */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-mark img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    display: block;
+    /* Slight desaturation so the sage in the logo and the sage on the page agree */
+    filter: contrast(1.02);
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 32rem;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage-deep);
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+    color: var(--charcoal);
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--sage-deep);
+    font-weight: 400;
+  }
+
+  .hero-body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--charcoal);
+    font-weight: 400;
+    max-width: 28rem;
+  }
+
+  .hero-body + .hero-body { margin-top: 0; }
+
+  /* ====== ARCHITECTURAL CLAY STRIPE ======
+     One single moment of warm color, structural rather than decorative.
+     The Barragán move: a plane, not a flourish. */
+
+  .clay-stripe {
+    margin-top: auto;
+    height: 6px;
+    background: var(--clay);
+    width: clamp(60px, 12vw, 120px);
+  }
+
+  /* ====== FOOTER ====== */
+
+  footer {
+    width: 100%;
+    background: var(--bone);
+    padding: 2rem clamp(1.5rem, 6vw, 5rem) 1.5rem;
+    border-top: 1px solid rgba(42, 45, 46, 0.06);
+  }
+
+  .footer-row {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    /* Bone-on-bone — visible enough to suggest text is there, quiet enough to require effort to read */
+    color: var(--bone-deep);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: color 0.6s ease;
+  }
+
+  .footer-row:hover {
+    /* Reward for hovering — text becomes legible */
+    color: var(--smoke);
+  }
+
+  .footer-row .left   { text-align: left; }
+  .footer-row .center { text-align: center; }
+  .footer-row .right  { text-align: right; }
+
+  /* The trademark symbol gets its own faint color — claims its own authority, naturally */
+  .tm { font-size: 0.6em; vertical-align: super; }
+
+  /* On narrow screens, footer stacks but stays bone-on-bone */
+  @media (max-width: 720px) {
+    .footer-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      text-align: center;
+    }
+    .footer-row .left,
+    .footer-row .center,
+    .footer-row .right { text-align: center; }
+  }
+
+  /* ====== ENTRANCE ANIMATION ======
+     One orchestrated page load. Staggered, restrained, no bounce. */
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .top-rule    { animation: rise 0.7s ease-out both; }
+  .hero-mark   { animation: rise 0.8s ease-out 0.15s both; }
+  .hero-eyebrow{ animation: rise 0.7s ease-out 0.30s both; }
+  .hero-title  { animation: rise 0.7s ease-out 0.40s both; }
+  .hero-body   { animation: rise 0.7s ease-out 0.55s both; }
+  .clay-stripe { animation: rise 0.7s ease-out 0.75s both; }
+
+  /* Honor reduced-motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- Top utility rule: small, deliberate, frames the page -->
+  <div class="top-rule">
+    <span class="left">Datadrovers</span>
+    <span class="right">Est. 2026</span>
+  </div>
+
+  <!-- Hero: logo column, copy column -->
+  <section class="hero">
+
+    <div class="hero-mark">
+      <img src="DD_Sage.png" alt="Datadrovers logo — a longhorn skull with curly-brace horns and a circuit-trace nose, in desert sage" />
+    </div>
+
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Architecture &middot; Tinkering &middot; Working Tools</p>
+
+      <h1 class="hero-title">
+        We move data the way <em>drovers move cattle</em> — over rough country, on schedule, without losing the herd.
+      </h1>
+
+      <p class="hero-body">
+        Datadrovers is the working surface for projects that translate between systems, codify tacit expertise, and prefer real artifacts over polished decks.
+      </p>
+
+      <p class="hero-body">
+        New projects post here as they earn their place. Most arrive by stampede.
+      </p>
+
+      <div class="clay-stripe" aria-hidden="true"></div>
+    </div>
+
+  </section>
+
+</div>
+
+<!-- Footer: bone on bone, three regions in one line. The Indifferencer wink. -->
+<footer>
+  <div class="footer-row">
+    <span class="left">&copy; Indifferencer, Inc.<sup class="tm">&trade;</sup> All outcomes delivered regardless of intent.</span>
+    <span class="center">Bandwidth figures are Displayed values only. Actual Bandwidth may vary.</span>
+    <span class="right">No humans were harmed in the production of this site. No humans were consulted.</span>
+  </div>
+</footer>
+
+</body>
+</html>
