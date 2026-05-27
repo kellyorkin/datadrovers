@@ -580,6 +580,215 @@
 
   .agenda-source::before { content: "✦ "; color: var(--gold-deep); }
 
+  /* ============ CARD VARIANTS ============ */
+  /* All variants share .agenda-item anatomy but layer on a type-specific treatment */
+
+  .card-type-label {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.55rem;
+    border-radius: 2px;
+    margin-bottom: 0.55rem;
+    font-weight: 600;
+  }
+
+  /* Question Card — the default, no special styling needed.
+     Type label is suppressed on default cards for visual quietness. */
+
+  /* Consolidation Flag — spans multiple triggers, visually pops out */
+  .agenda-item.consolidation {
+    background: linear-gradient(180deg, rgba(215, 190, 89, 0.06) 0%, rgba(215, 190, 89, 0.02) 100%);
+    border: 1px solid rgba(184, 149, 31, 0.3);
+    border-left: 3px solid var(--gold-deep);
+    border-radius: 3px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid rgba(184, 149, 31, 0.3);
+  }
+
+  .agenda-item.consolidation .card-type-label {
+    background: var(--gold-deep);
+    color: var(--cream);
+  }
+
+  .triggers-span {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.7rem;
+    padding: 0.55rem 0.7rem;
+    background: rgba(184, 149, 31, 0.08);
+    border-radius: 2px;
+    flex-wrap: wrap;
+  }
+
+  .trigger-chip {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--navy);
+    background: var(--cream);
+    border: 1px solid var(--lavender);
+    padding: 0.22rem 0.6rem;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  .trigger-bridge {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.78rem;
+    color: var(--gold-deep);
+    font-weight: 500;
+  }
+
+  /* Vagueness Flag — pinned to a specific phrase from the input */
+  .agenda-item.vagueness {
+    background: rgba(168, 84, 62, 0.04);
+    border: 1px solid rgba(168, 84, 62, 0.25);
+    border-left: 3px solid var(--gap);
+    border-radius: 3px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid rgba(168, 84, 62, 0.25);
+  }
+
+  .agenda-item.vagueness .card-type-label {
+    background: var(--gap);
+    color: var(--cream);
+  }
+
+  .pinned-phrase {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--navy);
+    background: var(--cream-deep);
+    border-left: 2px solid var(--gap);
+    padding: 0.5rem 0.7rem;
+    margin-bottom: 0.65rem;
+    border-radius: 0 2px 2px 0;
+    font-style: italic;
+  }
+
+  .pinned-phrase::before {
+    content: "↳ ";
+    color: var(--gap);
+    font-style: normal;
+    margin-right: 0.2rem;
+  }
+
+  /* Mapping Ambiguity — two-column comparison of workspace vs standard */
+  .agenda-item.mapping {
+    background: rgba(140, 122, 166, 0.04);
+    border: 1px solid rgba(140, 122, 166, 0.3);
+    border-left: 3px solid var(--lavender-deep);
+    border-radius: 3px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid rgba(140, 122, 166, 0.3);
+  }
+
+  .agenda-item.mapping .card-type-label {
+    background: var(--lavender-deep);
+    color: var(--cream);
+  }
+
+  .mapping-compare {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0.7rem;
+    align-items: stretch;
+    margin: 0.65rem 0 0.8rem;
+  }
+
+  @media (max-width: 640px) {
+    .mapping-compare {
+      grid-template-columns: 1fr;
+    }
+    .mapping-bridge { padding: 0.4rem 0; text-align: center; }
+  }
+
+  .mapping-side {
+    background: var(--cream-deep);
+    border: 1px solid var(--lavender);
+    border-radius: 3px;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .mapping-side-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+
+  .mapping-side-name {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--navy);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .mapping-side-meta {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  .mapping-bridge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.4rem;
+    color: var(--lavender-deep);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  .mapping-bridge::before { content: "⇄"; font-style: normal; display: block; font-size: 1.2rem; margin-bottom: 0.15rem; }
+
+  .confidence-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    padding: 0.1rem 0.45rem;
+    border-radius: 2px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .confidence-tag.high {
+    color: var(--evidence);
+    background: rgba(94, 107, 82, 0.1);
+    border: 1px solid rgba(94, 107, 82, 0.4);
+  }
+
+  .confidence-tag.medium {
+    color: var(--gold-deep);
+    background: rgba(184, 149, 31, 0.1);
+    border: 1px solid rgba(184, 149, 31, 0.4);
+  }
+
+  .confidence-tag.low {
+    color: var(--gap);
+    background: rgba(168, 84, 62, 0.1);
+    border: 1px solid rgba(168, 84, 62, 0.4);
+  }
+
   .agenda-footer {
     margin-top: 2rem;
     padding-top: 1.25rem;
@@ -803,6 +1012,8 @@ document.getElementById('logo-img').src = 'data:image/png;base64,' + LOGO_B64;
 // and the resulting discovery agenda.
 
 const SCENARIOS = {
+
+  // ==================== SCENARIO 1: LIBRARY MATCH + WORKSPACE DEPENDENCY ====================
   library: {
     input: `Abandoned cart with product recommendations — when a customer leaves items in their cart for >2 hrs, send personalized email with the items + 3 product recommendations
 
@@ -824,44 +1035,54 @@ Welcome flow for new email subscribers — 3-email sequence over 7 days introduc
         synthesis: "All three requests map to canonical P&P use cases. Abandoned-cart request has three close variants — OACR is the recommended match given the explicit mention of product recommendations and the Shopify integration profile."
       },
       {
-        title: "Ground — data requirements against the standard data model",
-        duration: 1300,
+        title: "Ground — data requirements against the live workspace",
+        duration: 1400,
         tools: [
-          { name: "get_use_case", args: "code: OACR", result: "Requires cart_update events with product_list, product_id, total_quantity, action" },
-          { name: "get_event_definition", args: "event: cart_update", result: "Standard event. OOTB attributes: product_id, total_quantity, action. product_list NOT standard." },
-          { name: "get_use_case", args: "code: OBIR", result: "Requires customer.birth_date attribute + consent" },
-          { name: "get_use_case", args: "code: OWEF", result: "Requires consent + email_address; ships with default template" },
-          { name: "get_customer_attribute", args: "attribute: birth_date", result: "Not in OOTB customer schema — requires custom attribute" },
-          { name: "check_consent_config", args: "scope: marketing_email", result: "Not configured in workspace fixture" }
+          { name: "get_use_case", args: "code: OACR", result: "Requires cart_update events (Add-to-cart) with product_list, product_id" },
+          { name: "get_project_overview", args: "scope: events", result: "27 event types flowing · 1.17M events · 123K customers" },
+          { name: "get_event_schema", args: "event: cart_update", result: "38,021 events captured · custom event, NOT mapped to standard taxonomy" },
+          { name: "get_mapping", args: "scope: standard_events", result: "All 12 standard events unmapped — workspace is taxonomy-empty" },
+          { name: "get_customer_attribute", args: "attribute: birth_date", result: "Not in customer schema (9 attributes, all string-typed)" },
+          { name: "get_event_schema", args: "event: consent", result: "185,234 events captured · consent tracking active" }
         ],
-        synthesis: "Two structured gaps detected. OACR needs product_list as a cart_update extension — most Shopify integrations can emit this but requires confirmation. OBIR needs a custom birth_date attribute the client must populate. Consent setup is a shared prerequisite across all three."
+        synthesis: "The workspace is rich with data but operating in a taxonomy-empty state: 27 event types flowing, 1.17M events captured, but zero events mapped to Bloomreach's standard taxonomy. OACR's data needs are present but invisible to the library until mapping is done. Birthday campaign blocked by the absent birth_date attribute."
       },
       {
         title: "Surface — dependencies that span multiple requests",
         duration: 900,
         tools: [
-          { name: "find_use_cases_sharing_requirement", args: "requirement: marketing_consent", result: "Affects OACR, OBIR, OWEF (all three)" },
+          { name: "find_use_cases_blocked_by", args: "gap: taxonomy_mapping", result: "OACR, OABF, OPAA blocked by same root cause" },
           { name: "get_lifecycle_stages", args: "use_cases: [OACR, OBIR, OWEF]", result: "Convert (OACR) · Loyalty (OBIR) · Interest (OWEF)" }
         ],
-        synthesis: "Consent configuration is a single shared dependency that blocks all three deliverables. The request set spans Interest → Convert → Loyalty cleanly, but Awareness is absent — worth flagging to the client as a Phase 2 conversation, not a Phase 1 scope expansion."
+        synthesis: "The unmapped-taxonomy state is a single architectural condition that blocks multiple downstream use cases — a one-time fix that unlocks the OACR build cleanly. The request set spans Interest, Convert, and Loyalty; Awareness is absent — worth flagging as a Phase 2 conversation, not Phase 1 scope creep."
       }
     ],
 
     agenda: {
       title: "Discovery Agenda · MicroCenter Phase 1",
-      intro: "Three trigger requests map cleanly to library use cases. <em>One shared prerequisite and two structured data gaps need client confirmation before scope can be written.</em>",
+      intro: "Three trigger requests map cleanly to library use cases. <em>The workspace has the underlying data but is operating in a taxonomy-empty state — one architectural decision unblocks most of Phase 1.</em>",
       categories: [
         {
-          label: "Shared Prerequisites",
+          label: "Workspace State",
           items: [
             {
-              question: "Is marketing consent infrastructure configured in the client's existing stack?",
+              cardType: 'mapping',
+              question: "Confirm cart_update is the equivalent of standard Add-to-cart. If yes, this is a one-time mapping fix that unblocks OACR.",
+              mapping: {
+                workspaceName: "cart_update",
+                workspaceMeta: "Custom event · 38,021 events captured · attributes present",
+                standardName: "Add to cart",
+                standardMeta: "Required by OACR, OABF, ORCC · currently unmapped",
+                bridge: "same event?",
+                confidence: "high"
+              },
               evidence: [
-                { type: "affected", text: "Affects: OACR, OBIR, OWEF" },
-                { type: "missing", text: "Workspace: consent not configured" }
+                { type: "present", text: "Event flowing in workspace" },
+                { type: "missing", text: "Standard taxonomy mapping" },
+                { type: "affected", text: "Unblocks: OACR + 2 more" }
               ],
-              rationale: "All three Phase 1 use cases require a marketing-consent record per customer. The client's Klaviyo instance likely captures this — confirm the field exists and can flow into Bloomreach via the integration layer.",
-              source: "Data Requirements Matrix · Engagement consent model"
+              rationale: "The workspace has cart_update flowing at production volume. Bloomreach's standard taxonomy expects this as 'Add to cart'. High confidence these are the same event — naming convention difference, not a structural one. If the architect confirms, mapping is a 15-minute configuration change. If they differ semantically, the gap is larger.",
+              source: "Workspace get_mapping · P&P Library OACR requirements"
             }
           ]
         },
@@ -869,22 +1090,14 @@ Welcome flow for new email subscribers — 3-email sequence over 7 days introduc
           label: "Data Layer Gaps",
           items: [
             {
-              question: "Can the client's Shopify instance emit cart_update events with a product_list attribute?",
-              evidence: [
-                { type: "present", text: "Standard: cart_update event" },
-                { type: "missing", text: "Non-standard: product_list attribute" }
-              ],
-              rationale: "OACR requires product_list on cart_update to drive the personalized recommendation block. Standard Bloomreach cart_update events don't include this attribute — most Shopify integrations can be extended to emit it, but confirmation is required.",
-              source: "P&P Library · OACR data requirements"
-            },
-            {
+              cardType: 'question',
               question: "Does the client capture customer birth dates today, and at what point in the lifecycle?",
               evidence: [
                 { type: "present", text: "OBIR pattern matches request" },
-                { type: "missing", text: "OOTB: birth_date not in customer schema" }
+                { type: "missing", text: "birth_date not in customer schema" }
               ],
-              rationale: "Birthday campaigns require a populated birth_date attribute. This is not part of the standard Bloomreach customer schema. If the client doesn't capture this today, the use case requires either a progressive-profile capture step or sunsetting the birthday concept for Phase 1.",
-              source: "Customer Attributes · Standard schema reference"
+              rationale: "Workspace customer schema has 9 string attributes (city, country, email, names, phone, gender, language, external_score) — birth_date is not among them. OBIR cannot run without it. If the client doesn't capture this today, the use case requires either progressive-profile capture or sunsetting the birthday concept for Phase 1.",
+              source: "Workspace customer attributes · OBIR requirements"
             }
           ]
         },
@@ -892,21 +1105,23 @@ Welcome flow for new email subscribers — 3-email sequence over 7 days introduc
           label: "Lifecycle Coverage",
           items: [
             {
+              cardType: 'question',
               question: "Phase 1 covers Interest, Convert, and Loyalty. Is Awareness a Phase 2 conversation?",
               evidence: [
                 { type: "present", text: "Coverage: Interest · Convert · Loyalty" },
                 { type: "affected", text: "Gap: Awareness stage" }
               ],
-              rationale: "The three stated triggers cleanly ladder to three of the four lifecycle stages, but no Awareness-stage trigger was named. Worth confirming with the client whether Awareness is being handled elsewhere (paid media, content) or is genuinely out of scope. Don't expand scope here — just set the expectation.",
+              rationale: "The three stated triggers cleanly ladder to three of the four lifecycle stages. No Awareness-stage trigger was named. Worth confirming with the client whether Awareness is being handled elsewhere (paid media, content) or is genuinely out of scope. Don't expand scope here — just set the expectation.",
               source: "Lifecycle Stage Mapping · Use case coverage"
             }
           ]
         }
       ],
-      footer: "Three confirmations from the client unlock all three Phase 1 builds."
+      footer: "Three structured questions for the client. The taxonomy mapping is the load-bearing one — confirm it and Phase 1 unblocks."
     }
   },
 
+  // ==================== SCENARIO 2: STRUCTURAL DUPLICATE DETECTION ====================
   duplicate: {
     input: `Service Plan Bounceback — after a customer buys a service plan, send a thank-you email with cross-sell offers
 
@@ -944,9 +1159,9 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
         duration: 800,
         tools: [
           { name: "find_use_cases_sharing_event", args: "event: purchase", result: "OPFU and OLTU both gated on purchase event — shared upstream dependency" },
-          { name: "get_lifecycle_stages", args: "use_cases: [OPFU, OLTU]", result: "Both Loyalty stage" }
+          { name: "get_event_schema", args: "event: purchase", result: "27,043 purchases captured · purchase_item event also present" }
         ],
-        synthesis: "All three requests cluster in the Loyalty stage and share the purchase event as upstream trigger. The consolidation recommendation has a real architectural rationale: one OPFU build serves both bounceback scenarios. Recommend surfacing this to the client as a decision they get to make."
+        synthesis: "All three requests cluster in the Loyalty stage and share the purchase event as upstream trigger. Workspace has purchase data flowing at production volume. The consolidation recommendation has a real architectural rationale: one OPFU build serves both bounceback scenarios."
       }
     ],
 
@@ -958,7 +1173,10 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
           label: "Consolidation Opportunity",
           items: [
             {
+              cardType: 'consolidation',
               question: "Does the cross-sell logic for ESET and Service Plan bounceback emails differ beyond the product filter?",
+              triggers: ["Service Plan Bounceback", "ESET Bounceback"],
+              bridge: "consolidate?",
               evidence: [
                 { type: "present", text: "Same OPFU pattern · category-parameterized" },
                 { type: "affected", text: "Potential saving: ~14 hrs build" }
@@ -972,13 +1190,14 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
           label: "Shared Dependencies",
           items: [
             {
+              cardType: 'question',
               question: "Is the purchase event flowing with sufficient product-category detail for both bouncebacks and the loyalty tier check?",
               evidence: [
                 { type: "affected", text: "Upstream: all three triggers" },
-                { type: "present", text: "Standard: purchase event" }
+                { type: "present", text: "Workspace: 27K purchases captured" }
               ],
-              rationale: "All three requests are gated on the purchase event. Need to confirm the event includes product_category (for bounceback filtering) and lifetime_value updates (for tier progression). If the event is firing but missing these attributes, a single integration fix unlocks all three.",
-              source: "Event Matrix · Purchase event canonical spec"
+              rationale: "All three requests are gated on the purchase event. Workspace has purchase events flowing at production volume. Need to confirm the event includes product_category (for bounceback filtering) and lifetime_value updates (for tier progression). If the event is firing but missing these attributes, a single integration fix unlocks all three.",
+              source: "Workspace get_event_schema · Purchase canonical spec"
             }
           ]
         },
@@ -986,13 +1205,14 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
           label: "Loyalty Tier Definition",
           items: [
             {
+              cardType: 'question',
               question: "What constitutes Gold tier in the client's program — and is the tier progression logic owned by Bloomreach or upstream?",
               evidence: [
                 { type: "missing", text: "Client-specific: tier thresholds" },
                 { type: "affected", text: "OLTU dependency" }
               ],
-              rationale: "OLTU triggers on tier-milestone events, but the tier definition itself is a client-specific business rule. Confirm whether tier calculation happens in Bloomreach (requires segment build) or in the client's loyalty system with Bloomreach receiving the milestone event.",
-              source: "Client-specific business logic"
+              rationale: "OLTU triggers on tier-milestone events. Workspace has loyalty_update events flowing, but tier definition itself is a client-specific business rule. Confirm whether tier calculation happens in Bloomreach (requires segment build) or in the client's loyalty system with Bloomreach receiving the milestone event.",
+              source: "Client-specific business logic · loyalty_update event"
             }
           ]
         }
@@ -1001,6 +1221,7 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
     }
   },
 
+  // ==================== SCENARIO 3: PROPER-NOUN ROUTING (VAGUENESS) ====================
   vague: {
     input: `Customer browses our PC Builder but doesn't convert — send a follow-up email with their saved configuration
 
@@ -1026,13 +1247,13 @@ iDrive cloud storage prompt — 1 week after purchase, if customer hasn't signed
         duration: 1300,
         tools: [
           { name: "classify_term", args: 'term: "PC Builder"', result: "Proper noun · not in library · likely custom system" },
-          { name: "classify_term", args: 'term: "browse"', result: "Standard term · maps to view_item events" },
+          { name: "get_event_schema", args: 'event: view_item', result: "89,717 events captured · custom event · unmapped to standard taxonomy" },
           { name: "classify_term", args: 'term: "repeat purchases"', result: "Standard concept · multiple library patterns" },
           { name: "get_use_case", args: 'code: OFRR', result: "Frequency-based Repurchase — requires defined cadence" },
           { name: "classify_term", args: 'term: "iDrive"', result: "Proper noun · external service · not in library" },
           { name: "find_integration_pattern", args: 'context: "external service signup status"', result: "Requires inbound webhook from external service" }
         ],
-        synthesis: "Two of three triggers reference client-specific or external systems by name. PC Builder is custom (likely a product configurator) and needs its own event taxonomy. iDrive is third-party and requires an integration handshake. Repeat purchases needs a cadence definition the client must provide."
+        synthesis: "Two of three triggers reference client-specific or external systems by name. PC Builder is custom — likely a product configurator emitting view_item events under some custom name. iDrive is third-party and requires an integration handshake. Repeat purchases needs a cadence definition the client must provide."
       },
       {
         title: "Surface — definitional gaps that block library matching",
@@ -1053,15 +1274,20 @@ iDrive cloud storage prompt — 1 week after purchase, if customer hasn't signed
           label: "Client-System Definitions",
           items: [
             {
+              cardType: 'vagueness',
+              pinnedPhrase: "Customer browses our PC Builder but doesn't convert",
               question: "What is PC Builder, what events does it emit, and what does \"doesn't convert\" mean in that context?",
               evidence: [
-                { type: "missing", text: "Library: no match" },
+                { type: "missing", text: "Library: no direct match" },
+                { type: "present", text: "Workspace: view_item events flowing (89K)" },
                 { type: "affected", text: "Custom event taxonomy required" }
               ],
-              rationale: "PC Builder appears to be a client-specific product configurator. Without knowing what events it emits (saves, progress, abandonment) and how those map to a 'didn't convert' state, no library use case can be matched. The closest analog is browse abandonment (OABF), but the event shape is custom.",
-              source: "Client-specific system definition"
+              rationale: "PC Builder appears to be a client-specific product configurator. Workspace has view_item events at high volume — possibly including PC Builder interactions under a custom name. The closest library analog is browse abandonment (OABF), but the event shape and the definition of 'didn't convert' is custom to the client.",
+              source: "Client-specific system definition · OABF analog"
             },
             {
+              cardType: 'vagueness',
+              pinnedPhrase: "iDrive cloud storage prompt — 1 week after purchase",
               question: "Is iDrive a Bloomreach-managed cross-sell or an external service the client integrates with?",
               evidence: [
                 { type: "missing", text: "Library: no match" },
@@ -1076,6 +1302,8 @@ iDrive cloud storage prompt — 1 week after purchase, if customer hasn't signed
           label: "Business Logic Definitions",
           items: [
             {
+              cardType: 'vagueness',
+              pinnedPhrase: "Encourage repeat purchases from previous buyers",
               question: "How does the client define a \"repeat purchase\" — by time window, by purchase count, by product category?",
               evidence: [
                 { type: "present", text: "Multiple library patterns available" },
@@ -1091,6 +1319,7 @@ iDrive cloud storage prompt — 1 week after purchase, if customer hasn't signed
     }
   }
 };
+
 
 // ============ STATE ============
 let currentScenario = 'library';
@@ -1222,16 +1451,7 @@ function renderAgenda(agenda) {
     html += `<div class="agenda-category">`;
     html += `<div class="agenda-cat-header">${cat.label}</div>`;
     for (const item of cat.items) {
-      html += `<div class="agenda-item">`;
-      html += `<div class="agenda-question">${item.question}</div>`;
-      html += `<div class="agenda-evidence">`;
-      for (const ev of item.evidence) {
-        html += `<span class="evidence-pill ${ev.type}">${escapeHtml(ev.text)}</span>`;
-      }
-      html += `</div>`;
-      html += `<div class="agenda-rationale">${item.rationale}</div>`;
-      html += `<div class="agenda-source">${escapeHtml(item.source)}</div>`;
-      html += `</div>`;
+      html += renderCard(item);
     }
     html += `</div>`;
   }
@@ -1244,6 +1464,113 @@ function renderAgenda(agenda) {
   setTimeout(() => {
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 200);
+}
+
+// ============ CARD VARIANT RENDERERS ============
+// Each agenda item declares a cardType (default: 'question').
+// Variants: question (default), consolidation, vagueness, mapping.
+// All variants share the evidence/rationale/source anatomy in their tail.
+
+function renderCard(item) {
+  const t = item.cardType || 'question';
+  switch (t) {
+    case 'consolidation': return renderConsolidationCard(item);
+    case 'vagueness':     return renderVaguenessCard(item);
+    case 'mapping':       return renderMappingCard(item);
+    case 'question':
+    default:              return renderQuestionCard(item);
+  }
+}
+
+function renderTail(item) {
+  let html = '';
+  if (item.evidence && item.evidence.length) {
+    html += `<div class="agenda-evidence">`;
+    for (const ev of item.evidence) {
+      html += `<span class="evidence-pill ${ev.type}">${escapeHtml(ev.text)}</span>`;
+    }
+    html += `</div>`;
+  }
+  if (item.rationale) {
+    html += `<div class="agenda-rationale">${item.rationale}</div>`;
+  }
+  if (item.source) {
+    html += `<div class="agenda-source">${escapeHtml(item.source)}</div>`;
+  }
+  return html;
+}
+
+function renderQuestionCard(item) {
+  // Default register — quiet, no type label, sits within category flow.
+  return `
+    <div class="agenda-item question">
+      <div class="agenda-question">${item.question}</div>
+      ${renderTail(item)}
+    </div>
+  `;
+}
+
+function renderConsolidationCard(item) {
+  const triggers = item.triggers || [];
+  const triggersHtml = triggers
+    .map((t, i) => {
+      const chip = `<span class="trigger-chip">${escapeHtml(t)}</span>`;
+      const bridge = (i < triggers.length - 1)
+        ? `<span class="trigger-bridge">${escapeHtml(item.bridge || 'consolidate?')}</span>`
+        : '';
+      return chip + bridge;
+    })
+    .join('');
+
+  return `
+    <div class="agenda-item consolidation">
+      <span class="card-type-label">Consolidation Flag</span>
+      <div class="triggers-span">${triggersHtml}</div>
+      <div class="agenda-question">${item.question}</div>
+      ${renderTail(item)}
+    </div>
+  `;
+}
+
+function renderVaguenessCard(item) {
+  return `
+    <div class="agenda-item vagueness">
+      <span class="card-type-label">Vagueness Flag</span>
+      <span class="pinned-phrase">${escapeHtml(item.pinnedPhrase || '')}</span>
+      <div class="agenda-question">${item.question}</div>
+      ${renderTail(item)}
+    </div>
+  `;
+}
+
+function renderMappingCard(item) {
+  const m = item.mapping || {};
+  const conf = (m.confidence || 'medium').toLowerCase();
+  const confLabel = conf === 'high' ? 'High confidence match'
+                  : conf === 'low'  ? 'Low confidence — names diverge'
+                  : 'Medium confidence';
+
+  return `
+    <div class="agenda-item mapping">
+      <span class="card-type-label">Mapping Ambiguity</span>
+      <span class="confidence-tag ${conf}">${confLabel}</span>
+      <div class="mapping-compare">
+        <div class="mapping-side">
+          <div class="mapping-side-label">In workspace</div>
+          <div class="mapping-side-name">${escapeHtml(m.workspaceName || '')}</div>
+          <div class="mapping-side-meta">${m.workspaceMeta || ''}</div>
+        </div>
+        <div class="mapping-bridge">${escapeHtml(m.bridge || 'same?')}</div>
+        <div class="mapping-side">
+          <div class="mapping-side-label">Standard expects</div>
+          <div class="mapping-side-name">${escapeHtml(m.standardName || '')}</div>
+          <div class="mapping-side-meta">${m.standardMeta || ''}</div>
+        </div>
+      </div>
+      <div class="agenda-question">${item.question}</div>
+      ${renderTail(item)}
+    </div>
+  `;
 }
 
 // ============ HELPERS ============
