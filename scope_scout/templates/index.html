@@ -146,6 +146,26 @@
     padding: 11px 20px; font-weight: 700; cursor: pointer; font-size: 14px;
   }
   button.send:disabled { opacity: .45; cursor: not-allowed; }
+
+  /* Export — print stylesheet turns the conversation into a clean PDF deliverable. */
+  #printHeader { display: none; }
+  @media print {
+    body { display: block; background: #fff; color: #000; font-size: 12px; }
+    header, .pane.right, .composer, .pane-head { display: none !important; }
+    main { display: block; }
+    .pane.left { border: none; display: block; }
+    .scroll { overflow: visible; height: auto; max-height: none; padding: 0; }
+    #conversation { padding: 0; }
+    #printHeader { display: block !important; margin: 0 0 18px; padding-bottom: 8px; border-bottom: 2px solid #000; }
+    .msg { page-break-inside: avoid; margin-bottom: 14px; }
+    .bubble { background: #fff !important; border: 1px solid #bbb; color: #000; }
+    .msg .who { color: #555 !important; }
+    .bubble h3 { color: #000 !important; }
+    .bubble strong { color: #000 !important; }
+    .bubble code { background: #eee !important; color: #a00 !important; }
+    .bubble table, .bubble tr, .bubble th, .bubble td { page-break-inside: avoid; }
+    .bubble th { background: #eee !important; color: #000 !important; }
+  }
 </style>
 </head>
 <body>
@@ -156,12 +176,15 @@
   {% else %}
   <span class="pill fixtures"><span class="dot"></span>LOCAL KNOWLEDGE</span>
   {% endif %}
+  <button class="ghost" id="pdfBtn">Save PDF</button>
+  <button class="ghost" id="mdBtn">Download .md</button>
   <button class="ghost" id="resetBtn">New session</button>
 </header>
 
 <main>
   <section class="pane left">
     <div class="pane-head">Conversation</div>
+    <div id="printHeader"></div>
     <div class="scroll" id="conversation"></div>
     <div class="composer">
       <div class="chips" id="chips">
@@ -178,7 +201,7 @@
 
   <section class="pane right">
     <div class="pane-head">Reasoning trace</div>
-    <div class="scroll" id="trace"><div class="trace-empty">Tool calls and live workspace reads will appear here as Scotty works.</div></div>
+    <div class="scroll" id="trace"><div class="trace-empty">Tool calls and live workspace reads will appear here as Sawyer works.</div></div>
   </section>
 </main>
 
@@ -188,12 +211,39 @@ const trace = document.getElementById("trace");
 const input = document.getElementById("input");
 const sendBtn = document.getElementById("sendBtn");
 const resetBtn = document.getElementById("resetBtn");
+const pdfBtn = document.getElementById("pdfBtn");
+const mdBtn = document.getElementById("mdBtn");
+const printHeader = document.getElementById("printHeader");
+
+// Running raw record of the conversation, so it can be exported as a keepable
+// deliverable (PDF via print, or Markdown) instead of scrolling out of reach.
+const transcript = [];
+function exportStamp(){ return "Datadrovers · Scope Scout · " + new Date().toLocaleString(); }
+
+pdfBtn.addEventListener("click", () => {
+  if(!transcript.length) return;
+  printHeader.innerHTML =
+    '<div style="font-size:18px;font-weight:700">Sawyer — Discovery Agenda</div>' +
+    '<div style="font-size:12px;color:#555">' + exportStamp() + '</div>';
+  window.print();
+});
+mdBtn.addEventListener("click", () => {
+  if(!transcript.length) return;
+  let md = "# Sawyer — Discovery Agenda\n\n_" + exportStamp() + "_\n\n";
+  for(const t of transcript)
+    md += (t.role === "architect" ? "## Architect\n\n" : "## Sawyer\n\n") + t.text.trim() + "\n\n---\n\n";
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([md], {type: "text/markdown"}));
+  a.download = "sawyer-discovery-agenda.md";
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(a.href);
+});
 
 const LIVE_PREFIX = "workspace_";
 
 function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
-// Light markdown → HTML for Scotty's agenda prose (headings, bold, code,
+// Light markdown → HTML for Sawyer's agenda prose (headings, bold, code,
 // bullets, and GitHub-style tables — the agent uses all of these).
 function mdToHtml(md){
   const lines = esc(md).split("\n");
@@ -296,6 +346,7 @@ function addToolResult(name, result){
 // --- SSE-over-fetch: POST returns a text/event-stream we parse by hand. ---
 async function runTurn(text){
   addMessage("architect", "Architect").textContent = text;
+  transcript.push({role: "architect", text});
   let scoutBubble = null;
   let scoutText = "";
 
@@ -319,11 +370,12 @@ async function runTurn(text){
       if(!line) continue;
       const ev = JSON.parse(line.slice(5).trim());
       handleEvent(ev, () => {
-        if(!scoutBubble) scoutBubble = addMessage("scout", "Scope Scout");
+        if(!scoutBubble) scoutBubble = addMessage("scout", "Sawyer");
         return scoutBubble;
       }, t => { scoutText = t; });
     }
   }
+  if(scoutText.trim()) transcript.push({role: "scout", text: scoutText});
 }
 
 function handleEvent(ev, getBubble, setText){
@@ -331,6 +383,7 @@ function handleEvent(ev, getBubble, setText){
     if(ev.text.trim()){
       const bubble = getBubble();
       bubble.innerHTML = mdToHtml(ev.text);
+      setText(ev.text);
       conversation.scrollTop = conversation.scrollHeight;
     }
     // also drop a short note in the trace so the panes stay in lock-step
@@ -343,6 +396,7 @@ function handleEvent(ev, getBubble, setText){
     if(ev.text && ev.text.trim()){
       const bubble = getBubble();
       bubble.innerHTML = mdToHtml(ev.text);
+      setText(ev.text);
     }
   } else if(ev.type === "error"){
     const bubble = getBubble();
@@ -356,7 +410,7 @@ async function send(){
   input.value = "";
   sendBtn.disabled = true; input.disabled = true;
   try { await runTurn(text); }
-  catch(e){ addMessage("scout","Scope Scout").innerHTML = `<p style="color:#ff6b6b">⚠ ${esc(String(e))}</p>`; }
+  catch(e){ addMessage("scout","Sawyer").innerHTML = `<p style="color:#ff6b6b">⚠ ${esc(String(e))}</p>`; }
   finally { sendBtn.disabled = false; input.disabled = false; input.focus(); }
 }
 
@@ -370,7 +424,9 @@ document.querySelectorAll(".chip").forEach(c =>
 resetBtn.addEventListener("click", async () => {
   await fetch("/api/reset", {method:"POST"});
   conversation.innerHTML = "";
-  trace.innerHTML = '<div class="trace-empty">Tool calls and live workspace reads will appear here as Scotty works.</div>';
+  trace.innerHTML = '<div class="trace-empty">Tool calls and live workspace reads will appear here as Sawyer works.</div>';
+  transcript.length = 0;
+  input.value = "";
   input.focus();
 });
 input.focus();
