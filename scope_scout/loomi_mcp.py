@@ -22,7 +22,8 @@ How it works:
 Usage:
     with LoomiMCP() as mcp:
         print(mcp.read("get_event_schema"))   # project_id injected automatically
-        print(mcp.call("whoami", {}))          # raw call
+        # NB: do NOT print/log whoami — its response body embeds the live
+        # access token. Use read()/call() for data tools instead.
 """
 
 from __future__ import annotations
