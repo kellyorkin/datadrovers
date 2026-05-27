@@ -1,0 +1,90 @@
+{
+  "description": "Standard planned events from the Bloomreach engagement data model. Each entry describes a canonical event the platform tracks, with its recommended flag and tracking status.",
+  "event_count": 12,
+  "events": [
+    {
+      "name": "cart_update",
+      "description": "Items added, removed and/or updated to the e-commerce cart",
+      "type": "Custom",
+      "recommended": true,
+      "tracking_status": "Required"
+    },
+    {
+      "name": "checkout",
+      "description": "Steps between cart updates and the actual purchase event(s)",
+      "type": "Custom",
+      "recommended": true,
+      "tracking_status": "Required"
+    },
+    {
+      "name": "consent",
+      "description": "Event that provides proof of the customer's preferences regarding data collection and campaign communications",
+      "type": "Custom",
+      "recommended": true,
+      "tracking_status": "Required"
+    },
+    {
+      "name": "double_opt_in",
+      "description": "Secondary consent; can be tied to a purchase event",
+      "type": "Custom",
+      "recommended": false,
+      "tracking_status": "Optional"
+    },
+    {
+      "name": "purchase",
+      "description": "Online and offline transaction/sales",
+      "type": "Custom",
+      "recommended": true,
+      "tracking_status": "Required"
+    },
+    {
+      "name": "purchase_item",
+      "description": "Purchase details broken down into individual items from the transaction/sale",
+      "type": "Custom",
+      "recommended": false,
+      "tracking_status": "Optional"
+    },
+    {
+      "name": "view_item",
+      "description": "Custom page visit event for product details interest",
+      "type": "Custom",
+      "recommended": true,
+      "tracking_status": "Required"
+    },
+    {
+      "name": "view_category",
+      "description": "Custom page visit event for product category interest",
+      "type": "Custom",
+      "recommended": true,
+      "tracking_status": "Required"
+    },
+    {
+      "name": "first_session",
+      "description": "First session of a customer",
+      "type": "System",
+      "recommended": true,
+      "tracking_status": "Automatic"
+    },
+    {
+      "name": "session_start",
+      "description": "Session start event",
+      "type": "System",
+      "recommended": true,
+      "tracking_status": "Automatic"
+    },
+    {
+      "name": "session_end",
+      "description": "Session ending event",
+      "type": "System",
+      "recommended": true,
+      "tracking_status": "Automatic"
+    },
+    {
+      "name": "page_visit",
+      "description": "Every page load fires this event",
+      "type": "System",
+      "recommended": true,
+      "tracking_status": "Optional"
+    }
+  ]
+}

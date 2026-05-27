@@ -1,0 +1,1237 @@
+{
+  "description": "Per-event attribute dictionary. For each event, lists the field-level attributes used by that event with type, sample, and tracking status. Grouped by event so the agent can query 'which attributes belong to the purchase event?' directly.",
+  "event_count": 8,
+  "attribute_count": 170,
+  "events_with_attributes": [
+    {
+      "event": "purchase",
+      "attributes": [
+        {
+          "name": "purchase_id",
+          "description": "Unique identification of purchase/order in backend systems",
+          "type": "String",
+          "sample": "123456",
+          "tracking_status": "Required"
+        },
+        {
+          "name": "purchase_status",
+          "description": "Status of the purchase. \"success\" defined as placed order",
+          "type": "String",
+          "sample": "success / shipped / return / ...",
+          "tracking_status": "Required"
+        },
+        {
+          "name": "purchase_source_type",
+          "description": "Type of the source from where the purchase was done",
+          "type": "String",
+          "sample": "online / store / affiliate",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "purchase_source_name",
+          "description": "Name of the source from where the purchase was done",
+          "type": "String",
+          "sample": "domain.com, Corner Store 1st Street, ...",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "voucher_code",
+          "description": "Voucher used in this purchase",
+          "type": "String",
+          "sample": "KA54-548C-TEST",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "voucher_percentage",
+          "description": "Percentage of the used voucher",
+          "type": "Number",
+          "sample": 10,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "voucher_value",
+          "description": "Amount substracted by using a voucher",
+          "type": "Number",
+          "sample": 12.34,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "shipping_company",
+          "description": "Delivery company",
+          "type": "String",
+          "sample": "ups",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "shipping_cost",
+          "description": "Price of shipping",
+          "type": "Number",
+          "sample": 69.32,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "location",
+          "description": "Full URL of the page where event occured",
+          "type": "String",
+          "sample": "http://www.webshop.com/cart",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "local_currency",
+          "description": "Currency User selected when visiting site",
+          "type": "String",
+          "sample": "GBP, EUR, USD",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "domain",
+          "description": "Domain of the website",
+          "type": "String",
+          "sample": "webshop.com",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "language",
+          "description": "Language of website as selected by user or default",
+          "type": "String",
+          "sample": "en,de,cs,sk,pl",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "product_list",
+          "description": "List of all purchased products.",
+          "type": "JSON List",
+          "sample": "[ {product_id: \"abc123\", quantity:1} ]",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "product_ids",
+          "description": "List of all ids of all purchased products.",
+          "type": "List",
+          "sample": "[ \"product_id1\", \"product_id2\", \"product_id3\" ]",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "variant_list",
+          "description": "List of all product variants, their quantities and other required properties",
+          "type": "JSON List",
+          "sample": "[ {variant_id: \"abc123\", quantity:1} ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "variant_ids",
+          "description": "List of all ids of all product variants",
+          "type": "List",
+          "sample": "[ \"variant_id1\", \"variant_id2\", \"variant_id3\" ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "total_quantity",
+          "description": "Product quantity",
+          "type": "Number",
+          "sample": 2,
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "total_price",
+          "description": "Total price (paid by customer) in reference currency, for analytics purposes to calculate revenue, with TAX, delivery - listed price",
+          "type": "Number",
+          "sample": 24.5,
+          "tracking_status": "Required"
+        },
+        {
+          "name": "total_price_without_tax",
+          "description": "Total price (paid by customer) in reference currency, for analytics purposes to calculate revenue, without TAX (item price*quantity)+shiping",
+          "type": "Number",
+          "sample": 12.12,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "total_price_local_currency",
+          "description": "Final price paid by a customer in local currency",
+          "type": "Number",
+          "sample": 39.23,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "timestamp",
+          "description": "Timestamp of an event - if not tracked, timestamp of import/ingestion will be used",
+          "type": "Number",
+          "sample": 159834092,
+          "tracking_status": "Required"
+        }
+      ]
+    },
+    {
+      "event": "purchase_item",
+      "attributes": [
+        {
+          "name": "purchase_id",
+          "description": "Unique identification of purchase/order in backend systems",
+          "type": "String",
+          "sample": "123456",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "purchase_status",
+          "description": "Status of the purchase. \"success\" defined as placed order",
+          "type": "String",
+          "sample": "success / refund / ...",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "purchase_source_type",
+          "description": "Type of the source from where the purchase was done",
+          "type": "String",
+          "sample": "online / store / affiliate",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "purchase_source_name",
+          "description": "Name of the source from where the purchase was done",
+          "type": "String",
+          "sample": "domain.com, Corner Store 1st Street, ...",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "product_id",
+          "description": "ID of the product (\"product\" can be an umbrella for multiple variants)",
+          "type": "String",
+          "sample": "abc123",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "variant_id",
+          "description": "ID of the specific variant.(Most specific id with specific variant (including color, size, material)",
+          "type": "String",
+          "sample": "abc123small",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "title",
+          "description": "Human readable, most specific item name (including color, size, material if available). ",
+          "type": "String",
+          "sample": "ASOS Tassel Loafers in Navy Faux Sued",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "brand",
+          "description": "Brand of an item.",
+          "type": "String",
+          "sample": "ASOS",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "tags",
+          "description": "Custom tags for describing most specific item (variant), e.g. \"new\", \"sales\", \"teen\", \"man\".",
+          "type": "List",
+          "sample": "[\"new\", \"sales\", \"teen\", \"man\"]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "category_level_1",
+          "description": "Top level category human readable name",
+          "type": "String",
+          "sample": "Shoes",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "category_level_2",
+          "description": "2nd level category human readable name",
+          "type": "String",
+          "sample": "Trekking",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "category_level_3",
+          "description": "3rd level category human readable name",
+          "type": "String",
+          "sample": "Ankle boots",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "categories_path",
+          "description": "Categories hierarchy breadcrumbs",
+          "type": "String",
+          "sample": "Shoes > Trekking > Ankle boots",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "price",
+          "description": "What customer pay for one unit item.",
+          "type": "Number",
+          "sample": 15,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "price_local_currency",
+          "description": "What customer pay for one unit item, in currency selected by a customer.",
+          "type": "Number",
+          "sample": 24,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "discount_percentage",
+          "description": "Percentage of discount per most specifit item unit (variant)",
+          "type": "Number",
+          "sample": 10,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "discount_value",
+          "description": "Value of discount per most specific item unit (variant)",
+          "type": "Number",
+          "sample": 1.5,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "original_price",
+          "description": "Most specific item (variant) list unit price in referrence currency",
+          "type": "Number",
+          "sample": 15,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "original_price_local_currency",
+          "description": "Most specific item (variant) list unit price in currency selected by a customer",
+          "type": "Number",
+          "sample": 24,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "location",
+          "description": "Full URL of the page where event occured",
+          "type": "String",
+          "sample": "http://www.webshop.com/cart",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "local_currency",
+          "description": "Currency User selected when visiting site",
+          "type": "String",
+          "sample": "GBP, EUR, USD",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "domain",
+          "description": "Domain of the website",
+          "type": "String",
+          "sample": "webshop.com",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "language",
+          "description": "Language of website as selected by user or default",
+          "type": "String",
+          "sample": "en,de,pl,cs,sk",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "quantity",
+          "description": "Product quantity",
+          "type": "Number",
+          "sample": 2,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "total_price",
+          "description": "Total price (paid by customer) in reference currency, for analytics purposes to calculate revenue, with TAX, delivery - listed price",
+          "type": "Number",
+          "sample": 24.5,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "total_price_without_tax",
+          "description": "Total price (paid by customer) in reference currency, for analytics purposes to calculate revenue, without TAX (item price*quantity)+shiping",
+          "type": "Number",
+          "sample": 12.12,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "total_price_local_currency",
+          "description": "Final price paid by a customer in local currency",
+          "type": "Number",
+          "sample": 39.23,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "timestamp",
+          "description": "Timestamp of an event - if not tracked, timestamp of import/ingestion will be used",
+          "type": "Number",
+          "sample": 159834092,
+          "tracking_status": "Optional"
+        }
+      ]
+    },
+    {
+      "event": "consent",
+      "attributes": [
+        {
+          "name": "action",
+          "description": "Action performend during consent proces",
+          "type": "String",
+          "sample": "Values: accept - for possitive consent, reject 'for negative consent",
+          "tracking_status": "Required"
+        },
+        {
+          "name": "category",
+          "description": "This is ID of consent. Usually category expresses a name of consent, which you are giving",
+          "type": "String",
+          "sample": "newsletter",
+          "tracking_status": "Required"
+        },
+        {
+          "name": "valid_until",
+          "description": "Multiple options:\n\"unlimited\" - Consent event never lose its validity\n<timestamp> - Unix timestamp of an expiration date",
+          "type": "Number / String",
+          "sample": "unlimited / 1531830074",
+          "tracking_status": "Required"
+        },
+        {
+          "name": "ip",
+          "description": "Public IP address of visitor",
+          "type": "String",
+          "sample": "172.16.32.21",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "message",
+          "description": "Full quotation of consent message that customer reacted to",
+          "type": "String",
+          "sample": null,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "location",
+          "description": "Full URL of the page where event occured",
+          "type": "String",
+          "sample": "http://www.webshop.com/cart",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "domain",
+          "description": "Domain of the website",
+          "type": "String",
+          "sample": "webshop.com",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "language",
+          "description": "Language of website as selected by user or default",
+          "type": "String",
+          "sample": "en,de,pl,cs,sk",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "timestamp",
+          "description": "Timestamp of an event - if not tracked, timestamp of import/ingestion will be used",
+          "type": "Number",
+          "sample": 159834092,
+          "tracking_status": "Required"
+        },
+        {
+          "name": "placement",
+          "description": "touchpoint / form name",
+          "type": "String",
+          "sample": "footer / homepage / returning visitor WL",
+          "tracking_status": "Optional"
+        }
+      ]
+    },
+    {
+      "event": "cart_update",
+      "attributes": [
+        {
+          "name": "action",
+          "description": "Operation on basket contents (add | remove | empty)",
+          "type": "String",
+          "sample": "add",
+          "tracking_status": "Required"
+        },
+        {
+          "name": "timestamp",
+          "description": "Timestamp of an event - if not tracked, timestamp of import/ingestion will be used",
+          "type": "Number",
+          "sample": 159834092,
+          "tracking_status": "Required"
+        },
+        {
+          "name": "button_type",
+          "description": "Which button was used for adding to cart",
+          "type": "String",
+          "sample": "Product detail / Add to cart overlay",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "button_copy",
+          "description": "Text of the button used for adding to cart",
+          "type": "String",
+          "sample": "Add, Purchase, Add to cart",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "page_type",
+          "description": "Type of page where cart contents changed (product, homepage, category page, checkout)",
+          "type": "String",
+          "sample": "product",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "product_id",
+          "description": "ID of the product (\"product\" can be an umbrella for multiple variants)",
+          "type": "String",
+          "sample": "abc123",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "variant_id",
+          "description": "ID of the specific variant.(Most specific id with specific variant (including color, size, material)",
+          "type": "String",
+          "sample": "abc123small",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "title",
+          "description": "Human readable, most specific item name (including color, size, material if available). ",
+          "type": "String",
+          "sample": "ASOS Tassel Loafers in Navy Faux Sued",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "brand",
+          "description": "Brand of an item.",
+          "type": "String",
+          "sample": "ASOS",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "tags",
+          "description": "Custom tags for describing most specific item (variant), e.g. \"new\", \"sales\", \"teen\", \"man\".",
+          "type": "List",
+          "sample": "[\"new\", \"sales\", \"teen\", \"man\"]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "category_level_1",
+          "description": "Top level category human readable name",
+          "type": "String",
+          "sample": "Shoes",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "category_level_2",
+          "description": "2nd level category human readable name",
+          "type": "String",
+          "sample": "Trekking",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "category_level_3",
+          "description": "3rd level category human readable name",
+          "type": "String",
+          "sample": "Ankle boots",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "categories_path",
+          "description": "Categories hierarchy breadcrumbs",
+          "type": "String",
+          "sample": "Shoes > Trekking > Ankle boots",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "category_id",
+          "description": "Unique identifier of category",
+          "type": "String",
+          "sample": "cat_mobiles",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "categories_ids",
+          "description": "List of categories from root to selected category",
+          "type": "List",
+          "sample": "[ \"cat_mobiles\",\"cat_apple\",\"cat_plus\" ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "price",
+          "description": "What customer pay for one unit item.",
+          "type": "Number",
+          "sample": 15,
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "price_local_currency",
+          "description": "What customer pay for one unit item, in currency selected by a customer.",
+          "type": "Number",
+          "sample": 24,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "discount_percentage",
+          "description": "Percentage of discount per most specifit item unit (variant)",
+          "type": "Number",
+          "sample": 10,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "discount_value",
+          "description": "Value of discount per most specific item unit (variant)",
+          "type": "Number",
+          "sample": 1.5,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "original_price",
+          "description": "Most specific item (variant) list unit price in referrence currency",
+          "type": "Number",
+          "sample": 15,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "original_price_local_currency",
+          "description": "Most specific item (variant) list unit price in currency selected by a customer",
+          "type": "Number",
+          "sample": 24,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "location",
+          "description": "Full URL of the page where event occured",
+          "type": "String",
+          "sample": "http://www.webshop.com/cart",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "local_currency",
+          "description": "Currency User selected when visiting site",
+          "type": "String",
+          "sample": "GBP, EUR, USD",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "domain",
+          "description": "Domain of the website",
+          "type": "String",
+          "sample": "webshop.com",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "language",
+          "description": "Language of website as selected by user or default",
+          "type": "String",
+          "sample": "en,de,pl,cs,sk",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "product_list",
+          "description": "List of all products in the cart after cart update (end state)",
+          "type": "JSON List",
+          "sample": "[ {product_id: \"abc123\", quantity:1} ]",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "product_ids",
+          "description": "List of all ids of all products in the cart after cart update (end state)",
+          "type": "List",
+          "sample": "[ \"product_id1\", \"product_id2\", \"product_id3\" ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "variant_list",
+          "description": "List of all product variants, their quantities and other required properties",
+          "type": "JSON List",
+          "sample": "[ {variant_id: \"abc123\", quantity:1} ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "variant_ids",
+          "description": "List of all ids of all product variants",
+          "type": "List",
+          "sample": "[ \"variant_id1\", \"variant_id2\", \"variant_id3\" ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "total_quantity",
+          "description": "Product quantity",
+          "type": "Number",
+          "sample": 2,
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "total_price",
+          "description": "Total price of whole cart (paid by customer) in reference currency, for analytics purposes to calculate revenue, with TAX, delivery - listed price",
+          "type": "Number",
+          "sample": 24.5,
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "total_price_without_tax",
+          "description": "Total price of whole cart (paid by customer) in reference currency, for analytics purposes to calculate revenue, without VAT (item price*quantity)+shiping",
+          "type": "Number",
+          "sample": 12.12,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "total_price_local_currency",
+          "description": "Final price of whole cart paid by a customer in local currency",
+          "type": "Number",
+          "sample": 39.23,
+          "tracking_status": "Optional"
+        }
+      ]
+    },
+    {
+      "event": "checkout",
+      "attributes": [
+        {
+          "name": "step_number",
+          "description": "Step of the checkout process",
+          "type": "Number",
+          "sample": 1,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "step_title",
+          "description": "Human readable checkout process step title",
+          "type": "String",
+          "sample": "Shipping | Personal information | Completed",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "voucher_code",
+          "description": "Voucher used in this purchase",
+          "type": "String",
+          "sample": "KA54-548C-TEST",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "voucher_percentage",
+          "description": "Percentage of the used voucher",
+          "type": "Number",
+          "sample": 10,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "voucher_value",
+          "description": "Amount substracted by using a voucher",
+          "type": "Number",
+          "sample": 12.34,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "payment_type",
+          "description": "Payment method",
+          "type": "String",
+          "sample": "bank transfer / online payment / cash / cod",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "shipping_type",
+          "description": "Type of delivery",
+          "type": "String",
+          "sample": "courier / personally",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "shipping_company",
+          "description": "Delivery company",
+          "type": "String",
+          "sample": "ups",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "shipping_cost",
+          "description": "Price of shipping",
+          "type": "Number",
+          "sample": 69.32,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "shipping_country",
+          "description": "Country name where the products are shipped",
+          "type": "String",
+          "sample": "United Kingdom",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "shipping_city",
+          "description": "City name where the products are shipped",
+          "type": "String",
+          "sample": "London",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "tax_percentage",
+          "description": "TAX/Sales Tax percentage in a given region",
+          "type": "Number",
+          "sample": 20,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "tax_value",
+          "description": "TAX/Sales Tax amount",
+          "type": "Number",
+          "sample": 4.55,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "location",
+          "description": "Full URL of the page where event occured",
+          "type": "String",
+          "sample": "http://www.webshop.com/cart",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "local_currency",
+          "description": "Currency User selected when visiting site",
+          "type": "String",
+          "sample": "GBP, EUR, USD",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "domain",
+          "description": "Domain of the website",
+          "type": "String",
+          "sample": "webshop.com",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "language",
+          "description": "Language of website as selected by user or default",
+          "type": "String",
+          "sample": "en,de,pl,cs,sk",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "product_list",
+          "description": "List of all products in the cart after cart update (end state)",
+          "type": "JSON List",
+          "sample": "[ {product_id: \"abc123\", quantity:1} ]",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "product_ids",
+          "description": "List of all ids of all products in the cart after cart update (end state)",
+          "type": "List",
+          "sample": "[ \"product_id1\", \"product_id2\", \"product_id3\" ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "variant_list",
+          "description": "List of all product variants, their quantities and other required properties",
+          "type": "JSON List",
+          "sample": "[ {variant_id: \"abc123\", quantity:1} ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "variant_ids",
+          "description": "List of all ids of all product variants",
+          "type": "List",
+          "sample": "[ \"variant_id1\", \"variant_id2\", \"variant_id3\" ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "total_quantity",
+          "description": "Product quantity",
+          "type": "Number",
+          "sample": 2,
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "total_price",
+          "description": "Total price (paid by customer) in reference currency, for analytics purposes to calculate revenue, with TAX, delivery - listed price",
+          "type": "Number",
+          "sample": 24.5,
+          "tracking_status": "Required"
+        },
+        {
+          "name": "total_price_without_tax",
+          "description": "Total price (paid by customer) in reference currency, for analytics purposes to calculate revenue, without TAX (item price*quantity)+shiping",
+          "type": "Number",
+          "sample": 12.12,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "timestamp",
+          "description": "Timestamp of an event - if not tracked, timestamp of import/ingestion will be used",
+          "type": "Number",
+          "sample": 159834092,
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "total_price_local_currency",
+          "description": "Final price paid by a customer in local currency",
+          "type": "Number",
+          "sample": 39.23,
+          "tracking_status": "Optional"
+        }
+      ]
+    },
+    {
+      "event": "view_item",
+      "attributes": [
+        {
+          "name": "product_id",
+          "description": "ID of the product (\"product\" can be an umbrella for multiple variants)",
+          "type": "String",
+          "sample": "abc123",
+          "tracking_status": "Required"
+        },
+        {
+          "name": "variant_id",
+          "description": "Use this one only in case when customer has both \"products\" and \"variants\" and has separate product page for each \"variant\". In this case implement only variant_id (do not implement product_id). Othervise do not implement this attribute (varian_id).",
+          "type": "String",
+          "sample": "abc123small",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "title",
+          "description": "Human readable item name on product page",
+          "type": "String",
+          "sample": "ASOS Tassel Loafers in Navy Faux Sued",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "brand",
+          "description": "Brand of an item.",
+          "type": "String",
+          "sample": "ASOS",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "tags",
+          "description": "Custom tags for describing item on product page, e.g. \"new\", \"sales\", \"teen\", \"man\".\n",
+          "type": "List",
+          "sample": "[\"new\", \"sales\", \"teen\", \"man\"]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "category_level_1",
+          "description": "Top level category human readable name",
+          "type": "String",
+          "sample": "Shoes",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "category_level_2",
+          "description": "2nd level category human readable name",
+          "type": "String",
+          "sample": "Trekking",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "category_level_3",
+          "description": "3rd level category human readable name",
+          "type": "String",
+          "sample": "Ankle boots",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "categories_path",
+          "description": "Categories hierarchy breadcrumbs",
+          "type": "String",
+          "sample": "Shoes > Trekking > Ankle boots",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "category_id",
+          "description": "Unique identifier of category",
+          "type": "String",
+          "sample": "cat_mobiles",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "categories_ids",
+          "description": "List of categories from root to selected category",
+          "type": "List",
+          "sample": "[ \"cat_mobiles\",\"cat_apple\",\"cat_plus\" ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "price",
+          "description": "Final unit price of item on product page in referrence currency\n",
+          "type": "Number",
+          "sample": 15,
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "price_local_currency",
+          "description": "Final unit price of item on product page in currency selected by a customer\n",
+          "type": "Number",
+          "sample": 24,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "discount_percentage",
+          "description": "Percentage of discount per item unit on product page\n",
+          "type": "Number",
+          "sample": 10,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "discount_value",
+          "description": "Value of discount per item unit on product page\n",
+          "type": "Number",
+          "sample": 1.5,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "original_price",
+          "description": "Item list unit price in referrence currency\n",
+          "type": "Number",
+          "sample": 15,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "original_price_local_currency",
+          "description": "Item list unit price in currency selected by a customer\n",
+          "type": "Number",
+          "sample": 24,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "location",
+          "description": "Full URL of the page where event occured",
+          "type": "String",
+          "sample": "http://www.webshop.com/cart",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "local_currency",
+          "description": "Currency User selected when visiting site",
+          "type": "String",
+          "sample": "GBP, EUR, USD",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "domain",
+          "description": "Domain of the website",
+          "type": "String",
+          "sample": "webshop.com",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "language",
+          "description": "Language of website as selected by user or default",
+          "type": "String",
+          "sample": "en,de,pl,cs,sk",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "timestamp",
+          "description": "Timestamp of an event - if not tracked, timestamp of import/ingestion will be used",
+          "type": "Number",
+          "sample": 159834092,
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "stock_level",
+          "description": "number of items in stock",
+          "type": "Number",
+          "sample": 2,
+          "tracking_status": "Optional"
+        }
+      ]
+    },
+    {
+      "event": "view_category",
+      "attributes": [
+        {
+          "name": "category_id",
+          "description": "Unique identifier of category",
+          "type": "String",
+          "sample": "cat_mobiles",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "category_name",
+          "description": "Name of the current category",
+          "type": "String",
+          "sample": "Jackets & Coats",
+          "tracking_status": "Required"
+        },
+        {
+          "name": "listed_products",
+          "description": "List of all product ids in the page",
+          "type": "List",
+          "sample": "[\"A1\", \"C3\", \"G5\", \"A2\"]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "category_level_1",
+          "description": "Top level category human readable name",
+          "type": "String",
+          "sample": "Shoes",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "category_level_2",
+          "description": "2nd level category human readable name",
+          "type": "String",
+          "sample": "Trekking",
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "category_level_3",
+          "description": "3rd level category human readable name",
+          "type": "String",
+          "sample": "Ankle boots",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "categories_path",
+          "description": "Categories hierarchy breadcrumbs",
+          "type": "String",
+          "sample": "Shoes > Trekking > Ankle boots",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "categories_ids",
+          "description": "List of categories from root to selected category",
+          "type": "List",
+          "sample": "[ \"cat_mobiles\",\"cat_apple\",\"cat_plus\" ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "filter_by",
+          "description": "The filter applied on the viewed category",
+          "type": "List",
+          "sample": "color=black, price<100",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "sort_by",
+          "description": "On which sorting is the category viewed",
+          "type": "String",
+          "sample": "lowest price / highest rating / by color...",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "location",
+          "description": "Full URL of the page where event occured",
+          "type": "String",
+          "sample": "http://www.webshop.com/cart",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "local_currency",
+          "description": "Currency User selected when visiting site",
+          "type": "String",
+          "sample": "GBP, EUR, USD",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "domain",
+          "description": "Domain of the website",
+          "type": "String",
+          "sample": "webshop.com",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "timestamp",
+          "description": "Timestamp of an event - if not tracked, timestamp of import/ingestion will be used",
+          "type": "Number",
+          "sample": 159834092,
+          "tracking_status": "Recommended"
+        },
+        {
+          "name": "language",
+          "description": "Language of website as selected by user or default",
+          "type": "String",
+          "sample": "en,de,pl,cs,sk",
+          "tracking_status": "Optional"
+        }
+      ]
+    },
+    {
+      "event": "double_opt_in",
+      "attributes": [
+        {
+          "name": "action",
+          "description": "Action performend during double-opt in proces",
+          "type": "String",
+          "sample": "new, confirmed",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "email",
+          "description": "Email address from user input in canonical form",
+          "type": "String",
+          "sample": "sample@sample.com",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "source",
+          "description": "Multiple options:\ncrm - Manually created consent in APP. Possible just only application.\nimport - Imported consent from import wizard. Possible only from application.\npublic_api - Most likely tracking API, which uses only public token for authentification\nprivate_api - API, which uses basic authentification\npage - Tracked on a consent page",
+          "type": "String",
+          "sample": "crm / import / public_api / private_api / page",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "phone",
+          "description": "Customer phone number, ideally in string format with the country code in the beginning",
+          "type": "string",
+          "sample": "+447472970351",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "location",
+          "description": "Full URL of the page where event occured",
+          "type": "String",
+          "sample": "http://www.webshop.com/cart",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "domain",
+          "description": "Domain of the website",
+          "type": "String",
+          "sample": "webshop.com",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "language",
+          "description": "Language of website as selected by user or default",
+          "type": "String",
+          "sample": "en,de,pl,cs,sk",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "ip",
+          "description": "Public IP address of visitor",
+          "type": "String",
+          "sample": "172.16.32.21",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "message",
+          "description": "Full quotation of consent message that customer reacted to",
+          "type": "String",
+          "sample": null,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "consent_list",
+          "description": "JSON array of given concents",
+          "type": "JSON List",
+          "sample": "[ {\"action\": \"accept\",\"category\": \"direct marketing\", \"message\": \"....\"},{...},{...} ]",
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "timestamp",
+          "description": "Timestamp of an event - if not tracked, timestamp of import/ingestion will be used",
+          "type": "Number",
+          "sample": 159834092,
+          "tracking_status": "Optional"
+        },
+        {
+          "name": "purchase_id",
+          "description": "Unique identification of purchase/order in backend systems (if the double optin submission was done during purchase/checkout process)",
+          "type": "String",
+          "sample": "123456",
+          "tracking_status": "Optional"
+        }
+      ]
+    }
+  ]
+}

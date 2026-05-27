@@ -1,0 +1,1416 @@
+{
+  "description": "Per-use-case data requirements derived from the Tracking Document Data Requirements Matrix. For each use case (keyed by 4-letter P&P code where resolved), lists required customer attributes, required event attributes grouped by event, and required catalog fields grouped by catalog. Grouping is preserved so the agent can do relational queries such as 'which other use cases also require the consent event's valid_until attribute?'. Use case names that don't resolve against the canonical P&P library are flagged with match_status: \"unmatched\".",
+  "use_case_count": 63,
+  "use_cases": [
+    {
+      "code": "OABF",
+      "name": "Abandoned Browse Flow",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "OABO",
+      "name": "Abandoned Browse with Omnichannel",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "OACO",
+      "name": "Abandoned Cart Flow with Omnichannel",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "cart_update": [
+          "product_list",
+          "product_id",
+          "total_quantity",
+          "action"
+        ],
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "OACP",
+      "name": "Abandoned cart flow with product personalization",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "cart_update": [
+          "product_list",
+          "action"
+        ],
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "OACR",
+      "name": "Abandoned Cart Flow with Recommendations",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "cart_update": [
+          "product_list",
+          "action",
+          "total_price"
+        ],
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": null,
+      "name": "AdTech audiences",
+      "match_status": "unmatched",
+      "required_customer_attributes": [
+        "email",
+        "phone"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "APMS",
+      "name": "Apple Mail segmentation",
+      "required_customer_attributes": [],
+      "required_event_attributes": {},
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OIGC",
+      "name": "Automated Instagram content newsletters",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {},
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OCAN",
+      "name": "Automated Newsletter for New Items from Most Visited (But Never Purchased) Product Category",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id",
+          "brand"
+        ],
+        "view_item": [
+          "product_id",
+          "brand"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url",
+          "brand"
+        ]
+      }
+    },
+    {
+      "code": "OYTF",
+      "name": "Automated YouTube Feed Newsletters",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "ABCS",
+      "name": "Best channel segmentation",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WBSB",
+      "name": "Best Sellers/Trending Badges",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "product_id"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OBDC",
+      "name": "Birthday campaign",
+      "required_customer_attributes": [
+        "birth_date",
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OTPR",
+      "name": "Bi-Weekly Automated Top Product Recommendation Newsletter",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "total_price"
+        ],
+        "purchase_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "OBAN",
+      "name": "Brand Affinity: Automated Newsletter for New Items from Favorite Brand",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id",
+          "brand"
+        ],
+        "view_item": [
+          "product_id",
+          "brand"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url",
+          "brand"
+        ]
+      }
+    },
+    {
+      "code": "WBTA",
+      "name": "Browser tab animation",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "ABAD",
+      "name": "Business Overview Dashboard",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "cart_update": [
+          "action"
+        ],
+        "consent": [
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id"
+        ],
+        "view_category": [
+          "category_name"
+        ],
+        "checkout": [
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "ABRE",
+      "name": "Business Review Evaluation (QBR)",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WCUP",
+      "name": "Cart update popup banner with recommendations",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "cart_update": [
+          "product_id",
+          "action",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "stock_level",
+          "original_price"
+        ]
+      }
+    },
+    {
+      "code": "ACVD",
+      "name": "Conversion dashboard",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "cart_update": [
+          "product_list",
+          "action"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status"
+        ],
+        "view_item": [
+          "product_id",
+          "category_level_1",
+          "title"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "ORFM",
+      "name": "Customer Lifetime Value (CLTV) Dashboard & RFM Segmentation",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WDOI",
+      "name": "Double Opt-In Subscription Banner with Automated Confirmation Emails and Consent Management",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "double_opt_in": [
+          "action",
+          "consent_list",
+          "email",
+          "source"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "AE1D",
+      "name": "Email Deliverability Dashboard",
+      "required_customer_attributes": [
+        "email",
+        "email_domain"
+      ],
+      "required_event_attributes": {},
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "AE3H",
+      "name": "Email Health and Engagement Dashboard",
+      "required_customer_attributes": [
+        "email_domain"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "category",
+          "valid_until",
+          "timestamp"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "AEPD",
+      "name": "Email performance dashboard",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "consent": [
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "AEXD",
+      "name": "Executive Dashboard for T3-T4 Clients",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OFBC",
+      "name": "Facebook Conversions API",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WFRB",
+      "name": "Free delivery banner",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "cart_update": [
+          "total_price"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OFRC",
+      "name": "Frequency-based Repurchase Campaign",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": null,
+      "name": "Global badges",
+      "match_status": "unmatched",
+      "required_customer_attributes": [],
+      "required_event_attributes": {},
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OHBC",
+      "name": "Half Birthday Campaign",
+      "required_customer_attributes": [
+        "birth_date",
+        "email"
+      ],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WJBL",
+      "name": "Just Bought Location-Based Social Proof",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase_item": [
+          "purchase_status",
+          "product_id"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OLOP",
+      "name": "Loyalty Program",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WMDI",
+      "name": "Multistep Subscription banner with DOI",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "ONDC",
+      "name": "Nameday Campaign",
+      "required_customer_attributes": [
+        "email",
+        "first_name"
+      ],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WNDC",
+      "name": "Next day delivery countdown",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase": [
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WOEB",
+      "name": "On-Exit Banner with the Last Viewed Items",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "OLTC",
+      "name": "Paid ad optimization: Lookalike targeting based on CLTV and loyalty",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OABE",
+      "name": "Paid ad optimization: Targeting based on email engagement",
+      "required_customer_attributes": [
+        "email",
+        "phone"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OOPR",
+      "name": "Personalized Email + SMS Omnichannel Reactivation Campaign for Lapsing Subscribers",
+      "required_customer_attributes": [
+        "email",
+        "phone"
+      ],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "OPRC",
+      "name": "Personalized reactivation campaign for lapsing subscribers",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "ONPS",
+      "name": "Post-purchase NPS survey email",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "APAD",
+      "name": "Product analytics dashboard",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase_item": [
+          "category_level_1",
+          "category_level_2",
+          "title"
+        ],
+        "view_item": [
+          "product_id",
+          "category_level_1",
+          "category_level_2",
+          "title"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OPAC",
+      "name": "Purchase anniversary & purchase half-anniversary emails with personalized recommendations",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "cart_update": [
+          "product_id"
+        ],
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "OPFU",
+      "name": "Purchase follow up emails with complimentary product recommendations",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url",
+          "category_level_1",
+          "category_level_2"
+        ]
+      }
+    },
+    {
+      "code": "ARET",
+      "name": "Retention dashboard",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "consent": [
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WSOI",
+      "name": "Single Opt-In Subscription Banner with Automated Consent Management",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WBSI",
+      "name": "Single opt-in subscription banner with Contextual Personalisation",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url"
+        ]
+      }
+    },
+    {
+      "code": "SDOI",
+      "name": "SMS Double Opt-In Subscription Banner with Automated SMS confirmation and Consent Management",
+      "required_customer_attributes": [
+        "email",
+        "phone"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "double_opt_in": [
+          "action",
+          "consent_list",
+          "source",
+          "phone"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WSSP",
+      "name": "Standard Social Proof Banner",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WDCB",
+      "name": "Sticky top discount countdown banner",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase": [
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "ATAD",
+      "name": "Traffic analytics dashboard",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "title"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": null,
+      "name": "Warmup campaign",
+      "match_status": "unmatched",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": null,
+      "name": "Watchdog automatic price drop alert",
+      "match_status": "unmatched",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id"
+        ],
+        "view_item": [
+          "product_id",
+          "price"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url",
+          "stock_level",
+          "original_price"
+        ]
+      }
+    },
+    {
+      "code": "OPAU",
+      "name": "Watchdog automatic price drop alert on abandoned cart",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "cart_update": [
+          "product_id",
+          "action",
+          "price"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status"
+        ],
+        "purchase_item": [
+          "product_id",
+          "price"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "price"
+        ]
+      }
+    },
+    {
+      "code": "OPAA",
+      "name": "Watchdog automatic price drop alert on viewed items",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "view_item": [
+          "product_id",
+          "price"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "stock_level",
+          "original_price"
+        ]
+      }
+    },
+    {
+      "code": "ORAA",
+      "name": "Watchdog automatic restock alert",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "action",
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id",
+          "price"
+        ],
+        "view_item": [
+          "variant_id",
+          "stock_level"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url",
+          "stock_level",
+          "original_price"
+        ]
+      }
+    },
+    {
+      "code": "ORAA",
+      "name": "Watchdog automatic restock alert on viewed items",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id"
+        ],
+        "view_item": [
+          "product_id",
+          "stock_level"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url",
+          "stock_level"
+        ]
+      }
+    },
+    {
+      "code": "OPAR",
+      "name": "Watchdog customer initiated price drop alert",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id"
+        ],
+        "view_item": [
+          "product_id",
+          "price"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url",
+          "stock_level",
+          "original_price"
+        ]
+      }
+    },
+    {
+      "code": "ORAR",
+      "name": "Watchdog customer initiated restock alert",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ],
+        "purchase_item": [
+          "purchase_status",
+          "product_id",
+          "price"
+        ],
+        "view_item": [
+          "variant_id",
+          "stock_level"
+        ]
+      },
+      "required_catalog_fields": {
+        "catalog: products": [
+          "item_id",
+          "image",
+          "price",
+          "title",
+          "url",
+          "stock_level",
+          "original_price"
+        ]
+      }
+    },
+    {
+      "code": "WPNS",
+      "name": "Web Push Notification Subscription Banner",
+      "required_customer_attributes": [],
+      "required_event_attributes": {},
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "OWEF",
+      "name": "Welcome flow",
+      "required_customer_attributes": [
+        "email"
+      ],
+      "required_event_attributes": {
+        "consent": [
+          "category",
+          "valid_until",
+          "timestamp"
+        ],
+        "purchase": [
+          "purchase_id",
+          "purchase_status",
+          "total_price"
+        ]
+      },
+      "required_catalog_fields": {}
+    },
+    {
+      "code": "WZPD",
+      "name": "Zero-Party Data Collection Banner",
+      "required_customer_attributes": [],
+      "required_event_attributes": {
+        "view_item": [
+          "category_level_1",
+          "category_level_2",
+          "brand"
+        ]
+      },
+      "required_catalog_fields": {}
+    }
+  ]
+}

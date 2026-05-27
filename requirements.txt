@@ -1,0 +1,4 @@
+anthropic>=0.40.0
+openpyxl>=3.1.0
+mcp>=1.27.0      # Loomi MCP client (live workspace introspection via mcp-remote)
+flask>=3.1.0     # local reasoning-trace demo UI (scope_scout.web)

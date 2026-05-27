@@ -1,0 +1,401 @@
+{
+  "description": "Per-use-case event requirements derived from the Tracking Document Event Matrix. For each use case (keyed by 4-letter P&P code where resolved), lists the events that must exist in the workspace and the catalogs that must be present. Use case names that don't resolve against the canonical P&P library are flagged with match_status: \"unmatched\" so the agent can surface them for architect review rather than treating them as silent gaps.",
+  "use_case_count": 63,
+  "use_cases": [
+    {
+      "code": "OABF",
+      "name": "Abandoned Browse Flow",
+      "required_events": [
+        "consent",
+        "purchase",
+        "view_item"
+      ],
+      "required_catalogs": [
+        "Product"
+      ]
+    },
+    {
+      "code": "OABO",
+      "name": "Abandoned Browse with Omnichannel",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OACO",
+      "name": "Abandoned Cart Flow with Omnichannel",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OACP",
+      "name": "Abandoned Cart Flow with Product Personalization",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OACR",
+      "name": "Abandoned Cart Flow with Recommendations",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": null,
+      "name": "AdTech audiences",
+      "match_status": "unmatched",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "APMS",
+      "name": "Apple Mail segmentation",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OIGC",
+      "name": "Automated Instagram Content Newsletters",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OCAN",
+      "name": "Automated Newsletter for New Items from Most Visited (But Never Purchased) Product Category",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OYTF",
+      "name": "Automated YouTube Feed Newsletters",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ABCS",
+      "name": "Best channel segmentation",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WBSB",
+      "name": "Best Sellers/Trending Badges",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OBDC",
+      "name": "Birthday campaign",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OTPR",
+      "name": "Bi-Weekly Automated Top Product Recommendation Newsletter",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OBAN",
+      "name": "Brand Affinity: Automated Newsletter for New Items from Favorite Brand",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WBTA",
+      "name": "Browser Tab Animation",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ABAD",
+      "name": "Business Overview Dashboard",
+      "required_events": [
+        "cart_update",
+        "checkout",
+        "consent",
+        "purchase",
+        "view_item",
+        "view_category"
+      ],
+      "required_catalogs": []
+    },
+    {
+      "code": "ABRE",
+      "name": "Business Review Evaluation (QBR)",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WCUP",
+      "name": "Cart update popup banner with recommendations",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ACVD",
+      "name": "Conversion Dashboard",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ORFM",
+      "name": "Customer Lifetime Value (CLTV) Dashboard & RFM Segmentation",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WDOI",
+      "name": "Double Opt-In Subscription Banner with Automated Confirmation Emails and Consent Management",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "AE1D",
+      "name": "Email Deliverability Dashboard",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "AE3H",
+      "name": "Email Health and Engagement Dashboard",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "AEPD",
+      "name": "Email Performance Dashboard",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "AEXD",
+      "name": "Executive Dashboard for T3-T4 Clients",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OFBC",
+      "name": "Facebook Conversions API",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WFRB",
+      "name": "Free Delivery Banner",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OFRC",
+      "name": "Frequency-based Repurchase Campaign",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": null,
+      "name": "Global Badges",
+      "match_status": "unmatched",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OHBC",
+      "name": "Half Birthday Campaign",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WJBL",
+      "name": "Just Bought Location-Based Social Proof",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OLOP",
+      "name": "Loyalty Program",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WMDI",
+      "name": "Multistep Subscription banner with DOI",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ONDC",
+      "name": "Nameday Campaign",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WNDC",
+      "name": "Next day delivery countdown",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WOEB",
+      "name": "On-Exit Banner with the Last Viewed Items",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OLTC",
+      "name": "Paid ad optimization: Lookalike targeting based on CLTV and loyalty",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OABE",
+      "name": "Paid Ad Optimization: Targeting Based on Email Engagement",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OOPR",
+      "name": "Personalized Email + SMS Omnichannel Reactivation Campaign for Lapsing Subscribers",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OPRC",
+      "name": "Personalized Reactivation Campaign for Lapsing Subscribers",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ONPS",
+      "name": "Post-purchase NPS survey email",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "APAD",
+      "name": "Product Analytics Dashboard",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OPAC",
+      "name": "Purchase Anniversary & Purchase Half-Anniversary Emails with Personalized Recommendations",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OPFU",
+      "name": "Purchase follow up emails with complimentary product recommendations",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ARET",
+      "name": "Retention Dashboard",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WSOI",
+      "name": "Single Opt-In Subscription Banner with Automated Consent Management",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WBSI",
+      "name": "Single opt-in subscription banner with Contextual Personalisation",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "SDOI",
+      "name": "SMS Double Opt-In Subscription Banner with Automated SMS confirmation and Consent Management",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WSSP",
+      "name": "Standard Social Proof Banner",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WDCB",
+      "name": "Sticky Top Discount Countdown Banner",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ATAD",
+      "name": "Traffic Analytics Dashboard",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": null,
+      "name": "Warmup campaign",
+      "match_status": "unmatched",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": null,
+      "name": "Watchdog automatic price drop alert",
+      "match_status": "unmatched",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OPAU",
+      "name": "Watchdog automatic price drop alert on abandoned cart",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OPAA",
+      "name": "Watchdog automatic price drop alert on viewed items",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ORAA",
+      "name": "Watchdog automatic restock alert",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ORAA",
+      "name": "Watchdog automatic restock alert on viewed items",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OPAR",
+      "name": "Watchdog customer initiated price drop alert",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "ORAR",
+      "name": "Watchdog customer initiated restock alert",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WPNS",
+      "name": "Web Push Notification Subscription Banner",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "OWEF",
+      "name": "Welcome Flow",
+      "required_events": [],
+      "required_catalogs": []
+    },
+    {
+      "code": "WZPD",
+      "name": "Zero-Party Data Collection Banner",
+      "required_events": [],
+      "required_catalogs": []
+    }
+  ]
+}

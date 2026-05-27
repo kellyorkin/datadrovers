@@ -1,0 +1,105 @@
+{
+  "description": "Customer attribute data dictionary from the Bloomreach standard engagement data model. Each entry includes the customer-side data type, attribute name, definition, value type, sample, PII flag, and tracking status.",
+  "attribute_count": 11,
+  "attributes": [
+    {
+      "data_type": "customer",
+      "name": "first_name",
+      "description": "First name of the customer",
+      "type": "string",
+      "sample": "Alper",
+      "pii": true,
+      "tracking_status": "Optional"
+    },
+    {
+      "data_type": "customer",
+      "name": "last_name",
+      "description": "Surname of the customer",
+      "type": "string",
+      "sample": "Gondiken",
+      "pii": true,
+      "tracking_status": "Optional"
+    },
+    {
+      "data_type": "customer",
+      "name": "gender",
+      "description": "\"male\" / \"female\" / not set",
+      "type": "string",
+      "sample": "male",
+      "pii": false,
+      "tracking_status": "Optional"
+    },
+    {
+      "data_type": "customer",
+      "name": "title",
+      "description": "\"Mr.\" / \"Mrs.\" / not set / ...",
+      "type": "string",
+      "sample": "Mr.",
+      "pii": false,
+      "tracking_status": "Optional"
+    },
+    {
+      "data_type": "customer",
+      "name": "city",
+      "description": "City of the customer",
+      "type": "string",
+      "sample": "Prague",
+      "pii": false,
+      "tracking_status": "Optional"
+    },
+    {
+      "data_type": "customer",
+      "name": "country",
+      "description": "Country of the customer",
+      "type": "string",
+      "sample": "Czechia",
+      "pii": false,
+      "tracking_status": "Optional"
+    },
+    {
+      "data_type": "customer",
+      "name": "language",
+      "description": "language spoke by customer",
+      "type": "string",
+      "sample": "english",
+      "pii": false,
+      "tracking_status": "Optional"
+    },
+    {
+      "data_type": "customer",
+      "name": "email",
+      "description": "default email address for campaigns",
+      "type": "string",
+      "sample": "alper.gondiken@Bloomreach Engagement.com",
+      "pii": true,
+      "tracking_status": "Required"
+    },
+    {
+      "data_type": "customer",
+      "name": "phone",
+      "description": "default phone number for campaigns",
+      "type": "string",
+      "sample": "+441736183716",
+      "pii": true,
+      "tracking_status": "Optional"
+    },
+    {
+      "data_type": "customer",
+      "name": "birth_date",
+      "description": "birthday of a customer - UNIX timestamp can be set on the noon of the date",
+      "type": "number",
+      "sample": 915192000,
+      "pii": true,
+      "tracking_status": "Optional"
+    },
+    {
+      "data_type": "customer",
+      "name": "email_domain",
+      "description": "domain of the email address",
+      "type": "string",
+      "sample": "gmail.com",
+      "pii": false,
+      "tracking_status": "Optional"
+    }
+  ]
+}

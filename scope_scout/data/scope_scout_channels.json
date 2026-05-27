@@ -1,0 +1,367 @@
+{
+  "description": "Channel and shopper-stage mapping for plug-and-play use cases. Each entry maps a use case to its delivery channel, descriptive blurb, and the shopper lifecycle stage it primarily addresses.",
+  "entry_count": 51,
+  "entries": [
+    {
+      "code": "OABF",
+      "use_case": "Abandoned Browse Flow",
+      "channel": "Email",
+      "description": "Abandoned browse flow is triggered with a session_end event when visitors leave the website. After a certain waiting time, if the visitor has viewed at least two items and hasn\u2019t made any purchase, they will receive emails to remind them about the products they viewed.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "OACP",
+      "use_case": "Abandoned Cart Flow with Product Personalization",
+      "channel": "Email",
+      "description": "Abandoned cart (basket) emails are triggered with a cart_update event when visitors add items to their cart. After a specified waiting time, if the visitor hasn\u2019t made any purchase, they will receive emails to remind them about their cart. There are several best practice criteria in the flow; such as ensuring that there were no other cart updates since the trigger event, or no purchases happened during the wait period. The emails are personalised to include the image, title and price of the items in the cart.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "OACR",
+      "use_case": "Abandoned Cart Flow with Recommendations",
+      "channel": "Email",
+      "description": "Abandoned cart (basket) emails are triggered with a cart_update event when visitors add items to their cart. After a specified waiting time, if the visitor hasn\u2019t made any purchase, they will receive emails to remind them about their cart. There are several best practice criteria in the flow; such as ensuring that there were no other cart updates since the trigger event, or no purchases happened during the wait period. The emails are personalised to include the image, title and price of the items in the cart. Additionally, product recommendations are placed in the email to recommend additional items to the customer.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": null,
+      "use_case": "Abandoned Cart Flow without Product Personalization",
+      "channel": "Email",
+      "description": "An Abandoned Cart email flow reminding customers that they have items left in cart, using a generic basket image that can be customized.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "OIGC",
+      "use_case": "Automated Instagram Content Newsletters",
+      "channel": "Email",
+      "description": "This scenario automatically checks the latest posts from your brand's Instagram feed and sends them to your customers for inspiration. We recommend sending this email every two weeks.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "OCAN",
+      "use_case": "Automated Newsletter for New Items from Most Visited (But Never Purchased) Product Category",
+      "channel": "Email",
+      "description": "A scenario where Bloomreach identifies the most commonly viewed category for each customer (but for which they have not yet made a purchase) and uses a webhook to show the new items from catalog (based on date_added) from that category in an email.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "OYTF",
+      "use_case": "Automated YouTube Feed Newsletters",
+      "channel": "Email",
+      "description": "This scenario automatically checks the latest posts from your brand's (or other) YouTube feed and sends them to your customers for inspiration. We recommend sending this email every two weeks.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "ABCS",
+      "use_case": "Best channel segmentation",
+      "channel": "-",
+      "description": "Automatically detecting the best channel to communicate for each customer.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "WBSB",
+      "use_case": "Best Sellers/Trending Badges",
+      "channel": "Web",
+      "description": "Auto-displaying badges on product detail pages (PDPs) and listing (brand/category) pages for when the product is among the top seller products.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "OTPR",
+      "use_case": "Bi-Weekly Automated Top Product Recommendation Newsletter",
+      "channel": "Email",
+      "description": "Automated newsletter where bestseller products are displayed in the email, with a social proof banner to show how many people are buying them",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "OBDC",
+      "use_case": "Birthday campaign",
+      "channel": "Email",
+      "description": "Birthday emails are based on a simple logic using the customer attribute date of birth to send a personalized offer by email to customers on their birthday. Birthday campaign can be accomponied by another campaign, half-birthday campaign, in which an email 6 months before the customer\u2019s birthday is sent to customers to create a pleasant, unexpected surprise.",
+      "shopper_stage": "Loyalty",
+      "original_name": "Birthday campaigns"
+    },
+    {
+      "code": "OBAN",
+      "use_case": "Brand Affinity: Automated Newsletter for New Items from Favorite Brand",
+      "channel": "Email",
+      "description": "Based on customers' past behaviours, both offline and online, we know which brands they have shown the most interest in the past. This automation checks the new products from that brand and notifies the customers when there are products personally interesting for them. This use case also works with category affinity, or a specific tag affinity.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "WBTA",
+      "use_case": "Browser Tab Animation",
+      "channel": "Web",
+      "description": "Animated browser tabs to drive conversion",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "ABAD",
+      "use_case": "Business Overview Dashboard",
+      "channel": "-",
+      "description": "A high level dashboard with important business metrics such as lifetime value segments, email performance, web traffic and conversion analytics.",
+      "shopper_stage": "Business"
+    },
+    {
+      "code": "WCUP",
+      "use_case": "Cart update popup banner with recommendations",
+      "channel": "Web",
+      "description": "This weblayer is aimed at increasing average order value. When the customer adds item to cart, the popup banner appears with products that are most commonly purchased with the item that is added to the cart.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "ACVD",
+      "use_case": "Conversion Dashboard",
+      "channel": "-",
+      "description": "Purchase funnel, split across device, session conversion by traffic source",
+      "shopper_stage": "Business"
+    },
+    {
+      "code": null,
+      "use_case": "Customer Lifetime Value Dashboard (+ RFM Segmentation)",
+      "channel": "-",
+      "description": "RFM segmentation, RFM summary report and actionable advice, average buyer value, value vs population distribution",
+      "shopper_stage": "Loyalty"
+    },
+    {
+      "code": "WDOI",
+      "use_case": "Double Opt-In Subscription Banner with Automated Confirmation Emails and Consent Management",
+      "channel": "Web, Email",
+      "description": "Double opt-in banner (with image) + automatic confirmation emails + automatic consent management",
+      "shopper_stage": "Awareness"
+    },
+    {
+      "code": "AEPD",
+      "use_case": "Email Performance Dashboard",
+      "channel": "-",
+      "description": "Standard email deliverability report (open/click/unsubscribe/complaint), ISP report, newsletter revenue report (using CDP revenue attribution logic)",
+      "shopper_stage": "Business"
+    },
+    {
+      "code": "OFBC",
+      "use_case": "Facebook Conversions API",
+      "channel": "Paid ads",
+      "description": "The Facebook Conversions API integration offers the possibility to send important events, such as purchases, and leads to Facebook, which allows better optimisation of Facebook Ads campaigns.",
+      "shopper_stage": "Business"
+    },
+    {
+      "code": "WFRB",
+      "use_case": "Free Delivery Banner",
+      "channel": "Web",
+      "description": "Simple, free delivery popup displaying on items that pass the free delivery criteria (above a certain price range, if desired)",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "OFRC",
+      "use_case": "Frequency-based Repurchase Campaign",
+      "channel": "Email",
+      "description": "Repurchase campaign triggered when a customer nears their average purchase frequency",
+      "shopper_stage": "Loyalty"
+    },
+    {
+      "code": null,
+      "use_case": "Global Badges",
+      "channel": "Web",
+      "description": "These badges are designed for your product display pages (PDPs). If you have adopted a new policy (e.g. a new return policy, a new mode of delivery), display these badges on all your product images to inform customers.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": null,
+      "use_case": "Granular Lookalike Targeting Based on CLTV",
+      "channel": "Paid Ads",
+      "description": "This automation creates a lookalike seed audience with weighted importance metric based on how much value each customer has brought to your business. As a result, the lookalike audience you'll create in Facebook will be much more accurate and valuable. This use case is unique to Bloomreach and unlikely to be possible via other CDPs.",
+      "shopper_stage": "Awareness"
+    },
+    {
+      "code": "WJBL",
+      "use_case": "\"Just Bought\" Location-Based Social Proof",
+      "channel": "Web",
+      "description": "A more advanced social proof banner: Creates a report with purchase_item in the past 3 hours. When customer is viewing the product, after 5 seconds, a banner pops up: \u201cSomeone in London just bought this item\u201d",
+      "shopper_stage": "Convert",
+      "original_name": "Just Bought Location-Based Social Proof"
+    },
+    {
+      "code": "OLTC",
+      "use_case": "Paid Ad Optimization: Lookalike Targeting Based on CLTV and Loyalty",
+      "channel": "Paid Ads",
+      "description": "This scenario will allow you to create better audiences to send to social or paid channels. The seed audiences that you will send to paid channels will be based on the lifetime value they brought to your business and their loyalty to your brand. This way, your paid ad lookalike campaigns can be optimised to your most loyal and valuable customers.",
+      "shopper_stage": "Awareness",
+      "original_name": "Lookalike targeting based on CLTV and loyalty"
+    },
+    {
+      "code": null,
+      "use_case": "Low-Stock Banner",
+      "channel": "Web",
+      "description": "Displays a banner when a viewed item is low in stock",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "OLOP",
+      "use_case": "Loyalty Program",
+      "channel": "Email",
+      "description": "The Bloomreach loyalty program allows you to assign loyalty scheme tiers / levels based on customers' purchase behavior, email engagement, and browsing history. It allows for sending out a \"congratulations\" email once customer reaches a higher tier. The congratulations emails include the benefits of the qualified tier; which can be accomponied by an incentive for the next purchase or other rewards.",
+      "shopper_stage": "Loyalty"
+    },
+    {
+      "code": "WNDC",
+      "use_case": "Next day delivery countdown",
+      "channel": "Web",
+      "description": "A banner showing that it's possible to get the item next day if it's ordered until a certain hour. The countdown refreshes every day until the deadline hour",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "WOEB",
+      "use_case": "On-Exit Banner with the Last Viewed Items",
+      "channel": "Web",
+      "description": "When the user moves their mouse cursor to leave the website, a banner pops down with the last viewed items. It is possible to change the design and wording of the banner with the parameters defined on the weblayer asset.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "OABE",
+      "use_case": "Paid Ad Optimization: Targeting Based on Email Engagement",
+      "channel": "Paid Ads",
+      "description": "This ready-made use case optimizes your paid ad campaigns. Some of your customers might currently have lower engagement with your email campaigns. Among this group of customers, some might only prefer a different channel of communication. The scenario allows you to engage with these customers using paid channels to see if which customers are better approached through these channels as opposed to email. On the other hand, this use case also enables you to exclude customers who are highly engaged with email from your paid ads audience/s for maximal media efficiency and effectiveness.",
+      "shopper_stage": "Awareness"
+    },
+    {
+      "code": "OPRC",
+      "use_case": "Personalized Reactivation Campaign for Lapsing Subscribers",
+      "channel": "Email",
+      "description": "It is difficult to re-engage the subscribers who have not opened or clicked your emails for a long time. The only chance you have for these customers is to offer a highly personalised campaign. The personalisation should happen not only in the email content but also in the subject line. This scenario regularly checks in with unengaged subscribers by sending them a personalised email.",
+      "shopper_stage": "Loyalty"
+    },
+    {
+      "code": "ONPS",
+      "use_case": "Post-purchase NPS survey email",
+      "channel": "Email",
+      "description": "Send an email 10 days after the purchase with an NPS survey.",
+      "shopper_stage": "Loyalty"
+    },
+    {
+      "code": "APAD",
+      "use_case": "Product Analytics Dashboard",
+      "channel": "-",
+      "description": "Trending products last week, trending categories last week, best converting products, best converting categories, most returned products",
+      "shopper_stage": "Business"
+    },
+    {
+      "code": null,
+      "use_case": "Product-specific Badges",
+      "channel": "Web",
+      "description": "Some of your products might fit the changing habits in consumer preferences well and you might want to use this as an opportunity to display certain badges on these products. For example, some clothes might be more comfortable and you can display a \"comfy home wear\" badge on them. Or some items fit the quarantine life better than usual, such as board games, or an elliptical bike.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "OPAC",
+      "use_case": "Purchase Anniversary & Purchase Half-Anniversary Emails with Personalized Recommendations",
+      "channel": "Email",
+      "description": "6 months and 12 months after the customer\u2019s first purchase, a purchase anniversary email is sent to the customer with personalized recommendations.",
+      "shopper_stage": "Loyalty"
+    },
+    {
+      "code": "OPFU",
+      "use_case": "Purchase follow up emails with complimentary product recommendations",
+      "channel": "Email",
+      "description": "Send an email 14 days after the purchase showing product recommendations based on \u201cpeople who bought X also bought these\u201d",
+      "shopper_stage": "Loyalty"
+    },
+    {
+      "code": "ARET",
+      "use_case": "Retention Dashboard",
+      "channel": "-",
+      "description": "Customer retention cohorts; shop retention metrics: repeat rate, last month retention, 3 months cohort repeat rate, average time between purchases; session return funnel with a focus on non-subscribers",
+      "shopper_stage": "Loyalty"
+    },
+    {
+      "code": "WSOI",
+      "use_case": "Single Opt-In Subscription Banner with Automated Consent Management",
+      "channel": "Web, Email",
+      "description": "Once the visitor submits their email on the subscription banner, Bloomreach automatically updates their consent event and their Newsletter consent attribute. It is possible to change the design and wording of the banner in the 'Parameter' section of the weblayer.",
+      "shopper_stage": "Awareness"
+    },
+    {
+      "code": "WSSP",
+      "use_case": "Standard Social Proof Banner",
+      "channel": "Web",
+      "description": "Standard viewcount banner to drive social proof on product detail pages. It utilizes viewed item data from Bloomreach CDP and displays a banner to the visitor: \"X customers are looking at this\"",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "WDCB",
+      "use_case": "Sticky Top Discount Countdown Banner",
+      "channel": "Web",
+      "description": "A discount countdown is displayed as a sticky overlay on the top of the page. It is possible to change the design and wording of the banner on the 'Parameter' section of the weblayer.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "ATAD",
+      "use_case": "Traffic Analytics Dashboard",
+      "channel": "-",
+      "description": "A simple attribution analysis dashboard for web visitors.",
+      "shopper_stage": "Business"
+    },
+    {
+      "code": null,
+      "use_case": "Warmup Campaign",
+      "channel": "Email",
+      "description": "This scalable warmup campaign achieves the optimal sender reputation by limiting and gradually increasing the number of emails sent to each internet service provider.",
+      "shopper_stage": "Business"
+    },
+    {
+      "code": null,
+      "use_case": "Watchdog automatic price drop alert",
+      "channel": "Email",
+      "description": "If a customer views a product more than once, this automation checks whether a viewed item is already on discount. If not, and if the customer does not purchase the product within 24 hours, the product is automatically added to a list we call \"watchdog\". Then the automation regularly checks whether the item goes into discount. When it does, the customer gets notified about the discount with a personalized message.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "ORAA",
+      "use_case": "Watchdog automatic restock alert on viewed items",
+      "channel": "Email",
+      "description": "If a customer views a product that's out of stock, the product is automatically added to a list we call \"watchdog\". Then the automation regularly checks whether the item goes back in stock. When it does, the customer gets notified about the restock with a personalized message.",
+      "shopper_stage": "Convert",
+      "original_name": "Watchdog automatic restock alert"
+    },
+    {
+      "code": "OPAR",
+      "use_case": "Watchdog customer initiated price drop alert",
+      "channel": "Email",
+      "description": "A small subscription box on the product page is displayed, asking the newsletter-subscribed visitor if they want to be notified when the product goes into discount. If the customer signs up, the product is automatically added to a list we call \"watchdog\". Then the automation regularly checks whether the item goes into discount. When it does, the customer gets notified about the discount with a personalized message.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "ORAR",
+      "use_case": "Watchdog customer initiated restock alert",
+      "channel": "Email",
+      "description": "Display a small subscription box suggesting the customer can be notified if an item of interest' comes back in stock. If the customer subscribes to the watchdog, Bloomreach confirms this via double opt-in and sends an email if/when the item comes back in stock.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": null,
+      "use_case": "Watchdog price drop on abandoned cart",
+      "channel": "Email",
+      "description": "If a customer adds a product to their cart and does not make the purchase, the product is automatically added to a list we call \"watchdog\". Then the automation regularly checks whether the item goes on discount. When it does, the customer gets notified about the discount with a personalized message, including the product's new price within the message.",
+      "shopper_stage": "Convert"
+    },
+    {
+      "code": "WPNS",
+      "use_case": "Web Push Notification Subscription Banner",
+      "channel": "Web",
+      "description": "A banner asking the visitor if they want to subscribe for web push notifications. Upon confirmation from the visitor, a Chrome request is prompted which needs to be confirmed too. When Chrome request is confirmed, the subscriber will have an authorization key assigned in their customer profile, which allows sending web push notifications to this subscriber. The banner is parametric; icon, colors, position and animation can all be adjusted.",
+      "shopper_stage": "Awareness"
+    },
+    {
+      "code": "OWEF",
+      "use_case": "Welcome Flow",
+      "channel": "Email",
+      "description": "This Welcome Flow is triggered by a unique consent event assigning the Newsletter consent attribute to customers in your Bloomreach project. It\u2019s a simple flow welcoming customers to your brand, consisting of two emails for you to customize creatively.",
+      "shopper_stage": "Interest"
+    },
+    {
+      "code": "WZPD",
+      "use_case": "Zero-Party Data Collection Banner",
+      "channel": "Web",
+      "description": "A scalable banner that collects customer data such as favorite brands (brand list is automatically pulled from item purchase events), preference of style (visual or text), shopper type (premium or discount-hunter), etc. This information can be used later in conjunction with predictions to extrapolate insights about the entire customer base.",
+      "shopper_stage": "Interest"
+    }
+  ]
+}

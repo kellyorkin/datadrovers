@@ -1,0 +1,75 @@
+{
+  "description": "Add-ons and security add-ons available during Bloomreach Engagement scoping. Each entry has a 4-letter code and a human-readable name.",
+  "add_ons": [
+    {
+      "code": "ADDU",
+      "name": "Advanced Data Upgrade"
+    },
+    {
+      "code": "BGQY",
+      "name": "BigQuery"
+    },
+    {
+      "code": "BQPG",
+      "name": "BigQuery PAYG"
+    },
+    {
+      "code": "EXPR",
+      "name": "Exports"
+    },
+    {
+      "code": "SQLR",
+      "name": "SQL Reports"
+    },
+    {
+      "code": "TREM",
+      "name": "Transactional Email"
+    },
+    {
+      "code": "MAPP",
+      "name": "Mobile App Package"
+    },
+    {
+      "code": "PRVT",
+      "name": "Private Instance"
+    },
+    {
+      "code": null,
+      "name": "App Cloud Ecosystem"
+    }
+  ],
+  "security_add_ons": [
+    {
+      "code": "ADSU",
+      "name": "Advanced Security Upgrade"
+    },
+    {
+      "code": "SMRS",
+      "name": "SmartSecure"
+    },
+    {
+      "code": "VSCR",
+      "name": "Vulnerability Scan Report"
+    },
+    {
+      "code": "ESSO",
+      "name": "Single Sign-On"
+    },
+    {
+      "code": "CAFW",
+      "name": "Cloud Armor (Firewall IP Whitelisting)"
+    },
+    {
+      "code": "EVPN",
+      "name": "Virtual Private Network"
+    },
+    {
+      "code": "ESSL",
+      "name": "Custom SSL"
+    },
+    {
+      "code": "AULS",
+      "name": "Audit Logs Shared Instance"
+    }
+  ]
+}

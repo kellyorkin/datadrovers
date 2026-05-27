@@ -1075,7 +1075,7 @@ Welcome flow for new email subscribers — 3-email sequence over 7 days introduc
     ],
 
     agenda: {
-      title: "Discovery Agenda · MicroCenter Phase 1",
+      title: "Discovery Agenda · Voltline Phase 1",
       intro: "Three trigger requests map cleanly to library use cases. <em>The workspace has the underlying data but is operating in a taxonomy-empty state — one architectural decision unblocks most of Phase 1.</em>",
       categories: [
         {
@@ -1141,7 +1141,7 @@ Welcome flow for new email subscribers — 3-email sequence over 7 days introduc
   duplicate: {
     input: `Service Plan Bounceback — after a customer buys a service plan, send a thank-you email with cross-sell offers
 
-ESET Bounceback — after a customer buys ESET antivirus, send a thank-you email with cross-sell for service plans
+Sentinel AV Bounceback — after a customer buys Sentinel AV, send a thank-you email with cross-sell for service plans
 
 Loyalty tier email — customers reaching Gold tier get a congratulations email with their new benefits`,
 
@@ -1163,12 +1163,12 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
         duration: 1400,
         tools: [
           { name: "get_use_case", args: "code: OPFU", result: "Single use case with category-parameterized cross-sell logic" },
-          { name: "compare_trigger_specs", args: "[Service Plan Bounceback, ESET Bounceback]", result: "Same event trigger, same render pattern. Differ only in product filter and cross-sell payload." },
+          { name: "compare_trigger_specs", args: "[Service Plan Bounceback, Sentinel AV Bounceback]", result: "Same event trigger, same render pattern. Differ only in product filter and cross-sell payload." },
           { name: "estimate_build_hours", args: "use_case: OPFU, instances: 1", result: "14.5 hrs (single build, category parameterization)" },
           { name: "estimate_build_hours", args: "use_case: OPFU, instances: 2", result: "28.0 hrs (two separate builds)" },
           { name: "get_use_case", args: "code: OLTU", result: "Standard loyalty tier milestone email pattern" }
         ],
-        synthesis: "Service Plan Bounceback and ESET Bounceback are structurally duplicative — same OPFU pattern with different category filters. Consolidating into one parameterized build saves ~14 hours. The architect should confirm with the client whether the cross-sell logic differs beyond the product filter."
+        synthesis: "Service Plan Bounceback and Sentinel AV Bounceback are structurally duplicative — same OPFU pattern with different category filters. Consolidating into one parameterized build saves ~14 hours. The architect should confirm with the client whether the cross-sell logic differs beyond the product filter."
       },
       {
         title: "Surface — consolidation recommendation and lifecycle context",
@@ -1182,7 +1182,7 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
     ],
 
     agenda: {
-      title: "Discovery Agenda · MicroCenter Phase 1",
+      title: "Discovery Agenda · Voltline Phase 1",
       intro: "Two of three requests appear structurally duplicative. <em>The consolidation question saves significant scope if the client confirms — but only the client can confirm.</em>",
       categories: [
         {
@@ -1190,8 +1190,8 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
           items: [
             {
               cardType: 'consolidation',
-              question: "Does the cross-sell logic for ESET and Service Plan bounceback emails differ beyond the product filter?",
-              triggers: ["Service Plan Bounceback", "ESET Bounceback"],
+              question: "Does the cross-sell logic for Sentinel AV and Service Plan bounceback emails differ beyond the product filter?",
+              triggers: ["Service Plan Bounceback", "Sentinel AV Bounceback"],
               bridge: "consolidate?",
               evidence: [
                 { type: "present", text: "Same OPFU pattern · category-parameterized" },
@@ -1239,11 +1239,11 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
 
   // ==================== SCENARIO 3: PROPER-NOUN ROUTING (VAGUENESS) ====================
   vague: {
-    input: `Customer browses our PC Builder but doesn't convert — send a follow-up email with their saved configuration
+    input: `Customer browses our RigBuilder but doesn't convert — send a follow-up email with their saved configuration
 
 Encourage repeat purchases from previous buyers
 
-iDrive cloud storage prompt — 1 week after purchase, if customer hasn't signed up for cloud storage`,
+Nimbus cloud storage prompt — 1 week after purchase, if customer hasn't signed up for cloud storage`,
 
     triggerCount: 3,
 
@@ -1256,20 +1256,20 @@ iDrive cloud storage prompt — 1 week after purchase, if customer hasn't signed
           { name: "search_use_cases", args: 'query: "repeat purchase encouragement"', result: "Multiple candidates — query too broad" },
           { name: "search_use_cases", args: 'query: "post-purchase prompt cross-sell external"', result: "Closest match: OPFU — partial confidence" }
         ],
-        synthesis: "None of the three requests cleanly map to a single P&P use case at high confidence. Each contains client-specific language that needs definition before scope can be written: 'PC Builder', 'repeat purchases' (no timing), 'iDrive'."
+        synthesis: "None of the three requests cleanly map to a single P&P use case at high confidence. Each contains client-specific language that needs definition before scope can be written: 'RigBuilder', 'repeat purchases' (no timing), 'Nimbus'."
       },
       {
         title: "Ground — distinguishing client-specific terms from library vocabulary",
         duration: 1300,
         tools: [
-          { name: "classify_term", args: 'term: "PC Builder"', result: "Proper noun · not in library · likely custom system" },
+          { name: "classify_term", args: 'term: "RigBuilder"', result: "Proper noun · not in library · likely custom system" },
           { name: "get_event_schema", args: 'event: view_item', result: "89,717 events captured · custom event · unmapped to standard taxonomy" },
           { name: "classify_term", args: 'term: "repeat purchases"', result: "Standard concept · multiple library patterns" },
           { name: "get_use_case", args: 'code: OFRR', result: "Frequency-based Repurchase — requires defined cadence" },
-          { name: "classify_term", args: 'term: "iDrive"', result: "Proper noun · external service · not in library" },
+          { name: "classify_term", args: 'term: "Nimbus"', result: "Proper noun · external service · not in library" },
           { name: "find_integration_pattern", args: 'context: "external service signup status"', result: "Requires inbound webhook from external service" }
         ],
-        synthesis: "Two of three triggers reference client-specific or external systems by name. PC Builder is custom — likely a product configurator emitting view_item events under some custom name. iDrive is third-party and requires an integration handshake. Repeat purchases needs a cadence definition the client must provide."
+        synthesis: "Two of three triggers reference client-specific or external systems by name. RigBuilder is custom — likely a product configurator emitting view_item events under some custom name. Nimbus is third-party and requires an integration handshake. Repeat purchases needs a cadence definition the client must provide."
       },
       {
         title: "Surface — definitional gaps that block library matching",
@@ -1278,12 +1278,12 @@ iDrive cloud storage prompt — 1 week after purchase, if customer hasn't signed
           { name: "compose_definition_questions", args: "context: client-specific terms", result: "3 questions generated" },
           { name: "get_lifecycle_stages", args: "tentative: [OABF, OFRR, OPFU]", result: "Interest · Loyalty · Loyalty" }
         ],
-        synthesis: "Three discovery questions block scope. Two are about client-specific systems (PC Builder, iDrive); one is about the client's working definition of 'repeat'. None of these can be resolved from the library — only the client knows."
+        synthesis: "Three discovery questions block scope. Two are about client-specific systems (RigBuilder, Nimbus); one is about the client's working definition of 'repeat'. None of these can be resolved from the library — only the client knows."
       }
     ],
 
     agenda: {
-      title: "Discovery Agenda · MicroCenter Phase 1",
+      title: "Discovery Agenda · Voltline Phase 1",
       intro: "Three trigger requests reference language the library cannot resolve. <em>Each needs a client-facing definition question before it can be scoped.</em>",
       categories: [
         {
@@ -1291,25 +1291,25 @@ iDrive cloud storage prompt — 1 week after purchase, if customer hasn't signed
           items: [
             {
               cardType: 'vagueness',
-              pinnedPhrase: "Customer browses our PC Builder but doesn't convert",
-              question: "What is PC Builder, what events does it emit, and what does \"doesn't convert\" mean in that context?",
+              pinnedPhrase: "Customer browses our RigBuilder but doesn't convert",
+              question: "What is RigBuilder, what events does it emit, and what does \"doesn't convert\" mean in that context?",
               evidence: [
                 { type: "missing", text: "Library: no direct match" },
                 { type: "present", text: "Workspace: view_item events flowing (89K)" },
                 { type: "affected", text: "Custom event taxonomy required" }
               ],
-              rationale: "PC Builder appears to be a client-specific product configurator. Workspace has view_item events at high volume — possibly including PC Builder interactions under a custom name. The closest library analog is browse abandonment (OABF), but the event shape and the definition of 'didn't convert' is custom to the client.",
+              rationale: "RigBuilder appears to be a client-specific product configurator. Workspace has view_item events at high volume — possibly including RigBuilder interactions under a custom name. The closest library analog is browse abandonment (OABF), but the event shape and the definition of 'didn't convert' is custom to the client.",
               source: "Client-specific system definition · OABF analog"
             },
             {
               cardType: 'vagueness',
-              pinnedPhrase: "iDrive cloud storage prompt — 1 week after purchase",
-              question: "Is iDrive a Bloomreach-managed cross-sell or an external service the client integrates with?",
+              pinnedPhrase: "Nimbus cloud storage prompt — 1 week after purchase",
+              question: "Is Nimbus a Bloomreach-managed cross-sell or an external service the client integrates with?",
               evidence: [
                 { type: "missing", text: "Library: no match" },
                 { type: "affected", text: "Integration scope dependent" }
               ],
-              rationale: "iDrive is a third-party cloud storage product. If the client wants to message about iDrive signup status, Bloomreach needs to either (a) receive a webhook when signup happens, or (b) be granted query access to the iDrive API. Both are integration decisions outside the standard P&P scope.",
+              rationale: "Nimbus is a third-party cloud storage product. If the client wants to message about Nimbus signup status, Bloomreach needs to either (a) receive a webhook when signup happens, or (b) be granted query access to the Nimbus API. Both are integration decisions outside the standard P&P scope.",
               source: "Integration pattern · external service handshake"
             }
           ]

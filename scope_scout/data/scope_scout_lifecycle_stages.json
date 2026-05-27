@@ -1,0 +1,260 @@
+{
+  "description": "Shopper lifecycle stages with their impacted KPIs and the plug-and-play use cases that address each stage. Used by the agent for stage-level strategic reasoning.",
+  "stages": [
+    {
+      "stage": "Awareness",
+      "impacted_kpis": [
+        "New customers",
+        "ROAS",
+        "Email Signups"
+      ],
+      "use_cases": [
+        {
+          "code": null,
+          "name": "Granular Lookalike Targeting Based on CLTV",
+          "match_status": "unmatched"
+        },
+        {
+          "code": "OLTC",
+          "name": "Paid Ad Optimization: Lookalike Targeting Based on CLTV and Loyalty",
+          "original_name": "Lookalike targeting based on CLTV and loyalty"
+        },
+        {
+          "code": "ATAD",
+          "name": "Traffic Analytics Dashboard"
+        },
+        {
+          "code": "OABE",
+          "name": "Paid Ad Optimization: Targeting Based on Email Engagement"
+        },
+        {
+          "code": "WDOI",
+          "name": "Double Opt-In Subscription Banner with Automated Confirmation Emails and Consent Management"
+        },
+        {
+          "code": "WSOI",
+          "name": "Single Opt-In Subscription Banner with Automated Consent Management"
+        },
+        {
+          "code": "WPNS",
+          "name": "Web Push Notification Subscription Banner"
+        }
+      ]
+    },
+    {
+      "stage": "Interest",
+      "impacted_kpis": [
+        "Email performance",
+        "Site Visits",
+        "Product Engagment"
+      ],
+      "use_cases": [
+        {
+          "code": null,
+          "name": "Warmup Campaign",
+          "match_status": "unmatched"
+        },
+        {
+          "code": "AEPD",
+          "name": "Email Performance Dashboard"
+        },
+        {
+          "code": "OIGC",
+          "name": "Automated Instagram Content Newsletters"
+        },
+        {
+          "code": "OYTF",
+          "name": "Automated YouTube Feed Newsletters"
+        },
+        {
+          "code": "OCAN",
+          "name": "Automated Newsletter for New Items from Most Visited (But Never Purchased) Product Category"
+        },
+        {
+          "code": "ABCS",
+          "name": "Best channel segmentation"
+        },
+        {
+          "code": "OTPR",
+          "name": "Bi-Weekly Automated Top Product Recommendation Newsletter"
+        },
+        {
+          "code": "OBAN",
+          "name": "Brand Affinity: Automated Newsletter for New Items from Favorite Brand"
+        },
+        {
+          "code": "WBSB",
+          "name": "Best Sellers/Trending Badges"
+        },
+        {
+          "code": "WBTA",
+          "name": "Browser Tab Animation"
+        },
+        {
+          "code": "OWEF",
+          "name": "Welcome Flow"
+        },
+        {
+          "code": "WZPD",
+          "name": "Zero-Party Data Collection Banner"
+        },
+        {
+          "code": null,
+          "name": "Global Badges",
+          "match_status": "unmatched"
+        },
+        {
+          "code": null,
+          "name": "Product-specific Badges",
+          "match_status": "unmatched"
+        },
+        {
+          "code": "APAD",
+          "name": "Product Analytics Dashboard"
+        }
+      ]
+    },
+    {
+      "stage": "Convert",
+      "impacted_kpis": [
+        "Conversion Rate",
+        "AOV"
+      ],
+      "use_cases": [
+        {
+          "code": "OABF",
+          "name": "Abandoned Browse Flow"
+        },
+        {
+          "code": "OACP",
+          "name": "Abandoned Cart Flow with Product Personalization"
+        },
+        {
+          "code": "OACR",
+          "name": "Abandoned Cart Flow with Recommendations"
+        },
+        {
+          "code": null,
+          "name": "Abandoned Cart Flow without Product Personalization",
+          "match_status": "unmatched"
+        },
+        {
+          "code": "WFRB",
+          "name": "Free Delivery Banner"
+        },
+        {
+          "code": "WJBL",
+          "name": "\"Just Bought\" Location-Based Social Proof",
+          "original_name": "Just Bought Location-Based Social Proof"
+        },
+        {
+          "code": null,
+          "name": "Low-Stock Banner",
+          "match_status": "unmatched"
+        },
+        {
+          "code": "WNDC",
+          "name": "Next day delivery countdown"
+        },
+        {
+          "code": "WSSP",
+          "name": "Standard Social Proof Banner"
+        },
+        {
+          "code": "WDCB",
+          "name": "Sticky Top Discount Countdown Banner"
+        },
+        {
+          "code": null,
+          "name": "Watchdog automatic price drop alert",
+          "match_status": "unmatched"
+        },
+        {
+          "code": "ORAA",
+          "name": "Watchdog automatic restock alert on viewed items",
+          "original_name": "Watchdog automatic restock alert"
+        },
+        {
+          "code": "OPAR",
+          "name": "Watchdog customer initiated price drop alert"
+        },
+        {
+          "code": "ORAR",
+          "name": "Watchdog customer initiated restock alert"
+        },
+        {
+          "code": null,
+          "name": "Watchdog price drop on abandoned cart",
+          "match_status": "unmatched"
+        },
+        {
+          "code": "WOEB",
+          "name": "On-Exit Banner with the Last Viewed Items"
+        },
+        {
+          "code": "ACVD",
+          "name": "Conversion Dashboard"
+        },
+        {
+          "code": "OFBC",
+          "name": "Facebook Conversions API"
+        },
+        {
+          "code": "WCUP",
+          "name": "Cart update popup banner with recommendations"
+        }
+      ]
+    },
+    {
+      "stage": "Loyalty",
+      "impacted_kpis": [
+        "Retention Rate",
+        "LTV"
+      ],
+      "use_cases": [
+        {
+          "code": "OBDC",
+          "name": "Birthday campaign",
+          "original_name": "Birthday campaigns"
+        },
+        {
+          "code": "ABAD",
+          "name": "Business Overview Dashboard"
+        },
+        {
+          "code": null,
+          "name": "Customer Lifetime Value Dashboard (+ RFM Segmentation)",
+          "match_status": "unmatched"
+        },
+        {
+          "code": "OFRC",
+          "name": "Frequency-based Repurchase Campaign"
+        },
+        {
+          "code": "OLOP",
+          "name": "Loyalty Program"
+        },
+        {
+          "code": "OPRC",
+          "name": "Personalized Reactivation Campaign for Lapsing Subscribers"
+        },
+        {
+          "code": "ONPS",
+          "name": "Post-purchase NPS survey email"
+        },
+        {
+          "code": "OPAC",
+          "name": "Purchase Anniversary & Purchase Half-Anniversary Emails with Personalized Recommendations"
+        },
+        {
+          "code": "OPFU",
+          "name": "Purchase follow up emails with complimentary product recommendations"
+        },
+        {
+          "code": "ARET",
+          "name": "Retention Dashboard"
+        }
+      ]
+    }
+  ]
+}

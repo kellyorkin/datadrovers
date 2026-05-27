@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scope Scout — Discovery Console</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #141b24;
+    --panel-2: #1b2430;
+    --border: #25303d;
+    --text: #d7e0ea;
+    --muted: #7d8da0;
+    --accent: #4da3ff;      /* datadrovers blue */
+    --live: #2fcf8f;        /* live workspace green */
+    --live-dim: #16352a;
+    --local: #8a7dff;       /* local-knowledge violet */
+    --warn: #ffb454;
+    --mono: ui-monospace, "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+    --sans: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg); color: var(--text); font-family: var(--sans);
+    display: flex; flex-direction: column; font-size: 14px; line-height: 1.5;
+  }
+
+  /* ---- header ---- */
+  header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 12px 20px; border-bottom: 1px solid var(--border);
+    background: var(--panel);
+  }
+  .brand { font-weight: 700; letter-spacing: .3px; }
+  .brand .sub { color: var(--muted); font-weight: 400; margin-left: 8px; }
+  .pill {
+    margin-left: auto; font-family: var(--mono); font-size: 12px;
+    padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border);
+    display: inline-flex; align-items: center; gap: 7px;
+  }
+  .pill .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .pill.live { color: var(--live); border-color: var(--live-dim); background: var(--live-dim); }
+  .pill.live .dot { background: var(--live); box-shadow: 0 0 8px var(--live); animation: pulse 1.8s infinite; }
+  .pill.fixtures { color: var(--muted); }
+  .pill.fixtures .dot { background: var(--muted); }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+  button.ghost {
+    font-family: var(--sans); font-size: 12px; color: var(--muted);
+    background: transparent; border: 1px solid var(--border); border-radius: 6px;
+    padding: 5px 10px; cursor: pointer;
+  }
+  button.ghost:hover { color: var(--text); border-color: var(--accent); }
+
+  /* ---- panes ---- */
+  main { flex: 1; display: grid; grid-template-columns: 1fr 1fr; min-height: 0; }
+  .pane { display: flex; flex-direction: column; min-height: 0; }
+  .pane.left { border-right: 1px solid var(--border); }
+  .pane-head {
+    padding: 9px 18px; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 1.2px; color: var(--muted); border-bottom: 1px solid var(--border);
+    background: var(--panel);
+  }
+  .scroll { flex: 1; overflow-y: auto; padding: 18px; }
+
+  /* ---- conversation ---- */
+  .msg { margin-bottom: 18px; }
+  .msg .who { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 5px; }
+  .msg.architect .who { color: var(--accent); }
+  .msg.scout .who { color: var(--live); }
+  .bubble {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 15px;
+  }
+  .msg.architect .bubble { background: var(--panel-2); }
+  .bubble h3 { font-size: 13px; margin: 14px 0 6px; color: var(--accent); text-transform: uppercase; letter-spacing: .6px; }
+  .bubble h3:first-child { margin-top: 0; }
+  .bubble ul { margin: 6px 0; padding-left: 20px; }
+  .bubble li { margin: 4px 0; }
+  .bubble code { font-family: var(--mono); background: #0c1118; padding: 1px 5px; border-radius: 4px; color: var(--warn); font-size: 12.5px; }
+  .bubble strong { color: #fff; }
+  .bubble p { margin: 7px 0; }
+  .bubble table { border-collapse: collapse; margin: 10px 0; width: 100%; font-size: 12.5px; }
+  .bubble th, .bubble td { border: 1px solid var(--border); padding: 6px 9px; text-align: left; vertical-align: top; }
+  .bubble th { background: var(--panel-2); color: var(--accent); font-weight: 600; }
+  .bubble tbody tr:nth-child(even) { background: rgba(255,255,255,.02); }
+
+  /* ---- trace ---- */
+  .trace-item {
+    border: 1px solid var(--border); border-radius: 8px; margin-bottom: 10px;
+    overflow: hidden; background: var(--panel);
+  }
+  .trace-head {
+    display: flex; align-items: center; gap: 9px; padding: 9px 12px; cursor: pointer;
+    font-family: var(--mono); font-size: 12.5px;
+  }
+  .trace-head:hover { background: var(--panel-2); }
+  .badge {
+    font-size: 9.5px; font-weight: 700; letter-spacing: .6px; padding: 2px 6px;
+    border-radius: 4px; text-transform: uppercase; flex-shrink: 0;
+  }
+  .badge.live { background: var(--live-dim); color: var(--live); border: 1px solid var(--live); }
+  .badge.local { background: #221f3a; color: var(--local); border: 1px solid #3a3460; }
+  .tname { color: var(--text); font-weight: 600; }
+  .targs { color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .status { margin-left: auto; flex-shrink: 0; font-size: 11px; }
+  .status.running { color: var(--warn); }
+  .status.done { color: var(--live); }
+  .status.err { color: #ff6b6b; }
+  .spinner {
+    width: 11px; height: 11px; border: 2px solid var(--border); border-top-color: var(--warn);
+    border-radius: 50%; display: inline-block; animation: spin .7s linear infinite; vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .trace-body {
+    display: none; border-top: 1px solid var(--border); padding: 10px 12px;
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    white-space: pre-wrap; word-break: break-word; max-height: 280px; overflow-y: auto;
+    background: #0b0f15;
+  }
+  .trace-item.open .trace-body { display: block; }
+  .trace-think {
+    color: var(--muted); font-style: italic; font-size: 12.5px; margin: 4px 2px 14px;
+    padding-left: 10px; border-left: 2px solid var(--border);
+  }
+  .trace-empty { color: var(--muted); font-style: italic; }
+
+  /* ---- input ---- */
+  .composer { border-top: 1px solid var(--border); padding: 12px 18px; background: var(--panel); }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+  .chip {
+    font-size: 11.5px; color: var(--muted); background: var(--panel-2);
+    border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; cursor: pointer;
+  }
+  .chip:hover { color: var(--text); border-color: var(--accent); }
+  .composer .row { display: flex; gap: 10px; align-items: flex-end; }
+  textarea {
+    flex: 1; resize: none; background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px;
+    font-family: var(--sans); font-size: 14px; line-height: 1.45; min-height: 44px; max-height: 160px;
+  }
+  textarea:focus { outline: none; border-color: var(--accent); }
+  button.send {
+    background: var(--accent); color: #03111f; border: none; border-radius: 8px;
+    padding: 11px 20px; font-weight: 700; cursor: pointer; font-size: 14px;
+  }
+  button.send:disabled { opacity: .45; cursor: not-allowed; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">Scope Scout<span class="sub">Discovery Console · Datadrovers</span></div>
+  {% if live %}
+  <span class="pill live"><span class="dot"></span>LIVE · neon-sock</span>
+  {% else %}
+  <span class="pill fixtures"><span class="dot"></span>LOCAL KNOWLEDGE</span>
+  {% endif %}
+  <button class="ghost" id="resetBtn">New session</button>
+</header>
+
+<main>
+  <section class="pane left">
+    <div class="pane-head">Conversation</div>
+    <div class="scroll" id="conversation"></div>
+    <div class="composer">
+      <div class="chips" id="chips">
+        <div class="chip" data-prompt="We're scoping a Bloomreach Engagement implementation for a furniture retailer. The client wants: (1) abandoned cart recovery email, (2) welcome flow for newsletter signups, and (3) loyalty program for repeat customers. Before I scope this, what should I be checking and asking the client?">Furniture retailer · 3 asks</div>
+        <div class="chip" data-prompt="Run a mapping-readiness audit on the workspace: bucket the tracked events into cleanly-mapped, missing, and ambiguous, and flag any data-quality issues that would break a use case.">Mapping-readiness audit</div>
+        <div class="chip" data-prompt="The client says consent isn't configured yet. Which use cases does that block, and what do I need to ask them about it?">Consent gap · propagate</div>
+      </div>
+      <div class="row">
+        <textarea id="input" placeholder="Drop a business goal, a client trigger list, or a workspace question…"></textarea>
+        <button class="send" id="sendBtn">Send</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="pane right">
+    <div class="pane-head">Reasoning trace</div>
+    <div class="scroll" id="trace"><div class="trace-empty">Tool calls and live workspace reads will appear here as Scotty works.</div></div>
+  </section>
+</main>
+
+<script>
+const conversation = document.getElementById("conversation");
+const trace = document.getElementById("trace");
+const input = document.getElementById("input");
+const sendBtn = document.getElementById("sendBtn");
+const resetBtn = document.getElementById("resetBtn");
+
+const LIVE_PREFIX = "workspace_";
+
+function esc(s){ return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+// Light markdown → HTML for Scotty's agenda prose (headings, bold, code,
+// bullets, and GitHub-style tables — the agent uses all of these).
+function mdToHtml(md){
+  const lines = esc(md).split("\n");
+  let html = "", inList = false;
+  const inline = t => t
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/`([^`]+?)`/g, "<code>$1</code>");
+  const closeList = () => { if(inList){ html += "</ul>"; inList = false; } };
+  const isTableRow = l => /^\s*\|.*\|\s*$/.test(l);
+  const isSepRow = l => /^\s*\|?[\s:|-]*-[\s:|-]*\|?\s*$/.test(l) && l.includes("-");
+  const cells = l => l.trim().replace(/^\||\|$/g, "").split("|").map(c => c.trim());
+
+  for (let i = 0; i < lines.length; i++){
+    const line = lines[i].trimEnd();
+    // Table: a row line followed by a dash-separator line.
+    if (isTableRow(line) && i+1 < lines.length && isSepRow(lines[i+1])){
+      closeList();
+      const head = cells(line);
+      html += "<table><thead><tr>" + head.map(c => `<th>${inline(c)}</th>`).join("") + "</tr></thead><tbody>";
+      i += 2;  // skip header + separator
+      while (i < lines.length && isTableRow(lines[i])){
+        html += "<tr>" + cells(lines[i]).map(c => `<td>${inline(c)}</td>`).join("") + "</tr>";
+        i++;
+      }
+      i--;  // for-loop will increment
+      html += "</tbody></table>";
+      continue;
+    }
+    const h = line.match(/^#{1,4}\s+(.*)/);
+    const bullet = line.match(/^\s*[-*]\s+(.*)/);
+    if (h){ closeList(); html += `<h3>${inline(h[1])}</h3>`; }
+    else if (bullet){ if(!inList){html+="<ul>";inList=true;} html += `<li>${inline(bullet[1])}</li>`; }
+    else if (line === ""){ closeList(); }
+    else { closeList(); html += `<p>${inline(line)}</p>`; }
+  }
+  closeList();
+  return html;
+}
+
+function addMessage(who, label){
+  const div = document.createElement("div");
+  div.className = `msg ${who}`;
+  div.innerHTML = `<div class="who">${label}</div><div class="bubble"></div>`;
+  conversation.appendChild(div);
+  conversation.scrollTop = conversation.scrollHeight;
+  return div.querySelector(".bubble");
+}
+
+function clearTracePlaceholder(){
+  const empty = trace.querySelector(".trace-empty");
+  if (empty) empty.remove();
+}
+
+// Trace renderers. We keep a handle to the most recent tool-call item so its
+// matching tool_result can fill in the body + flip the status.
+const pendingByName = {};
+
+function addThink(text){
+  if(!text.trim()) return;
+  clearTracePlaceholder();
+  const d = document.createElement("div");
+  d.className = "trace-think";
+  d.textContent = text.trim();
+  trace.appendChild(d);
+  trace.scrollTop = trace.scrollHeight;
+}
+
+function addToolUse(name, inputObj){
+  clearTracePlaceholder();
+  const isLive = name.startsWith(LIVE_PREFIX);
+  const argStr = Object.keys(inputObj||{}).length ? JSON.stringify(inputObj) : "—";
+  const item = document.createElement("div");
+  item.className = "trace-item";
+  item.innerHTML = `
+    <div class="trace-head">
+      <span class="badge ${isLive?'live':'local'}">${isLive?'LIVE':'LOCAL'}</span>
+      <span class="tname">${esc(name)}</span>
+      <span class="targs">${esc(argStr)}</span>
+      <span class="status running"><span class="spinner"></span></span>
+    </div>
+    <div class="trace-body"></div>`;
+  item.querySelector(".trace-head").addEventListener("click", () => item.classList.toggle("open"));
+  trace.appendChild(item);
+  trace.scrollTop = trace.scrollHeight;
+  (pendingByName[name] = pendingByName[name] || []).push(item);
+}
+
+function addToolResult(name, result){
+  const queue = pendingByName[name];
+  const item = queue && queue.shift();
+  if(!item) return;
+  let pretty = result, isErr = false;
+  try { const obj = JSON.parse(result); isErr = !!obj.error; pretty = JSON.stringify(obj, null, 2); } catch(e){}
+  item.querySelector(".trace-body").textContent = pretty;
+  const status = item.querySelector(".status");
+  status.className = "status " + (isErr ? "err" : "done");
+  status.textContent = isErr ? "error" : `${result.length} chars`;
+}
+
+// --- SSE-over-fetch: POST returns a text/event-stream we parse by hand. ---
+async function runTurn(text){
+  addMessage("architect", "Architect").textContent = text;
+  let scoutBubble = null;
+  let scoutText = "";
+
+  const resp = await fetch("/api/chat", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({input: text}),
+  });
+
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder();
+  let buf = "";
+  while(true){
+    const {value, done} = await reader.read();
+    if(done) break;
+    buf += decoder.decode(value, {stream:true});
+    const frames = buf.split("\n\n");
+    buf = frames.pop();  // keep partial frame
+    for(const frame of frames){
+      const line = frame.split("\n").find(l => l.startsWith("data:"));
+      if(!line) continue;
+      const ev = JSON.parse(line.slice(5).trim());
+      handleEvent(ev, () => {
+        if(!scoutBubble) scoutBubble = addMessage("scout", "Scope Scout");
+        return scoutBubble;
+      }, t => { scoutText = t; });
+    }
+  }
+}
+
+function handleEvent(ev, getBubble, setText){
+  if(ev.type === "thinking"){
+    if(ev.text.trim()){
+      const bubble = getBubble();
+      bubble.innerHTML = mdToHtml(ev.text);
+      conversation.scrollTop = conversation.scrollHeight;
+    }
+    // also drop a short note in the trace so the panes stay in lock-step
+    addThink(ev.text.length > 220 ? ev.text.slice(0,220)+"…" : ev.text);
+  } else if(ev.type === "tool_use"){
+    addToolUse(ev.name, ev.input);
+  } else if(ev.type === "tool_result"){
+    addToolResult(ev.name, ev.result);
+  } else if(ev.type === "final"){
+    if(ev.text && ev.text.trim()){
+      const bubble = getBubble();
+      bubble.innerHTML = mdToHtml(ev.text);
+    }
+  } else if(ev.type === "error"){
+    const bubble = getBubble();
+    bubble.innerHTML = `<p style="color:#ff6b6b">⚠ ${esc(ev.text)}</p>`;
+  }
+}
+
+async function send(){
+  const text = input.value.trim();
+  if(!text) return;
+  input.value = "";
+  sendBtn.disabled = true; input.disabled = true;
+  try { await runTurn(text); }
+  catch(e){ addMessage("scout","Scope Scout").innerHTML = `<p style="color:#ff6b6b">⚠ ${esc(String(e))}</p>`; }
+  finally { sendBtn.disabled = false; input.disabled = false; input.focus(); }
+}
+
+sendBtn.addEventListener("click", send);
+input.addEventListener("keydown", e => {
+  if(e.key === "Enter" && !e.shiftKey){ e.preventDefault(); send(); }
+});
+document.querySelectorAll(".chip").forEach(c =>
+  c.addEventListener("click", () => { input.value = c.dataset.prompt; input.focus(); })
+);
+resetBtn.addEventListener("click", async () => {
+  await fetch("/api/reset", {method:"POST"});
+  conversation.innerHTML = "";
+  trace.innerHTML = '<div class="trace-empty">Tool calls and live workspace reads will appear here as Scotty works.</div>';
+  input.focus();
+});
+input.focus();
+</script>
+</body>
+</html>

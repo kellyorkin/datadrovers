@@ -1,0 +1,1141 @@
+{
+  "description": "Plug & Play use case reference library for Scope Scout agent reasoning. Each entry represents a productized customer experience use case with code, name, family, descriptive metadata, impact rating, QA hour estimate, and package eligibility.",
+  "use_case_count": 72,
+  "use_cases": [
+    {
+      "code": "ABAD",
+      "name": "Business Overview Dashboard",
+      "family": "Analytics & Dashboards",
+      "description": "A high level dashboard with important business metrics such as lifetime value segments, email performance, web traffic and conversion analytics.",
+      "impact": "Low",
+      "qa_hours": 2,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "status": true
+    },
+    {
+      "code": "ABCS",
+      "name": "Best channel segmentation",
+      "family": "Analytics & Dashboards",
+      "description": "Automatically detecting the best channel to communicate for each customer.",
+      "goal": "Personalize communications with customers",
+      "impact": "Medium",
+      "qa_hours": 2,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "status": true
+    },
+    {
+      "code": "ABRE",
+      "name": "Business Review Evaluation (QBR)",
+      "family": "Analytics & Dashboards",
+      "description": "Extensive set of reports that monitor main business KPIs and their development in time thanks to automatised saving of most important metrics",
+      "impact": "Medium",
+      "qa_hours": 3,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "ACVD",
+      "name": "Conversion Dashboard",
+      "family": "Analytics & Dashboards",
+      "description": "Purchase funnel, split across device, session conversion by traffic source",
+      "outcome": "Optimize conversion rates using real-time insights.",
+      "goal": "Understand our customers, Increase conversion on the website, Increase Overall RPV",
+      "impact": "Low",
+      "qa_hours": 1,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "AE1D",
+      "name": "Email Deliverability Dashboard",
+      "family": "Analytics & Dashboards",
+      "description": "Standard email deliverability report (open/click/unsubscribe/complaint), ISP report, top domains with most important metrics to monitor",
+      "impact": "Low",
+      "qa_hours": 1,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "AE3H",
+      "name": "Email Health and Engagement Dashboard",
+      "family": "Analytics & Dashboards",
+      "description": "Standard email report focused on customer email database, the changes over time and engagement",
+      "impact": "Low",
+      "qa_hours": 1,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "AEPD",
+      "name": "Email Performance Dashboard",
+      "family": "Analytics & Dashboards",
+      "description": "Standard email performance report (open/click/unsubscribe/complaint), unsubsribe report, newsletter revenue report (using CDP revenue attribution logic)",
+      "outcome": "Optimize email campaigns using real-time insights.",
+      "goal": "Understand our customers, Maximize email deliverability",
+      "impact": "Medium",
+      "qa_hours": 1,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Email"
+      ],
+      "status": true
+    },
+    {
+      "code": "AEXD",
+      "name": "Executive Dashboard for T3-T4 Clients",
+      "family": "Analytics & Dashboards",
+      "description": "A easy to understand dashboard that compiles the most important metrics with scenario that is regularly sending the results per email to main stakeholders.",
+      "qa_hours": 1
+    },
+    {
+      "code": "APAD",
+      "name": "Product Analytics Dashboard",
+      "family": "Analytics & Dashboards",
+      "description": "Trending products last week, trending categories last week, best converting products, best converting categories, most returned products",
+      "outcome": "Visualize trends in consumer behavior as it applies to your unique product offering.",
+      "goal": "Understand our customers",
+      "impact": "Low",
+      "qa_hours": 1,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "APMS",
+      "name": "Apple Mail segmentation",
+      "family": "Analytics & Dashboards",
+      "description": "Set of reports focused on identifying the iOS 15 users, reports of emailing metrics divided between iOs 15 users and other to reveal the impact of new policies that lead to less data tracking.",
+      "impact": "Low",
+      "qa_hours": 1,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    },
+    {
+      "code": "ARET",
+      "name": "Retention Dashboard",
+      "family": "Analytics & Dashboards",
+      "description": "Customer retention cohorts; shop retention metrics: repeat rate, last month retention, 3 months cohort repeat rate, average time between purchases; session return funnel with a focus on non-subscribers",
+      "outcome": "Visualize the retention and loyalty of your customer base.",
+      "goal": "Understand our customers, Increase returning customers",
+      "impact": "Low",
+      "qa_hours": 1,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    },
+    {
+      "code": "ATAD",
+      "name": "Traffic Analytics Dashboard",
+      "family": "Analytics & Dashboards",
+      "description": "A simple attribution analysis dashboard for web visitors.",
+      "outcome": "Optimize website journeys using real-time insights.",
+      "goal": "Understand our customers, Improve organic search volume, Optimize ads (Google, Facebook, etc)",
+      "impact": "Low",
+      "qa_hours": 2,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Growth"
+      ],
+      "status": true
+    },
+    {
+      "code": "ATAU",
+      "name": "AdTech audiences (FB, Google)",
+      "family": "Analytics & Dashboards",
+      "description": "Template scenarios that are bases for bulding any adtech scenario weather it is retargeting or lookalike audience. The scenarios are predefined for sending customer audiences based on segmentation or condition.",
+      "channels": "Paid Ads",
+      "impact": "Medium",
+      "qa_hours": 3,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Growth"
+      ],
+      "status": true
+    },
+    {
+      "code": "OABE",
+      "name": "Paid Ad Optimization: Targeting Based on Email Engagement",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "This ready-made use case optimizes your paid ad campaigns. Some of your customers might currently have lower engagement with your email campaigns. Among this group of customers, some might only prefer a different channel of communication. The scenario allows you to engage with these customers using paid channels to see if which customers are better approached through these channels as opposed to email. On the other hand, this use case also enables you to exclude customers who are highly engaged with email from your paid ads audience/s for maximal media efficiency and effectiveness.",
+      "outcome": "Drives both the efficiency and effectiveness of paid media advertising by informing it with 1st-party email data. Informing lookalike audiences with Bloomreach data has yielded Bloomreach clients up to +151% revenues and -38% cost-per-acquisition (CPA) for lookalike campaigns.",
+      "goal": "Improve organic search volume, Optimize ads (Google, Facebook, etc), Personalize communications with customers, Maximize email deliverability",
+      "channels": "Paid Ads",
+      "impact": "Low",
+      "qa_hours": 4,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Growth",
+        "Email"
+      ],
+      "status": true
+    },
+    {
+      "code": "OABF",
+      "name": "Abandoned Browse Flow",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Abandoned browse flow is triggered with a session_end event when visitors leave the website. After a certain waiting time, if the visitor has viewed at least two items and hasn\u2019t made any purchase, they will receive emails to remind them about the products they viewed.",
+      "outcome": "Boost your conversion rates and RPV with this essential bottom-funnel marketing tactic.",
+      "goal": "Personalize communications with customers, Maximize email deliverability, Increase conversion on the website, Increase Overall RPV",
+      "channels": "Email",
+      "impact": "High",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OABO",
+      "name": "Abandoned Browse with Omnichannel",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "One of the most popular use cases - Abandoned Browse - is now available for different channels: emails, sms, mms, push notifications.",
+      "channels": "Email, SMS, Push Notification",
+      "qa_hours": 5
+    },
+    {
+      "code": "OACO",
+      "name": "Abandoned Cart Flow with Omnichannel",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "One of the most popular use cases - Abandoned Cart - is now available for different channels: emails, sms, mms, push notifications.",
+      "channels": "Email, SMS, Push Notification",
+      "qa_hours": 5
+    },
+    {
+      "code": "OACP",
+      "name": "Abandoned Cart Flow with Product Personalization",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Abandoned cart (basket) emails are triggered with a cart_update event when visitors add items to their cart. After a specified waiting time, if the visitor hasn\u2019t made any purchase, they will receive emails to remind them about their cart. There are several best practice criteria in the flow; such as ensuring that there were no other cart updates since the trigger event, or no purchases happened during the wait period. The emails are personalised to include the image, title and price of the items in the cart.",
+      "outcome": "Drive conversions and revenue per visitor (RPV) with this essential bottom-funnel marketing tactic.",
+      "goal": "Personalize communications with customers, Increase conversion on the website, Increase Overall RPV",
+      "channels": "Email",
+      "impact": "High",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OACR",
+      "name": "Abandoned Cart Flow with Recommendations",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Abandoned cart (basket) emails are triggered with a cart_update event when visitors add items to their cart. After a specified waiting time, if the visitor hasn\u2019t made any purchase, they will receive emails to remind them about their cart. There are several best practice criteria in the flow; such as ensuring that there were no other cart updates since the trigger event, or no purchases happened during the wait period. The emails are personalised to include the image, title and price of the items in the cart. Additionally, product recommendations are placed in the email to recommend additional items to the customer.",
+      "outcome": "Drive conversions and revenue per visitor (RPV) with this essential bottom-funnel marketing tactic.",
+      "goal": "Personalize communications with customers, Increase conversion on the website, Increase Overall RPV",
+      "channels": "Email",
+      "impact": "High",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OBAN",
+      "name": "Brand Affinity: Automated Newsletter for New Items from Favorite Brand",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Based on customers' past behaviours, both offline and online, we know which brands they have shown the most interest in the past. This automation checks the new products from that brand and notifies the customers when there are products personally interesting for them. This use case also works with category affinity, or a specific tag affinity.",
+      "outcome": "Drive conversions and email revenue by contacting customers with new favorite products in stock by their preferred brand.",
+      "goal": "Personalize communications with customers, Maximize email deliverability, Increase returning customers",
+      "channels": "Email",
+      "impact": "High",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": "In progress"
+    },
+    {
+      "code": "OBDC",
+      "name": "Birthday campaign",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Birthday campaign is based on a simple logic using the customer attribute date of birth to send a personalized offer by email to customers on their birthday and also 2 weeks before the birthday to increase the conversion rate. Two versions are available: campaign with custom voucher code or general voucher code. Client can choose between email, SMS or browser notification.",
+      "outcome": "Drive conversions and customer loyalty.",
+      "goal": "Personalize communications with customers, Increase returning customers, Improve Brand Love",
+      "channels": "Email",
+      "impact": "Low",
+      "qa_hours": 4,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    },
+    {
+      "code": "OCAN",
+      "name": "Automated Newsletter for New Items from Most Visited (But Never Purchased) Product Category",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "A scenario where Bloomreach identifies the most commonly viewed category for each customer (but for which they have not yet made a purchase) and uses a webhook to show the new items from catalog (based on date_added) from that category in an email.",
+      "outcome": "Drive conversions and email revenue by sending an email to customers with new products in stock from most viewed category.",
+      "goal": "Personalize communications with customers, Maximize email deliverability, Increase returning customers",
+      "channels": "Email",
+      "impact": "High",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": "In progress"
+    },
+    {
+      "code": "OFBC",
+      "name": "Facebook Conversions API",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "The Facebook Conversions API integration offers the possibility to send important events, such as purchases, and leads to Facebook, which allows better optimisation of Facebook Ads campaigns.",
+      "outcome": "Our Facebook Conversions API integration directly responds to the decreased reliability of Facebook Pixel due to browser tracking preventions, ad blockers, and more, and offers more control over what data is being sent over to Facebook. The API allows you to send events to Facebook\u2019s Ads platform directly without having to rely on browser pixel events and enables you to effectively capture offline and deep-funnel events.",
+      "channels": "Paid ads",
+      "impact": "High",
+      "qa_hours": 4,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Growth",
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OFRC",
+      "name": "Frequency-based Repurchase Campaign",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Repurchase campaign triggered when a customer nears their average purchase frequency",
+      "outcome": "Drive repeat purchase rates and RPV with this personalized bottom-funnel marketing tactic.",
+      "goal": "Personalize communications with customers, Increase returning customers",
+      "channels": "Email",
+      "impact": "Medium",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    },
+    {
+      "code": "OHBC",
+      "name": "Half Birthday Campaign",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Accompanying the Birthday campaign when an email is sent to your customer on their birthday, Half-birthday campaign serves as a pleasant surprise unexpected by your customers, arriving six months before their birthday.",
+      "channels": "Email",
+      "qa_hours": 3
+    },
+    {
+      "code": "OIGC",
+      "name": "Automated Instagram Content Newsletters",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "This scenario automatically checks the latest posts from your brand's Instagram feed and sends them to your customers for inspiration. We recommend sending this email every two weeks.",
+      "outcome": "Bloomreach clients have used social-first campaigns like this to drive brand love and customer loyalty.",
+      "goal": "Maximize email deliverability, Improve Brand Love",
+      "channels": "Email",
+      "impact": "Medium",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty",
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OLOP",
+      "name": "Loyalty Program",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "The Bloomreach loyalty program allows you to assign loyalty scheme tiers / levels based on customers' purchase behavior, email engagement, and browsing history. It allows for sending out a \"congratulations\" email once customer reaches a higher tier. The congratulations emails include the benefits of the qualified tier; which can be accomponied by an incentive for the next purchase or other rewards.",
+      "outcome": "This Loyalty program offers enormous value to Bloomreach clients, driving success both in \"soft\" indicators of brand loyalty and customer satisfaction as well as \"hard\" KPIs such as RPV, conversion rates, and customer retention.",
+      "goal": "Personalize communications with customers, Increase returning customers, Improve Brand Love",
+      "channels": "Email",
+      "impact": "High",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    },
+    {
+      "code": "OLTC",
+      "name": "Paid Ad Optimization: Lookalike Targeting Based on CLTV and Loyalty",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "This scenario will allow you to create better audiences to send to social or paid channels. The seed audiences that you will send to paid channels will be based on the lifetime value they brought to your business and their loyalty to your brand. This way, your paid ad lookalike campaigns can be optimised to your most loyal and valuable customers.",
+      "outcome": "Drives both the efficiency and effectiveness of paid media advertising by informing it with 1st-party LTV and Loyalty metrics. Informing lookalike audiences with Bloomreach data has yielded Bloomreach clients up to +151% revenues and -38% cost-per-acquisition (CPA) for lookalike campaigns.",
+      "goal": "Improve organic search volume, Optimize ads (Google, Facebook, etc)",
+      "channels": "Paid Ads",
+      "impact": "Medium",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Growth"
+      ],
+      "status": true
+    },
+    {
+      "code": "ONDC",
+      "name": "Nameday Campaign",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "The nameday campaign sends a personalized offer by email to customers on their name day, incentivizing them to purchase.",
+      "channels": "Email",
+      "qa_hours": 3
+    },
+    {
+      "code": "ONPS",
+      "name": "Post-purchase NPS survey email",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Send an email 10 days after the purchase with an NPS survey.",
+      "outcome": "Solicit feedback from verified customers to improve your offering and drive word-of-mouth (WOM) marketing.",
+      "goal": "Personalize communications with customers, Improve Brand Love",
+      "channels": "Email",
+      "impact": "Low",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    },
+    {
+      "code": "OOPR",
+      "name": "Personalized Email + SMS Omnichannel Reactivation Campaign for Lapsing Subscribers",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "The use case helps you to engage with customers who did not engage with email campaigns or did not make a purchase in a while.",
+      "channels": "Email, SMS",
+      "qa_hours": 5
+    },
+    {
+      "code": "OPAA",
+      "name": "Watchdog automatic price drop alert on viewed items",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "If a customer views a product more than once, this automation checks whether a viewed item is already on discount. If not, and if the customer does not purchase the product within 24 hours, the product is automatically added to a list we call \"watchdog\". Then the automation regularly checks whether the item goes into discount. When it does, the customer gets notified about the discount with a personalized message.",
+      "outcome": "Drive conversions with a personalized price drop alert. Bloomreach client Weird Fish used this Plug & Play use case to generate over 4x increase in conversions.",
+      "goal": "Personalize communications with customers, Increase conversion on the website, Increase Overall RPV",
+      "channels": "Email",
+      "impact": "High",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OPAC",
+      "name": "Purchase Anniversary & Purchase Half-Anniversary Emails with Personalized Recommendations",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "6 months and 12 months after the customer\u2019s first purchase, a purchase anniversary email is sent to the customer with personalized recommendations.",
+      "outcome": "Drive customer loyalty, repeat purchase rates and RPV with this personalized Plug & Play marketing tactic.",
+      "goal": "Personalize communications with customers, Increase returning customers, Improve Brand Love",
+      "channels": "Email",
+      "impact": "Low",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    },
+    {
+      "code": "OPAP",
+      "name": "Paid Ad Optimization: Audiences based on predictions",
+      "family": "Orchestration (Email/Multichannel)",
+      "qa_hours": 0
+    },
+    {
+      "code": "OPAR",
+      "name": "Watchdog customer initiated price drop alert",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "A small subscription box on the product page is displayed, asking the newsletter-subscribed visitor if they want to be notified when the product goes into discount. If the customer signs up, the product is automatically added to a list we call \"watchdog\". Then the automation regularly checks whether the item goes into discount. When it does, the customer gets notified about the discount with a personalized message.",
+      "outcome": "Drive conversions with a personalized price drop alert. Bloomreach client Weird Fish used price drop alerts to generate over 4x increase in conversions.",
+      "goal": "Personalize communications with customers, Increase Subscriptions, Increase conversion on the website, Increase Overall RPV",
+      "channels": "Email",
+      "impact": "Medium",
+      "qa_hours": 7,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Email",
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OPAU",
+      "name": "Watchdog automatic price drop alert on abandoned cart",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "If a customer adds a product to their cart and does not make the purchase, the product is automatically added to a list we call \"watchdog\". Then the automation regularly checks whether the item goes on discount. When it does, the customer gets notified about the discount with a personalized message, including the product's new price within the message.",
+      "outcome": "Drive conversions with a personalized price drop alert. Bloomreach client Weird Fish used this Plug & Play use case to generate over 4x increase in conversions.",
+      "channels": "Email",
+      "impact": "High",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OPFU",
+      "name": "Purchase follow up emails with complimentary product recommendations",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Send an email 14 days after the purchase showing product recommendations based on \u201cpeople who bought X also bought these\u201d",
+      "outcome": "Drive repeat purchase rates and RPV with this personalized bottom-funnel marketing tactic.",
+      "goal": "Personalize communications with customers, Increase Overall RPV, Increase returning customers",
+      "channels": "Email",
+      "impact": "Medium",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty",
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OPRC",
+      "name": "Personalized Reactivation Campaign for Lapsing Subscribers",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "It is difficult to re-engage the subscribers who have not opened or clicked your emails for a long time. The only chance you have for these customers is to offer a highly personalised campaign. The personalisation should happen not only in the email content but also in the subject line. This scenario regularly checks in with unengaged subscribers by sending them a personalised email.",
+      "outcome": "Missguided boosted click-through rates by +33% and open rates by +20% with this reactivation tactic.",
+      "goal": "Personalize communications with customers, Increase Subscriptions, Maximize email deliverability",
+      "channels": "Email",
+      "impact": "Medium",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty",
+        "Email"
+      ],
+      "status": true
+    },
+    {
+      "code": "ORAA",
+      "name": "Watchdog automatic restock alert on viewed items",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "If a customer views a product that's out of stock, the product is automatically added to a list we call \"watchdog\". Then the automation regularly checks whether the item goes back in stock. When it does, the customer gets notified about the restock with a personalized message.",
+      "outcome": "Drive Loyalty and Conversions with this bottom-funnel marketing tactic.",
+      "goal": "Personalize communications with customers, Increase conversion on the website, Increase Overall RPV, Improve Brand Love",
+      "channels": "Email",
+      "impact": "Medium",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty",
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "ORAR",
+      "name": "Watchdog customer initiated restock alert",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Display a small subscription box suggesting the customer can be notified if an item of interest' comes back in stock. If the customer subscribes to the watchdog, Bloomreach confirms this via double opt-in and sends an email if/when the item comes back in stock.",
+      "outcome": "Drive Loyalty and Conversions with this bottom-funnel marketing tactic.",
+      "goal": "Personalize communications with customers, Increase Subscriptions, Improve Brand Love",
+      "channels": "Email",
+      "impact": "Medium",
+      "qa_hours": 7,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty",
+        "Email"
+      ],
+      "status": "In progress"
+    },
+    {
+      "code": "ORFM",
+      "name": "Customer Lifetime Value (CLTV) Dashboard & RFM Segmentation",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "RFM segmentation, RFM summary report and actionable advice, average buyer value, value vs population distribution",
+      "outcome": "Visualize value trends in your customer base with this real-time automated dashboard. Includes a best-practice RFM segmentation that can be used to segment and trigger marketing campaigns to drive Customer Loyalty and RPV.",
+      "goal": "Understand our customers, Increase returning customers",
+      "impact": "Medium",
+      "qa_hours": 3,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    },
+    {
+      "code": "OTPR",
+      "name": "Bi-Weekly Automated Top Product Recommendation Newsletter",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "Automated newsletter where bestseller products are displayed in the email, with a social proof banner to show how many people are buying them",
+      "outcome": "Drive repeat purchase rates and RPV with this personalized bottom-funnel marketing tactic.",
+      "goal": "Increase Overall RPV, Increase returning customers",
+      "channels": "Email",
+      "impact": "Low",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty",
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OWEF",
+      "name": "Welcome Flow",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "This Welcome Flow is triggered by a unique consent event assigning the Newsletter consent attribute to customers in your Bloomreach project. It\u2019s a simple flow welcoming customers to your brand, consisting of two emails for you to customize creatively.",
+      "outcome": "Bloomreach's GDPR- and CCPA-compliant onboarding process includes this best-practice Welcome Flow. Like all Plug & Play use cases, feel free to tailor this to your unique onboarding journeys with confidence that your customers' personal consent preferences are respected at every step of their journey.",
+      "goal": "Increase Overall RPV, Improve Brand Love",
+      "channels": "Email",
+      "impact": "Medium",
+      "qa_hours": 4,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty",
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "OWEO",
+      "name": "Welcome Flow with Omnichannel",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "One of the most popular use cases - Welcome Flow - is now available for different channels: emails, sms, mms, push notifications.",
+      "channels": "Email, SMS, Push Notification",
+      "qa_hours": 5
+    },
+    {
+      "code": "OYTF",
+      "name": "Automated YouTube Feed Newsletters",
+      "family": "Orchestration (Email/Multichannel)",
+      "description": "This scenario automatically checks the latest posts from your brand's (or other) YouTube feed and sends them to your customers for inspiration. We recommend sending this email every two weeks.",
+      "outcome": "Bloomreach clients have used social-first campaigns like this to drive brand love and customer loyalty.",
+      "channels": "Email",
+      "impact": "Medium",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty",
+        "Email"
+      ],
+      "status": true
+    },
+    {
+      "code": "SAPI",
+      "name": "SnapChat Conversion API",
+      "family": "SMS",
+      "qa_hours": 4
+    },
+    {
+      "code": "SDOI",
+      "name": "SMS Double Opt-In Subscription Banner with Automated SMS confirmation and Consent Management",
+      "family": "SMS",
+      "description": "Once the visitor submits their phone number (and optionally email) on the subscription banner, Bloomreach automatically updates their consent preferences. It is possible to change the design and wording of the banner in the 'Parameter' section of the weblayer.",
+      "channels": "Web, SMS",
+      "impact": "Low",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    },
+    {
+      "code": "SMPS",
+      "name": "Most popular SMS scenarios",
+      "family": "SMS",
+      "qa_hours": 2
+    },
+    {
+      "code": "SPRC",
+      "name": "Personalized SMS Reactivation Campaign for Lapsing Customers",
+      "family": "SMS",
+      "qa_hours": 2
+    },
+    {
+      "code": "SSTJ",
+      "name": "SMS Single Opt-in subscriber banner 'Text to join'",
+      "family": "SMS",
+      "qa_hours": 2
+    },
+    {
+      "code": "WABC",
+      "name": "Abandoned Cart Web Layer",
+      "family": "Web Layer",
+      "qa_hours": 3
+    },
+    {
+      "code": "WABL",
+      "name": "Abandoned Browse Web Layer",
+      "family": "Web Layer",
+      "qa_hours": 3
+    },
+    {
+      "code": "WABR",
+      "name": "Abandoned Browse Web Layer with Product Recommendations",
+      "family": "Web Layer",
+      "qa_hours": 3
+    },
+    {
+      "code": "WBSB",
+      "name": "Best Sellers/Trending Badges",
+      "family": "Web Layer",
+      "description": "Auto-displaying badges on product detail pages (PDPs) and listing (brand/category) pages for when the product is among the top seller products.",
+      "outcome": "Drive website conversions with this simple but powerful mid-funnel marketing tactic.",
+      "goal": "Increase conversion on the website, Increase Overall RPV",
+      "channels": "Web",
+      "impact": "Medium",
+      "qa_hours": 0,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": "In progress"
+    },
+    {
+      "code": "WBSI",
+      "name": "Single opt-in subscription banner with Contextual Personalisation",
+      "family": "Web Layer",
+      "description": "The standard use case of collecting subscribers via web site banner but using AI that will display the variant of banner that is the most likely to convert the customer based on their individual context.",
+      "channels": "Web",
+      "qa_hours": 3
+    },
+    {
+      "code": "WBTA",
+      "name": "Browser Tab Animation",
+      "family": "Web Layer",
+      "description": "Animated browser tabs to drive conversion",
+      "outcome": "Distractions are everywhere in today's e-commerce space. While shopping, your customers might be targeted by news, social media, messages or competing offers. The Browser Tab Animation is a great and simple tool for attracting customers back to your website.",
+      "goal": "Increase conversion on the website, Increase Overall RPV",
+      "channels": "Web",
+      "impact": "Medium",
+      "qa_hours": 4,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "WCUP",
+      "name": "Cart update popup banner with recommendations",
+      "family": "Web Layer",
+      "description": "This weblayer is aimed at increasing average order value. When the customer adds item to cart, the popup banner appears with products that are most commonly purchased with the item that is added to the cart.",
+      "outcome": "Increase your average basket size with this popup banner which recommends products that compliment the product that the customer added to the cart.",
+      "channels": "Web",
+      "impact": "Medium",
+      "qa_hours": 6,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "WDCB",
+      "name": "Sticky Top Discount Countdown Banner",
+      "family": "Web Layer",
+      "description": "A discount countdown is displayed as a sticky overlay on the top of the page. It is possible to change the design and wording of the banner on the 'Parameter' section of the weblayer.",
+      "outcome": "Drivers of urgency, such as this Sticky Top Discount Countdown Banner, are essential tactics in the fast-moving world of e-commerce. They are effective tools for speeding up time-to-purchase, especially during peak seasons where customers may be bombarded with multiple competing offers. This Plug & Play use case yielded +16% conversion rates for eBuyer.",
+      "goal": "Increase Overall RPV",
+      "channels": "Web",
+      "impact": "Medium",
+      "qa_hours": 4,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "WDOI",
+      "name": "Double Opt-In Subscription Banner with Automated Confirmation Emails and Consent Management",
+      "family": "Web Layer",
+      "description": "Double opt-in banner (with image) + automatic confirmation emails + automatic consent management",
+      "outcome": "This subscription banner, complete with automated consent (opt-in) management, enables brands to easily manage global security practices at the local level and drive lead generation. Banners such as this have yielded up to a 69% improvement in leads captured for Bloomreach clients.",
+      "goal": "Increase Subscriptions, Maximize email deliverability",
+      "channels": "Web, Email",
+      "impact": "Medium",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Email"
+      ],
+      "status": true
+    },
+    {
+      "code": "WFRB",
+      "name": "Free Delivery Banner",
+      "family": "Web Layer",
+      "description": "Simple, free delivery popup displaying on items that pass the free delivery criteria (above a certain price range, if desired)",
+      "outcome": "Free Delivery above a certain purchase threshold is a great tool for increasing Average Order Value (AOV).",
+      "goal": "Increase conversion on the website, Increase Overall RPV",
+      "channels": "Web",
+      "impact": "Medium",
+      "qa_hours": 3,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "WGLB",
+      "name": "Product Global & Specific Badges",
+      "family": "Web Layer",
+      "description": "An easy and efficient way that enables you to communicate special product features or promotions directly on the product page. The badges are overlaying on the product image and you can select to use one or multiple.",
+      "channels": "Web",
+      "qa_hours": 6
+    },
+    {
+      "code": "WJBL",
+      "name": "\"Just Bought\" Location-Based Social Proof",
+      "family": "Web Layer",
+      "description": "A more advanced social proof banner: Creates a report with purchase_item in the past 3 hours. When customer is viewing the product, after 5 seconds, a banner pops up: \u201cSomeone in London just bought this item\u201d",
+      "outcome": "Social proof banners can be very effective in driving urgency to purchase. Geolocation offers an extra layer of personalization to drive customer buy-in.",
+      "goal": "Increase conversion on the website, Increase Overall RPV",
+      "channels": "Web",
+      "impact": "Medium",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "WMDI",
+      "name": "Multistep Subscription banner with DOI",
+      "family": "Web Layer",
+      "description": "Customers are shown a multi-step weblayer that prompts them to enter information about themselves (gender, preferred email frequency) and subscribe to a newsletter.",
+      "channels": "Web, Email",
+      "qa_hours": 5
+    },
+    {
+      "code": "WMZD",
+      "name": "Multistep Zero Party Data Web Layer",
+      "family": "Web Layer",
+      "description": "This weblayer helps to collect more customer information at the same time. In particular, we are collecting customer's preferences during the subscription process e.g. newsletter frequency.",
+      "channels": "Web",
+      "qa_hours": 3
+    },
+    {
+      "code": "WNDC",
+      "name": "Next day delivery countdown",
+      "family": "Web Layer",
+      "description": "A banner showing that it's possible to get the item next day if it's ordered until a certain hour. The countdown refreshes every day until the deadline hour",
+      "outcome": "Increase your conversions with this automated countdown that you don't have to set up manually every day.",
+      "channels": "Web",
+      "impact": "Medium",
+      "qa_hours": 3,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "WNPS",
+      "name": "Post-purchase NPS survey email + web layer",
+      "family": "Web Layer",
+      "description": "A true omnichannel use case where customers receive the NPS email and in case of non interaction, they are targeted via weblayer on the web site.",
+      "channels": "Web, Email",
+      "qa_hours": 6
+    },
+    {
+      "code": "WOEB",
+      "name": "On-Exit Banner with the Last Viewed Items",
+      "family": "Web Layer",
+      "description": "When the user moves their mouse cursor to leave the website, a banner pops down with the last viewed items. It is possible to change the design and wording of the banner with the parameters defined on the weblayer asset.",
+      "outcome": "Drive conversions with this personalized mid-funnel marketing tactic",
+      "goal": "Increase conversion on the website, Increase Overall RPV",
+      "channels": "Web",
+      "impact": "High",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "WPNS",
+      "name": "Web Push Notification Subscription Banner",
+      "family": "Web Layer",
+      "description": "A banner asking the visitor if they want to subscribe for web push notifications. Upon confirmation from the visitor, a Chrome request is prompted which needs to be confirmed too. When Chrome request is confirmed, the subscriber will have an authorization key assigned in their customer profile, which allows sending web push notifications to this subscriber. The banner is parametric; icon, colors, position and animation can all be adjusted.",
+      "outcome": "Drive cross-channel engagement and customer loyalty.",
+      "goal": "Increase Subscriptions",
+      "channels": "Web",
+      "impact": "Low",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Email"
+      ],
+      "status": true
+    },
+    {
+      "code": "WSDC",
+      "name": "Sticky discount code banner with copy to clipboard functionality",
+      "family": "Web Layer",
+      "description": "A discount banner is shown to the customer. The banner stays minimised on the web page throughout the session so the customer can back to it anytime and copy the code easily with the 'clipboard' functionality.",
+      "channels": "Web",
+      "qa_hours": 3,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "status": false
+    },
+    {
+      "code": "WSOI",
+      "name": "Single Opt-In Subscription Banner with Automated Consent Management",
+      "family": "Web Layer",
+      "description": "Once the visitor submits their email on the subscription banner, Bloomreach automatically updates their consent event and their Newsletter consent attribute. It is possible to change the design and wording of the banner in the 'Parameter' section of the weblayer.",
+      "outcome": "This subscription banner, complete with automated consent (opt-in) management, enables brands to easily manage global security practices at the local level and drive lead generation. Banners such as this have yielded up to a 69% improvement in leads captured for Bloomreach clients.",
+      "goal": "Increase Subscriptions",
+      "channels": "Web, Email",
+      "impact": "Medium",
+      "qa_hours": 3,
+      "scale_right_packages": [
+        "StartRight Light",
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Email"
+      ],
+      "status": true
+    },
+    {
+      "code": "WSSP",
+      "name": "Standard Social Proof Banner",
+      "family": "Web Layer",
+      "description": "Standard viewcount banner to drive social proof on product detail pages. It utilizes viewed item data from Bloomreach CDP and displays a banner to the visitor: \"X customers are looking at this\"",
+      "outcome": "Social proof banners can be very effective in driving urgency to purchase. This Plug & Play use case has generated up to 36% increases in conversion rates for Bloomreach clients.",
+      "goal": "Increase conversion on the website, Increase Overall RPV",
+      "channels": "Web",
+      "impact": "Medium",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Revenue"
+      ],
+      "status": true
+    },
+    {
+      "code": "WZPD",
+      "name": "Zero-Party Data Collection Banner",
+      "family": "Web Layer",
+      "description": "A scalable banner that collects customer data such as favorite brands (brand list is automatically pulled from item purchase events), preference of style (visual or text), shopper type (premium or discount-hunter), etc. This information can be used later in conjunction with predictions to extrapolate insights about the entire customer base.",
+      "outcome": "Generate voluntary customer insights that can be used to power 1-to-1 marketing campaigns.",
+      "goal": "Understand our customers",
+      "channels": "Web",
+      "impact": "Low",
+      "qa_hours": 5,
+      "scale_right_packages": [
+        "StartRight Intermediate",
+        "StartRight Advanced",
+        "ScaleRight"
+      ],
+      "scale_right_packs": [
+        "Loyalty"
+      ],
+      "status": true
+    }
+  ]
+}
