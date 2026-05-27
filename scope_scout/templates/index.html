@@ -178,6 +178,7 @@
   {% endif %}
   <button class="ghost" id="pdfBtn">Save PDF</button>
   <button class="ghost" id="mdBtn">Download .md</button>
+  <button class="ghost" id="jsonBtn">Trace JSON</button>
   <button class="ghost" id="resetBtn">New session</button>
 </header>
 
@@ -213,12 +214,24 @@ const sendBtn = document.getElementById("sendBtn");
 const resetBtn = document.getElementById("resetBtn");
 const pdfBtn = document.getElementById("pdfBtn");
 const mdBtn = document.getElementById("mdBtn");
+const jsonBtn = document.getElementById("jsonBtn");
 const printHeader = document.getElementById("printHeader");
 
 // Running raw record of the conversation, so it can be exported as a keepable
 // deliverable (PDF via print, or Markdown) instead of scrolling out of reach.
 const transcript = [];
+// Full ordered reasoning tree per turn (thinking / tool_use / tool_result /
+// final) — the machine-readable "receipts" a technical reviewer can audit.
+const traceLog = [];
 function exportStamp(){ return "Datadrovers · Scope Scout · " + new Date().toLocaleString(); }
+
+function downloadBlob(name, type, data){
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([data], {type}));
+  a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(a.href);
+}
 
 pdfBtn.addEventListener("click", () => {
   if(!transcript.length) return;
@@ -237,6 +250,16 @@ mdBtn.addEventListener("click", () => {
   a.download = "sawyer-discovery-agenda.md";
   document.body.appendChild(a); a.click(); a.remove();
   URL.revokeObjectURL(a.href);
+});
+jsonBtn.addEventListener("click", () => {
+  if(!traceLog.length) return;
+  const payload = {
+    tool: "Sawyer — Scope Scout discovery agent",
+    exported_at: new Date().toISOString(),
+    workspace: "neon-sock (live)",
+    turns: traceLog,
+  };
+  downloadBlob("sawyer-reasoning-trace.json", "application/json", JSON.stringify(payload, null, 2));
 });
 
 const LIVE_PREFIX = "workspace_";
@@ -347,6 +370,8 @@ function addToolResult(name, result){
 async function runTurn(text){
   addMessage("architect", "Architect").textContent = text;
   transcript.push({role: "architect", text});
+  const turnLog = {architect: text, trace: [], agenda: ""};
+  traceLog.push(turnLog);
   let scoutBubble = null;
   let scoutText = "";
 
@@ -369,6 +394,7 @@ async function runTurn(text){
       const line = frame.split("\n").find(l => l.startsWith("data:"));
       if(!line) continue;
       const ev = JSON.parse(line.slice(5).trim());
+      turnLog.trace.push(ev);
       handleEvent(ev, () => {
         if(!scoutBubble) scoutBubble = addMessage("scout", "Sawyer");
         return scoutBubble;
@@ -376,6 +402,7 @@ async function runTurn(text){
     }
   }
   if(scoutText.trim()) transcript.push({role: "scout", text: scoutText});
+  turnLog.agenda = scoutText;
 }
 
 function handleEvent(ev, getBubble, setText){
@@ -426,6 +453,7 @@ resetBtn.addEventListener("click", async () => {
   conversation.innerHTML = "";
   trace.innerHTML = '<div class="trace-empty">Tool calls and live workspace reads will appear here as Sawyer works.</div>';
   transcript.length = 0;
+  traceLog.length = 0;
   input.value = "";
   input.focus();
 });
