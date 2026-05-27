@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Scope Scout — Discovery Agenda Agent</title>
+<title>The Scope Scout — Discovery Agenda Agent</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -479,6 +479,7 @@
     display: flex;
     align-items: baseline;
     gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .agenda-header h2 {
@@ -488,15 +489,42 @@
     color: var(--navy);
     letter-spacing: -0.01em;
     font-variation-settings: 'opsz' 144;
+    flex: 1;
+  }
+
+  .agenda-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-shrink: 0;
   }
 
   .agenda-header .agenda-meta {
-    margin-left: auto;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     color: var(--muted);
     letter-spacing: 0.1em;
     text-transform: uppercase;
+  }
+
+  .export-btn {
+    background: transparent;
+    border: 1px solid var(--lavender-deep);
+    color: var(--navy);
+    padding: 0.3rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+  }
+
+  .export-btn:hover {
+    background: var(--navy);
+    color: var(--cream);
+    border-color: var(--navy);
   }
 
   .agenda-intro {
@@ -918,6 +946,211 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  /* ============ PRINT / PDF EXPORT ============ */
+  @media print {
+    /* Hide everything except the agenda */
+    header, .epigraph, .demo-bar, .section-header,
+    .input-zone, .theater, #agenda-section,
+    footer, .export-btn {
+      display: none !important;
+    }
+
+    body {
+      background: white !important;
+      color: #1a1a1a !important;
+      font-size: 11pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .frame {
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Show only the agenda container */
+    #agenda-container {
+      display: block !important;
+    }
+
+    .agenda {
+      background: white !important;
+      box-shadow: none !important;
+      border: none !important;
+      padding: 0 !important;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .agenda-header {
+      border-bottom: 1.5pt solid #8C7AA6;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem;
+    }
+
+    .agenda-header h2 {
+      font-size: 16pt;
+      color: #131F2B !important;
+    }
+
+    .agenda-header-right { display: none !important; }
+
+    .agenda-intro {
+      font-size: 10.5pt;
+      margin-bottom: 1.2rem;
+      color: #131F2B !important;
+    }
+
+    .agenda-intro em { color: #B8951F !important; }
+
+    /* Print header added via JS before printing */
+    .print-header {
+      display: flex !important;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 0.75pt solid #C4BAD2;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.5rem;
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 7.5pt;
+      color: #6A7A8A;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .agenda-cat-header {
+      font-size: 7pt;
+      letter-spacing: 0.2em;
+      color: #B8951F !important;
+      border-bottom: 0.5pt solid #C4BAD2;
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+      page-break-after: avoid;
+    }
+
+    .agenda-item {
+      page-break-inside: avoid;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 0.5pt dotted #C4BAD2;
+    }
+
+    .agenda-question {
+      font-size: 10.5pt;
+      color: #131F2B !important;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .agenda-evidence {
+      margin-bottom: 0.3rem;
+    }
+
+    .evidence-pill {
+      font-size: 7pt;
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      border: 0.5pt solid;
+    }
+
+    .evidence-pill.present {
+      color: #5E6B52 !important;
+      border-color: #5E6B52 !important;
+      background: rgba(94, 107, 82, 0.08) !important;
+    }
+
+    .evidence-pill.missing {
+      color: #A8543E !important;
+      border-color: #A8543E !important;
+      background: rgba(168, 84, 62, 0.08) !important;
+    }
+
+    .evidence-pill.affected {
+      color: #8C7AA6 !important;
+      border-color: #8C7AA6 !important;
+      background: rgba(140, 122, 166, 0.08) !important;
+    }
+
+    .agenda-rationale {
+      font-size: 9.5pt;
+      color: #4A5A6A !important;
+      margin-bottom: 0.2rem;
+    }
+
+    .agenda-source {
+      font-size: 7.5pt;
+      color: #6A7A8A !important;
+    }
+
+    /* Card variant print treatments */
+    .agenda-item.consolidation {
+      border-left: 2pt solid #B8951F !important;
+      background: rgba(215, 190, 89, 0.04) !important;
+      padding: 0.5rem 0.6rem !important;
+    }
+
+    .agenda-item.vagueness {
+      border-left: 2pt solid #A8543E !important;
+      background: rgba(168, 84, 62, 0.04) !important;
+      padding: 0.5rem 0.6rem !important;
+    }
+
+    .agenda-item.mapping {
+      border-left: 2pt solid #8C7AA6 !important;
+      background: rgba(140, 122, 166, 0.04) !important;
+      padding: 0.5rem 0.6rem !important;
+    }
+
+    .card-type-label {
+      font-size: 6.5pt;
+      padding: 0.08rem 0.4rem;
+    }
+
+    .mapping-compare {
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0.5rem;
+      margin: 0.4rem 0 0.5rem;
+    }
+
+    .mapping-side {
+      padding: 0.4rem 0.5rem;
+      background: #F4F0E8 !important;
+    }
+
+    .mapping-side-label { font-size: 6.5pt; }
+    .mapping-side-name { font-size: 8.5pt; }
+    .mapping-side-meta { font-size: 8pt; }
+
+    .triggers-span {
+      padding: 0.3rem 0.5rem;
+      margin-bottom: 0.4rem;
+      background: rgba(215, 190, 89, 0.06) !important;
+    }
+
+    .trigger-chip { font-size: 7.5pt; }
+
+    .pinned-phrase {
+      font-size: 8.5pt;
+      padding: 0.3rem 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .confidence-tag { font-size: 6.5pt; }
+
+    .agenda-footer {
+      font-size: 9pt;
+      color: #6A7A8A !important;
+      margin-top: 1.2rem;
+      padding-top: 0.75rem;
+      border-top: 0.75pt solid #C4BAD2;
+      page-break-inside: avoid;
+      page-break-before: avoid;
+    }
+  }
 </style>
 </head>
 <body>
@@ -940,7 +1173,7 @@
   </header>
 
   <div class="epigraph">
-    Close-read each request & step back and reason across the set.
+    Close-read each request. Step back and reason across the set.
   </div>
 
   <!-- ========== DEMO CHIPS ========== -->
@@ -1075,7 +1308,7 @@ Welcome flow for new email subscribers — 3-email sequence over 7 days introduc
     ],
 
     agenda: {
-      title: "Discovery Agenda · Voltline Phase 1",
+      title: "Discovery Agenda · MicroCenter Phase 1",
       intro: "Three trigger requests map cleanly to library use cases. <em>The workspace has the underlying data but is operating in a taxonomy-empty state — one architectural decision unblocks most of Phase 1.</em>",
       categories: [
         {
@@ -1141,7 +1374,7 @@ Welcome flow for new email subscribers — 3-email sequence over 7 days introduc
   duplicate: {
     input: `Service Plan Bounceback — after a customer buys a service plan, send a thank-you email with cross-sell offers
 
-Sentinel AV Bounceback — after a customer buys Sentinel AV, send a thank-you email with cross-sell for service plans
+ESET Bounceback — after a customer buys ESET antivirus, send a thank-you email with cross-sell for service plans
 
 Loyalty tier email — customers reaching Gold tier get a congratulations email with their new benefits`,
 
@@ -1163,12 +1396,12 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
         duration: 1400,
         tools: [
           { name: "get_use_case", args: "code: OPFU", result: "Single use case with category-parameterized cross-sell logic" },
-          { name: "compare_trigger_specs", args: "[Service Plan Bounceback, Sentinel AV Bounceback]", result: "Same event trigger, same render pattern. Differ only in product filter and cross-sell payload." },
+          { name: "compare_trigger_specs", args: "[Service Plan Bounceback, ESET Bounceback]", result: "Same event trigger, same render pattern. Differ only in product filter and cross-sell payload." },
           { name: "estimate_build_hours", args: "use_case: OPFU, instances: 1", result: "14.5 hrs (single build, category parameterization)" },
           { name: "estimate_build_hours", args: "use_case: OPFU, instances: 2", result: "28.0 hrs (two separate builds)" },
           { name: "get_use_case", args: "code: OLTU", result: "Standard loyalty tier milestone email pattern" }
         ],
-        synthesis: "Service Plan Bounceback and Sentinel AV Bounceback are structurally duplicative — same OPFU pattern with different category filters. Consolidating into one parameterized build saves ~14 hours. The architect should confirm with the client whether the cross-sell logic differs beyond the product filter."
+        synthesis: "Service Plan Bounceback and ESET Bounceback are structurally duplicative — same OPFU pattern with different category filters. Consolidating into one parameterized build saves ~14 hours. The architect should confirm with the client whether the cross-sell logic differs beyond the product filter."
       },
       {
         title: "Surface — consolidation recommendation and lifecycle context",
@@ -1182,7 +1415,7 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
     ],
 
     agenda: {
-      title: "Discovery Agenda · Voltline Phase 1",
+      title: "Discovery Agenda · MicroCenter Phase 1",
       intro: "Two of three requests appear structurally duplicative. <em>The consolidation question saves significant scope if the client confirms — but only the client can confirm.</em>",
       categories: [
         {
@@ -1190,8 +1423,8 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
           items: [
             {
               cardType: 'consolidation',
-              question: "Does the cross-sell logic for Sentinel AV and Service Plan bounceback emails differ beyond the product filter?",
-              triggers: ["Service Plan Bounceback", "Sentinel AV Bounceback"],
+              question: "Does the cross-sell logic for ESET and Service Plan bounceback emails differ beyond the product filter?",
+              triggers: ["Service Plan Bounceback", "ESET Bounceback"],
               bridge: "consolidate?",
               evidence: [
                 { type: "present", text: "Same OPFU pattern · category-parameterized" },
@@ -1239,11 +1472,11 @@ Loyalty tier email — customers reaching Gold tier get a congratulations email 
 
   // ==================== SCENARIO 3: PROPER-NOUN ROUTING (VAGUENESS) ====================
   vague: {
-    input: `Customer browses our RigBuilder but doesn't convert — send a follow-up email with their saved configuration
+    input: `Customer browses our PC Builder but doesn't convert — send a follow-up email with their saved configuration
 
 Encourage repeat purchases from previous buyers
 
-Nimbus cloud storage prompt — 1 week after purchase, if customer hasn't signed up for cloud storage`,
+iDrive cloud storage prompt — 1 week after purchase, if customer hasn't signed up for cloud storage`,
 
     triggerCount: 3,
 
@@ -1256,20 +1489,20 @@ Nimbus cloud storage prompt — 1 week after purchase, if customer hasn't signed
           { name: "search_use_cases", args: 'query: "repeat purchase encouragement"', result: "Multiple candidates — query too broad" },
           { name: "search_use_cases", args: 'query: "post-purchase prompt cross-sell external"', result: "Closest match: OPFU — partial confidence" }
         ],
-        synthesis: "None of the three requests cleanly map to a single P&P use case at high confidence. Each contains client-specific language that needs definition before scope can be written: 'RigBuilder', 'repeat purchases' (no timing), 'Nimbus'."
+        synthesis: "None of the three requests cleanly map to a single P&P use case at high confidence. Each contains client-specific language that needs definition before scope can be written: 'PC Builder', 'repeat purchases' (no timing), 'iDrive'."
       },
       {
         title: "Ground — distinguishing client-specific terms from library vocabulary",
         duration: 1300,
         tools: [
-          { name: "classify_term", args: 'term: "RigBuilder"', result: "Proper noun · not in library · likely custom system" },
+          { name: "classify_term", args: 'term: "PC Builder"', result: "Proper noun · not in library · likely custom system" },
           { name: "get_event_schema", args: 'event: view_item', result: "89,717 events captured · custom event · unmapped to standard taxonomy" },
           { name: "classify_term", args: 'term: "repeat purchases"', result: "Standard concept · multiple library patterns" },
           { name: "get_use_case", args: 'code: OFRR', result: "Frequency-based Repurchase — requires defined cadence" },
-          { name: "classify_term", args: 'term: "Nimbus"', result: "Proper noun · external service · not in library" },
+          { name: "classify_term", args: 'term: "iDrive"', result: "Proper noun · external service · not in library" },
           { name: "find_integration_pattern", args: 'context: "external service signup status"', result: "Requires inbound webhook from external service" }
         ],
-        synthesis: "Two of three triggers reference client-specific or external systems by name. RigBuilder is custom — likely a product configurator emitting view_item events under some custom name. Nimbus is third-party and requires an integration handshake. Repeat purchases needs a cadence definition the client must provide."
+        synthesis: "Two of three triggers reference client-specific or external systems by name. PC Builder is custom — likely a product configurator emitting view_item events under some custom name. iDrive is third-party and requires an integration handshake. Repeat purchases needs a cadence definition the client must provide."
       },
       {
         title: "Surface — definitional gaps that block library matching",
@@ -1278,12 +1511,12 @@ Nimbus cloud storage prompt — 1 week after purchase, if customer hasn't signed
           { name: "compose_definition_questions", args: "context: client-specific terms", result: "3 questions generated" },
           { name: "get_lifecycle_stages", args: "tentative: [OABF, OFRR, OPFU]", result: "Interest · Loyalty · Loyalty" }
         ],
-        synthesis: "Three discovery questions block scope. Two are about client-specific systems (RigBuilder, Nimbus); one is about the client's working definition of 'repeat'. None of these can be resolved from the library — only the client knows."
+        synthesis: "Three discovery questions block scope. Two are about client-specific systems (PC Builder, iDrive); one is about the client's working definition of 'repeat'. None of these can be resolved from the library — only the client knows."
       }
     ],
 
     agenda: {
-      title: "Discovery Agenda · Voltline Phase 1",
+      title: "Discovery Agenda · MicroCenter Phase 1",
       intro: "Three trigger requests reference language the library cannot resolve. <em>Each needs a client-facing definition question before it can be scoped.</em>",
       categories: [
         {
@@ -1291,25 +1524,25 @@ Nimbus cloud storage prompt — 1 week after purchase, if customer hasn't signed
           items: [
             {
               cardType: 'vagueness',
-              pinnedPhrase: "Customer browses our RigBuilder but doesn't convert",
-              question: "What is RigBuilder, what events does it emit, and what does \"doesn't convert\" mean in that context?",
+              pinnedPhrase: "Customer browses our PC Builder but doesn't convert",
+              question: "What is PC Builder, what events does it emit, and what does \"doesn't convert\" mean in that context?",
               evidence: [
                 { type: "missing", text: "Library: no direct match" },
                 { type: "present", text: "Workspace: view_item events flowing (89K)" },
                 { type: "affected", text: "Custom event taxonomy required" }
               ],
-              rationale: "RigBuilder appears to be a client-specific product configurator. Workspace has view_item events at high volume — possibly including RigBuilder interactions under a custom name. The closest library analog is browse abandonment (OABF), but the event shape and the definition of 'didn't convert' is custom to the client.",
+              rationale: "PC Builder appears to be a client-specific product configurator. Workspace has view_item events at high volume — possibly including PC Builder interactions under a custom name. The closest library analog is browse abandonment (OABF), but the event shape and the definition of 'didn't convert' is custom to the client.",
               source: "Client-specific system definition · OABF analog"
             },
             {
               cardType: 'vagueness',
-              pinnedPhrase: "Nimbus cloud storage prompt — 1 week after purchase",
-              question: "Is Nimbus a Bloomreach-managed cross-sell or an external service the client integrates with?",
+              pinnedPhrase: "iDrive cloud storage prompt — 1 week after purchase",
+              question: "Is iDrive a Bloomreach-managed cross-sell or an external service the client integrates with?",
               evidence: [
                 { type: "missing", text: "Library: no match" },
                 { type: "affected", text: "Integration scope dependent" }
               ],
-              rationale: "Nimbus is a third-party cloud storage product. If the client wants to message about Nimbus signup status, Bloomreach needs to either (a) receive a webhook when signup happens, or (b) be granted query access to the Nimbus API. Both are integration decisions outside the standard P&P scope.",
+              rationale: "iDrive is a third-party cloud storage product. If the client wants to message about iDrive signup status, Bloomreach needs to either (a) receive a webhook when signup happens, or (b) be granted query access to the iDrive API. Both are integration decisions outside the standard P&P scope.",
               source: "Integration pattern · external service handshake"
             }
           ]
@@ -1458,7 +1691,12 @@ function renderAgenda(agenda) {
   let html = `
     <div class="agenda-header">
       <h2>${agenda.title}</h2>
-      <span class="agenda-meta">For Architect Review</span>
+      <div class="agenda-header-right">
+        <span class="agenda-meta">For Architect Review</span>
+        <button class="export-btn" onclick="exportAgenda()" title="Save as PDF">
+          ↓ Export Agenda
+        </button>
+      </div>
     </div>
     <div class="agenda-intro">${agenda.intro}</div>
   `;
@@ -1595,6 +1833,36 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
   })[c]);
+}
+
+// ============ EXPORT TO PDF ============
+function exportAgenda() {
+  // Add a temporary print header with metadata
+  const agenda = document.querySelector('.agenda');
+  if (!agenda) return;
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-US', {
+    year: 'numeric', month: 'long', day: 'numeric'
+  });
+
+  // Insert print-only header at top of agenda
+  const printHeader = document.createElement('div');
+  printHeader.className = 'print-header';
+  printHeader.style.display = 'none'; // hidden on screen; shown by print CSS
+  printHeader.innerHTML = `
+    <span>Scope Scout · Discovery Agenda</span>
+    <span>${dateStr} · Architect Review Copy</span>
+  `;
+  agenda.insertBefore(printHeader, agenda.firstChild);
+
+  // Trigger print dialog
+  window.print();
+
+  // Clean up after print dialog closes
+  setTimeout(() => {
+    if (printHeader.parentNode) printHeader.parentNode.removeChild(printHeader);
+  }, 1000);
 }
 
 // ============ WIRE UP ============
