@@ -57,7 +57,8 @@ All agent actions against the workspace are read-only. The agent does not write,
 
 - **Kelly Brady** (Ansira), architect, lead, coordinator
 - **Andy Daniels** (Amalgamation Services), MarTech direction, demo face
-- **Multi-AI Ensemble** (Claude Suite), coordinated by Kelly Brady**
+- **Multi-AI Ensemble** (Claude Suite), coordinated by Kelly Brady
+  
        — Cowork (strategy/synthesis), Claude Code (runtime/architecture), Claude in Chrome (data/UI), Microsoft Copilot Studio (visual identity)*
   
 *The ensemble pattern is on-thesis for the hackathon: agentic infrastructure coordinated by a human architect, with each surface bringing distinct capabilities to the same project.
