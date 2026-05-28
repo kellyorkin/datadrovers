@@ -13,6 +13,9 @@ room to reason instead of orchestrating five lookups for one question.
 from __future__ import annotations
 
 import json
+import logging
+import os
+import time
 from typing import Any
 
 from . import knowledge as k
@@ -237,6 +240,53 @@ MCP_TOOL_SCHEMAS: list[dict] = [
 
 
 # ---------------------------------------------------------------------------
+# Access logging
+#
+# Every tool invocation is recorded at the "access" level: timestamp, tool
+# name, the query parameters, the response size in bytes, and ok/error status —
+# but NOT the response body. That gives an auditable record of what the agent
+# touched (and, for live tools, that it touched the real workspace) without
+# persisting any workspace data. Records go to stderr, scoped to the session;
+# nothing is written to disk. The access tier is ALWAYS ON — it's the audit
+# trail the responsible-design note relies on. A separate development-only tier
+# (SCOPE_SCOUT_VERBOSE_LOG=1, off in every default config) adds full response
+# bodies and full tracebacks — the complete picture, for debugging only.
+# ---------------------------------------------------------------------------
+
+VERBOSE_TOOL_LOG = os.environ.get("SCOPE_SCOUT_VERBOSE_LOG") == "1"
+
+_access_log = logging.getLogger("scope_scout.access")
+if not _access_log.handlers:
+    _handler = logging.StreamHandler()  # stderr; not persisted to disk
+    _handler.setFormatter(
+        logging.Formatter(
+            "%(asctime)s scope_scout.access %(message)s",
+            datefmt="%Y-%m-%dT%H:%M:%S%z",
+        )
+    )
+    _access_log.addHandler(_handler)
+    _access_log.setLevel(logging.DEBUG if VERBOSE_TOOL_LOG else logging.INFO)
+    _access_log.propagate = False
+
+
+def _log_access(
+    name: str, source: str, params: dict, result: str, *, ok: bool, started: float
+) -> None:
+    elapsed_ms = int((time.monotonic() - started) * 1000)
+    _access_log.info(
+        "tool=%s source=%s params=%s bytes=%d status=%s ms=%d",
+        name,
+        source,
+        json.dumps(params, ensure_ascii=False, default=str),
+        len(result),
+        "ok" if ok else "error",
+        elapsed_ms,
+    )
+    if VERBOSE_TOOL_LOG:
+        _access_log.debug("tool=%s response=%s", name, result)
+
+
+# ---------------------------------------------------------------------------
 # Dispatcher (called from the agent loop on each tool_use block)
 # ---------------------------------------------------------------------------
 
@@ -246,18 +296,33 @@ def dispatch(name: str, params: dict[str, Any], mcp=None) -> str:
     `mcp` is an optional live LoomiMCP session. Live-workspace tools route to it;
     if it's absent (e.g. the recording-safe / hosted build), they degrade to a
     clear error the agent can reason around rather than crashing.
+
+    Every call is recorded by the access logger (see above) before returning.
     """
+    started = time.monotonic()
     if name in MCP_TOOL_MAP:
+        source = "live-mcp"
         if mcp is None:
-            return json.dumps(
+            result = json.dumps(
                 {"error": f"{name}: live workspace not connected in this build"}
             )
-        return mcp.read(MCP_TOOL_MAP[name])  # already a JSON string from the MCP
-    try:
-        result = _invoke(name, params)
-    except Exception as e:  # surface errors as tool_result content so the loop continues
-        return json.dumps({"error": f"{type(e).__name__}: {e}"})
-    return json.dumps(result, ensure_ascii=False, default=str)
+            ok = False
+        else:
+            result = mcp.read(MCP_TOOL_MAP[name])  # already a JSON string from the MCP
+            ok = "error" not in result[:40].lower()
+    else:
+        source = "local"
+        try:
+            obj = _invoke(name, params)
+            result = json.dumps(obj, ensure_ascii=False, default=str)
+            ok = not (isinstance(obj, dict) and "error" in obj)
+        except Exception as e:  # surface errors as tool_result content so the loop continues
+            result = json.dumps({"error": f"{type(e).__name__}: {e}"})
+            ok = False
+            if VERBOSE_TOOL_LOG:  # dev-only: full traceback alongside the error body
+                _access_log.debug("tool=%s raised", name, exc_info=True)
+    _log_access(name, source, params, result, ok=ok, started=started)
+    return result
 
 
 def _invoke(name: str, p: dict[str, Any]) -> Any:
