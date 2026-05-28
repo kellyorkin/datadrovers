@@ -1,87 +1,73 @@
-# Scope Scout: Workspace Orientation
+# Scope Scout
 
-**Project:** Scope Scout, an agentic assistant for Bloomreach SI partner solution architects at the pre-implementation scoping moment. Submitted to the Loomi Connect AI Hackathon, Track 2 (Engagement Intelligence & Workspace Diagnostics).
+> An agentic assistant for Bloomreach SI partner solution architects at the pre-implementation scoping moment.
 
-**Team (The Scope Scouts):**
-
-- **Kelly Brady** (Ansira): architect, lead, human coordinator
-- **Andy Daniels** (Amalgamation Services): demo face, MarTech director credibility
-- **Cole** (Claude via Cowork): strategic advisor, holds long context, briefs and decisions
-- **BC** (Claude in Chrome): data extraction, creative direction, JSON normalization, landing page
-- **Code** (Claude Code): technical implementer, agent code, lead architect for the build
-- **MarTy** (Microsoft Copilot Studio agent): visual identity, satirical and conversational register
-
-**Key dates:**
-
-- Kickoff Ceremony: Tuesday, May 26, 2026
-- Final Submission: Tuesday, June 2, 2026 (4 PM PST)
-- Demo Day: Thursday, June 4, 2026
+**Submitted to:** Loomi Connect AI Hackathon, Track 2 (Engagement Intelligence & Workspace Diagnostics).
+**Demo:** [datadrovers.com/sawyer](https://datadrovers.com/sawyer)
+**Submission deadline:** Tuesday, June 2, 2026 (4 PM PST)
+**Demo day:** Thursday, June 4, 2026
 
 ---
 
-## What lives where
+## What this is
 
-**This workspace folder (`Implementation Documents/`)** holds the source materials, scrubbing-and-extraction work, planning docs, and the team's canonical reference set. The .xlsx and .docx files are the original Bloomreach / Ansira reference materials (scrubbed of client and IP-sensitive content). The .md files are working planning docs.
+Scope Scout reads a client's stated trigger list (the messy mix of "wants," "doesn't have yet," and "we have something like X" that arrives at the start of a Bloomreach engagement) and produces a structured discovery agenda. It matches each request against the published Plug & Play library, probes the live client workspace through the Loomi Connect Marketing MCP, and identifies gaps in four categories: missing events, missing attributes on existing events, integration constraints, and mapping ambiguities. Every classification cites its evidence and its source. The architect reviews; Scope Scout proposes.
 
-**`JSON Files/` (subdirectory)** holds the extracted structured knowledge that the agent reasons over. Built by BC (use case library, channels, lifecycle stages, add-ons) and Code (customer attributes, planned events, event attributes, event matrix, data requirements). Code-keyed for deterministic joins across files.
+The agent in the demo is named **Sawyer**. Same project. Sawyer is the colleague-facing identity.
 
-**`scope_scout/` (subdirectory, Code's working directory)** holds the agent runtime code. Python, custom state management, Anthropic API for reasoning, official `mcp` client for Marketing MCP calls. Will become its own GitHub repo when Code surfaces it.
+## Who it's for
 
-**`extract_tracking_doc.py`** is Code's extraction script that produces the five Tracking Document JSONs. Re-runnable for reproducibility.
+Solution architects at Bloomreach SI partners, at the specific moment of receiving a client's stated trigger list and producing a scoping artifact for client review. Junior architects benefit most; senior architects benefit by being freed from the part of scoping that is pattern-matching rather than judgment.
 
-**`datadrovers.com` (external)** is the team's public-facing domain. Hosted on Netlify, landing page built by BC. Separate repo from the agent code.
+## What's in this repo
 
----
+```
+datadrovers/
+├── scope_scout/       Agent runtime (Python + Anthropic API + Loomi MCP)
+├── sawyer.html        Deployed demo artifact (fixture-driven)
+├── index.html         Landing page (datadrovers.com)
+├── LOGO_B64.png       Logo asset
+├── requirements.txt   Python dependencies for the agent
+├── README.md          This file
+└── .gitignore
+```
 
-## What to read first
+The `scope_scout/` directory contains the live agent runtime: an agentic reasoning loop bounded at 25 tool iterations, cross-referencing local knowledge (a normalized representation of the Bloomreach P&P library) against live workspace state retrieved through the Loomi Connect Marketing MCP. The runtime uses Anthropic's `claude-sonnet-4-6` as the reasoning engine and the official `mcp` Python client for live workspace introspection.
 
-If you're new to the project (or you're a fresh AI surface picking up context), read in this order:
+`sawyer.html` is the demo artifact deployed at [datadrovers.com/sawyer](https://datadrovers.com/sawyer). It runs with fixture data so the demo is reproducible without rate-limit concerns or workspace access. The live runtime in `scope_scout/` makes real MCP calls when run locally with credentials.
 
-1. **`Scope Scout - Project Summary (draft v1).md`**: what the project is, who it's for, what it does. (Note: draft v1, somewhat stale post-delta; v2 needed before final submission.)
+## How it works
 
-2. **`The Scope Scout reasoning loop.docx`**: the agent's reasoning architecture, five-pass model, concrete examples.
+Two structured knowledge sources joined by agentic reasoning:
 
-3. **`Code_Brief_Scope_Scout_Delta.docx`**: the weekend's architectural shifts (discovery agenda not scoping artifact, multi-turn not one-shot, MCP scope clarified, hybrid input). **Where this disagrees with the Project Summary, the Delta is current.**
+- **Local knowledge** ("what should be true"): the Plug & Play use case library (72 use cases), event matrix, data requirements per use case, channels, lifecycle stages, and add-ons. Pre-normalized into JSON; no external calls required.
+- **Live workspace** ("what is true"): the Loomi Connect Marketing MCP, with introspection tools for project overview, event schema, taxonomy mapping, and customer attributes. Read-only by design.
 
-4. **`Scope Scout - Known Gaps and Open Items.md`**: the gaps tracker. Current status of every open item, what's resolved, what's parked, what's been decided.
+The agent batches multiple tool calls into a single reasoning step (visible in the trace) and serializes execution against the live workspace at approximately one request per second for safety. The discovery agenda is the diff between what each matched use case requires and what the workspace actually has.
 
-5. **`Scope Scout - Code Engagement Brief (draft v1).md`**: the brief that handed Code into the project. Useful context for any new surface joining the technical build.
+For architecture detail, see the Architecture Overview diagram in the submission materials.
 
----
+## Responsible design
 
-## Current status (as of May 26, 2026 kickoff)
+All agent actions against the workspace are read-only. The agent does not write, modify, configure, or send. The discovery agenda is a recommendation for architect review; the architect owns the output. Reasoning is fully traced and visible to the architect. Demo configuration serves fixture data only and makes no live MCP calls. Credentials are read from environment variables and never logged. Every tool invocation emits a structured access line to server-side `stderr` (no payloads, no credentials, no PII). The full Responsible Design Note is in the submission materials.
 
-**Done:**
+## Team
 
-- Hackathon registration submitted (team: The Scope Scouts).
-- Document scrubbing pass complete (Project Scope Sample, Process Documentation, Example Client Trigger Use Cases, Tracking Document).
-- BC built and normalized four knowledge JSONs (library, channels, lifecycle stages, add-ons).
-- Code extracted Tracking Document into five additional JSONs (customer attributes, planned events, event attributes, event matrix, data requirements).
-- Project Summary draft v1 written.
-- Code engagement brief written.
-- Architectural decisions settled: discovery agenda (not scoping artifact) output, multi-turn (not one-shot) interaction, local knowledge tools (not custom MCP server), Marketing MCP for customer-level workspace probing, agent runtime is Claude API + custom Python state, existing-client-expansion fixture pattern.
+**The Scope Scouts:**
 
-**In progress:**
+- **Kelly Brady** (Ansira), architect, lead, coordinator
+- **Andy Daniels** (Amalgamation Services), MarTech direction, demo face
 
-- BC building datadrovers.com landing page (Netlify).
-- Code scaffolding the agent runtime in `scope_scout/`.
-- Fixture design (three personas, each triggering one MCP probe pattern), scheduled for Wednesday morning.
+Built using a multi-AI ensemble pattern coordinated by Kelly across specialized Claude surfaces: Cowork for strategy and synthesis, Claude Code for runtime implementation, and Claude in Chrome for data extraction and UI. Microsoft Copilot Studio contributed visual identity. The ensemble pattern is on-thesis for the hackathon: agentic infrastructure coordinated by a human architect, with each surface bringing distinct capabilities to the same project.
 
-**Open:**
+## Submission materials
 
-- Project Summary v2 (reflecting the delta).
-- Architecture Overview diagram (required for final submission).
-- Demo video recording (after build is functional).
-- Fold `aa_READ_ME.docx` content into Process Documentation as Step 4.
+The submission documents (Project Summary, Architecture Overview, MCP Usage Explanation, Responsible Design Note) are submitted directly via the Hackathon portal. The repo here is the working code and the deployed demo; the submission portal is the canonical reference for the doc set.
 
----
+## License
 
-## How the team works
-
-Multi-AI ensemble pattern. Kelly is the human coordinator running the pattern across surfaces; each AI surface has a specialized role. Hand-offs are structured: brief in, predictable deliverable out, push back when reasoning supports it, escalate architectural disagreements to Kelly rather than silently deferring.
-
-For the playful version of how this team works, see the Corporate Courtroom card "The Claude Suite — Expert Witnesses (Universal)" in Kelly's broader card universe.
+To be determined post-hackathon. Source is visible for hackathon-judging purposes.
 
 ---
 
-*If anything in this file is out of date, update it. The README is the orientation surface for the project; staleness here costs more than staleness in any other doc.*
+*Repo maintained by Kelly Brady.*
