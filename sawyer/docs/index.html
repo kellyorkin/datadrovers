@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scope Scout — Supporting Materials</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:        #131F2B;
+    --navy-deep:   #0A1218;
+    --navy-rich:   #1C2A38;
+    --gold:        #D7BE59;
+    --gold-deep:   #B8951F;
+    --gold-warm:   #E8D078;
+    --lavender:    #C4BAD2;
+    --lavender-deep: #8C7AA6;
+    --cream:       #F4F0E8;
+    --cream-deep:  #ECE6DA;
+    --rule:        #2A3A4D;
+    --muted:       #6A7A8A;
+    --evidence:    #5E6B52;
+    --gap:         #A8543E;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-mono:    'JetBrains Mono', Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(215, 190, 89, 0.04) 0, transparent 35%),
+      radial-gradient(circle at 88% 78%, rgba(196, 186, 210, 0.05) 0, transparent 40%);
+  }
+
+  .frame {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem clamp(1.5rem, 4vw, 3rem);
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 2.5rem;
+  }
+
+  .logo {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+  }
+
+  .logo img { width: 100%; height: 100%; object-fit: contain; }
+
+  .titleblock h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    line-height: 1.1;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .titleblock .subtitle {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--lavender);
+    margin-top: 0.15rem;
+    font-weight: 300;
+  }
+
+  .header-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: right;
+  }
+
+  .header-meta .meta-label {
+    color: var(--muted);
+    display: block;
+    font-size: 0.62rem;
+    margin-top: 0.15rem;
+  }
+
+  /* ── EPIGRAPH ── */
+  .epigraph {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.05rem;
+    color: var(--lavender);
+    text-align: center;
+    margin: 0 auto 3rem;
+    max-width: 42rem;
+    line-height: 1.5;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--cream);
+  }
+
+  /* ── DOC CARDS ── */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .doc-card {
+    background: var(--navy-rich);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 1.25rem 1.4rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    position: relative;
+  }
+
+  .doc-card:hover {
+    border-color: var(--gold-deep);
+    background: linear-gradient(180deg, var(--navy-rich) 0%, rgba(215, 190, 89, 0.04) 100%);
+  }
+
+  .doc-card-type {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .doc-card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--cream);
+    line-height: 1.25;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .doc-card-desc {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: var(--lavender);
+    line-height: 1.5;
+    font-weight: 300;
+    font-style: italic;
+    flex: 1;
+  }
+
+  .doc-card-meta {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .doc-card-meta::before {
+    content: var(--before-content, "PDF");
+    background: rgba(215, 190, 89, 0.1);
+    border: 1px solid rgba(215, 190, 89, 0.3);
+    color: var(--gold);
+    padding: 0.08rem 0.4rem;
+    border-radius: 2px;
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+
+  /* ── DEMO CARD (full width, distinct treatment) ── */
+  .demo-card {
+    background: linear-gradient(135deg, var(--navy-rich) 0%, rgba(215, 190, 89, 0.06) 100%);
+    border: 1px solid rgba(215, 190, 89, 0.3);
+    border-radius: 4px;
+    padding: 1.5rem 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .demo-card:hover { border-color: var(--gold); }
+
+  .demo-card-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+    opacity: 0.8;
+  }
+
+  .demo-card-body { flex: 1; }
+
+  .demo-card-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+
+  .demo-card-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  .demo-card-desc {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--lavender);
+    font-weight: 300;
+  }
+
+  .demo-card-url {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--gold-deep);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  /* ── CONTEXT NOTE ── */
+  .context-note {
+    background: var(--navy-rich);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--lavender-deep);
+    border-radius: 3px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .context-note p {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--lavender);
+    line-height: 1.55;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .context-note p + p { margin-top: 0.65rem; }
+
+  .context-note strong {
+    color: var(--cream);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  footer .footer-track { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    header { grid-template-columns: auto 1fr; }
+    .header-meta { display: none; }
+    .demo-card { flex-direction: column; gap: 1rem; }
+    .demo-card-url { font-size: 0.65rem; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  /* ── ENTRANCE ── */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  header       { animation: rise 0.6s ease-out both; }
+  .epigraph    { animation: rise 0.7s ease-out 0.1s both; }
+  .demo-card   { animation: rise 0.7s ease-out 0.2s both; }
+  .section-header { animation: rise 0.7s ease-out 0.25s both; }
+  .doc-grid    { animation: rise 0.7s ease-out 0.3s both; }
+  .context-note { animation: rise 0.7s ease-out 0.35s both; }
+</style>
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="logo">
+      <img id="logo-img" alt="The Scope Scouts" />
+    </div>
+    <div class="titleblock">
+      <h1>Scope Scout</h1>
+      <div class="subtitle">Supporting Materials — Loomi Connect AI Hackathon</div>
+    </div>
+    <div class="header-meta">
+      <span>Track 2 Submission</span>
+      <span class="meta-label">Engagement Intelligence · Workspace Diagnostics</span>
+    </div>
+  </header>
+
+  <div class="epigraph">
+    Close-read each request. Step back and reason across the set.
+  </div>
+
+  <!-- ── LIVE DEMO ── -->
+  <a class="demo-card" href="/sawyer" target="_blank">
+    <div class="demo-card-icon">◆</div>
+    <div class="demo-card-body">
+      <div class="demo-card-label">Live Demo</div>
+      <div class="demo-card-title">Scope Scout Discovery Console</div>
+      <div class="demo-card-desc">Ask Sawyer — three demo scenarios with reasoning trace and discovery agenda export</div>
+    </div>
+    <div class="demo-card-url">datadrovers.com/sawyer →</div>
+  </a>
+
+  <!-- ── SUBMISSION DOCUMENTS ── -->
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-title">Submission Documents</span>
+  </div>
+
+  <div class="doc-grid">
+
+    <a class="doc-card" href="Scope_Scout_Project_Summary_v3.pdf" target="_blank">
+      <div class="doc-card-type">Item 1 · Project Summary</div>
+      <div class="doc-card-title">Scope Scout: An Agent That Reasons Like a Senior Implementation Architect</div>
+      <div class="doc-card-desc">Problem statement, target user, solution approach, and value proposition. Plain language for a non-technical judge.</div>
+      <div class="doc-card-meta">2 pages · Final</div>
+    </a>
+
+    <a class="doc-card" href="Scope_Scout_Item5_MCP_Usage.pdf" target="_blank">
+      <div class="doc-card-type">Item 5 · MCP Usage Explanation</div>
+      <div class="doc-card-title">MCP Usage Explanation</div>
+      <div class="doc-card-desc">Which MCP surfaces were used, why, what value they provided, and how deeply — including the four gap types the agent classifies.</div>
+      <div class="doc-card-meta">4 pages · Final</div>
+    </a>
+
+    <a class="doc-card" href="Scope_Scout_Item6_Responsible_Design.pdf" target="_blank">
+      <div class="doc-card-type">Item 6 · Responsible Design Note</div>
+      <div class="doc-card-title">Responsible Design Note</div>
+      <div class="doc-card-desc">Data handling, access logging, safety bounds, simulated vs. executed actions, and what the team explicitly does not claim.</div>
+      <div class="doc-card-meta">4 pages · Final</div>
+    </a>
+
+  </div>
+
+  <!-- ── ARCHITECTURE ── -->
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-title">Architecture Overview</span>
+  </div>
+
+  <div class="doc-grid" style="margin-bottom: 2.5rem;">
+
+    <a class="doc-card" href="sawyer_architecture_v2.svg" target="_blank">
+      <div class="doc-card-type">Item 3 · Architecture Diagram</div>
+      <div class="doc-card-title">System Architecture — Sawyer</div>
+      <div class="doc-card-desc">Four-layer architecture: Loomi Connect Marketing MCP, local knowledge base, agent runtime (claude-sonnet-4-6), and UI layer — with the Architect as human-in-the-loop.</div>
+      <div class="doc-card-meta" style="--before-content: 'SVG';">SVG · Scalable · Final</div>
+    </a>
+
+  </div>
+
+  <!-- ── CONTEXT NOTE ── -->
+  <div class="context-note">
+    <p>
+      <strong>About the demo.</strong> The Discovery Console at datadrovers.com/sawyer runs in fixture mode —
+      pre-captured workspace state that demonstrates the agent's reasoning logic, tool-call patterns,
+      and discovery agenda format without requiring a live MCP connection. The reasoning logic and
+      tool-call patterns are identical to the production version.
+    </p>
+    <p>
+      <strong>About the live runtime.</strong> Scope Scout's live runtime — which performs real
+      workspace introspection against the Loomi Connect Marketing MCP — runs in authenticated
+      local environments. On the demo workspace (neon-sock, 123K customers, 1.17M events),
+      Sawyer produced a full discovery agenda including a critical pre-scope finding: all 12
+      standard taxonomy slots were null despite 27 event types flowing. That finding is the
+      kind of result that changes a client conversation before a single use case is scoped.
+    </p>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span>The Scope Scouts · <span class="footer-track">Track 2 · Engagement Intelligence & Workspace Diagnostics</span></span>
+    <span>Read-only · Architect review required for all client deliverables</span>
+  </footer>
+
+</div>
+
+<script>
+// Load logo from the same base64 source as sawyer.html
+// The logo img src is set identically to the main demo page
+const logoImg = document.getElementById('logo-img');
+// Attempt to load from relative path; fallback to inline if needed
+logoImg.src = '/LOGO_B64.png';
+logoImg.onerror = function() {
+  // If no standalone logo file, hide gracefully
+  this.style.display = 'none';
+};
+</script>
+
+</body>
+</html>
