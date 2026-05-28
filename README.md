@@ -71,4 +71,4 @@ To be determined post-hackathon. Source is visible for hackathon-judging purpose
 
 ---
 
-*Repo maintained by Kelly Brady.*
+*Repo maintained by Kelly Brady. To Run Sawyer yourself, please read the RUNNING.md file.* 
